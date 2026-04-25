@@ -6,6 +6,8 @@
 <title>VISE · Radar Estratégico · 25/04/2026 15:30</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f6f8;color:#2c3e50;}
@@ -29,6 +31,25 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f6f8;color:#2c3e50;}
 .rec-text{font-size:12px;color:#555;line-height:1.5;}
 .dist-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #f0f0f0;}
 .footer{text-align:center;padding:16px;font-size:10px;color:#999;border-top:1px solid #eee;margin-top:20px;}
+.btn-pdf{position:fixed;bottom:24px;right:24px;z-index:9999;background:#1D8348;color:#fff;border:none;padding:14px 22px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.25);display:flex;align-items:center;gap:8px;transition:all 0.2s;}
+.btn-pdf:hover{background:#166d3b;transform:translateY(-2px);}
+.btn-pdf:disabled{background:#aaa;cursor:not-allowed;transform:none;}
+@media (max-width:768px){
+  .layout{grid-template-columns:1fr;}
+  .stats{grid-template-columns:repeat(3,1fr);}
+  .rec-grid{grid-template-columns:1fr;}
+  .header{flex-direction:column;gap:12px;text-align:center;}
+  .header>div:last-child{text-align:center;}
+  #map{height:280px;}
+  .page{padding:12px;}
+  .stat-n{font-size:24px;}
+  .btn-pdf{bottom:16px;right:16px;padding:12px 18px;font-size:13px;}
+}
+@media (max-width:480px){
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .sec{padding:12px;}
+  .header{padding:14px;}
+}
 @media print{
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
   body{background:#fff!important;}
@@ -37,45 +58,49 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f6f8;color:#2c3e50;}
   .sec{box-shadow:none!important;border:1px solid #ddd!important;}
   #map{height:300px;}
   .layout{grid-template-columns:1fr 280px;}
+  .btn-pdf{display:none!important;}
 }
 </style>
 </head>
 <body>
-<div class="page">
 
-<div class="header">
-  <div style="display:flex;align-items:center;gap:16px;">
-    <div class="logo-circle">V</div>
-    <div>
-      <div style="font-size:10px;color:#a8d5b5;letter-spacing:2px;text-transform:uppercase;">VISE · Vigilancia Integrada · Estrategia Preventiva</div>
-      <div style="font-size:18px;font-weight:700;color:#fff;margin-top:2px;">Boletín Oficial · Radar NACIONAL</div>
-      <div style="font-size:11px;color:#7fb99a;margin-top:2px;">Documento de Inteligencia Operacional · Uso Corporativo</div>
+<button class="btn-pdf" id="btnPDF" onclick="generarPDF()">📄 Descargar PDF</button>
+
+<div class="page" id="contenido">
+
+  <div class="header">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div class="logo-circle">V</div>
+      <div>
+        <div style="font-size:10px;color:#a8d5b5;letter-spacing:2px;text-transform:uppercase;">VISE · Vigilancia Integrada · Estrategia Preventiva</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-top:2px;">Boletín Oficial · Radar NACIONAL</div>
+        <div style="font-size:11px;color:#7fb99a;margin-top:2px;">Documento de Inteligencia Operacional · Uso Corporativo</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-size:28px;font-weight:700;color:#27AE60;letter-spacing:3px;line-height:1.1;">RADAR<br>ESTRATÉGICO</div>
+      <div style="font-size:13px;color:#a8d5b5;margin-top:6px;">📅 25/04/2026 · ⏰ 15:30</div>
+      <span style="background:#C0392B;color:white;font-size:10px;padding:3px 12px;border-radius:4px;display:inline-block;margin-top:5px;letter-spacing:1px;">● EN VIVO</span>
     </div>
   </div>
-  <div style="text-align:right;">
-    <div style="font-size:28px;font-weight:700;color:#27AE60;letter-spacing:3px;line-height:1.1;">RADAR<br>ESTRATÉGICO</div>
-    <div style="font-size:13px;color:#a8d5b5;margin-top:6px;">📅 25/04/2026 · ⏰ 15:30</div>
-    <span style="background:#C0392B;color:white;font-size:10px;padding:3px 12px;border-radius:4px;display:inline-block;margin-top:5px;letter-spacing:1px;">● EN VIVO</span>
+
+  <div class="banner">
+    🇨🇴 REPORTE TÉCNICO INTEGRAL · ORDEN PÚBLICO · VÍAS · SEGURIDAD · NACIONAL · FUENTES OFICIALES VERIFICADAS
   </div>
-</div>
 
-<div class="banner">
-  🇨🇴 REPORTE TÉCNICO INTEGRAL · ORDEN PÚBLICO · VÍAS · SEGURIDAD · NACIONAL · FUENTES OFICIALES VERIFICADAS
-</div>
+  <div class="stats">
+    <div class="stat" style="border-bottom-color:#7F8C8D;"><div class="stat-n" style="color:#2c3e50;">17</div><div class="stat-l">Total Eventos</div></div>
+    <div class="stat" style="border-bottom-color:#C0392B;"><div class="stat-n" style="color:#C0392B;">4</div><div class="stat-l">Críticos</div></div>
+    <div class="stat" style="border-bottom-color:#D68910;"><div class="stat-n" style="color:#D68910;">7</div><div class="stat-l">Alto Impacto</div></div>
+    <div class="stat" style="border-bottom-color:#2471A3;"><div class="stat-n" style="color:#2471A3;">15</div><div class="stat-l">Regiones</div></div>
+    <div class="stat" style="border-bottom-color:#D68910;"><div class="stat-n" style="color:#D68910;">4</div><div class="stat-l">Vías Afectadas</div></div>
+  </div>
 
-<div class="stats">
-  <div class="stat" style="border-bottom-color:#7F8C8D;"><div class="stat-n" style="color:#2c3e50;">17</div><div class="stat-l">Total Eventos</div></div>
-  <div class="stat" style="border-bottom-color:#C0392B;"><div class="stat-n" style="color:#C0392B;">4</div><div class="stat-l">Críticos</div></div>
-  <div class="stat" style="border-bottom-color:#D68910;"><div class="stat-n" style="color:#D68910;">7</div><div class="stat-l">Alto Impacto</div></div>
-  <div class="stat" style="border-bottom-color:#2471A3;"><div class="stat-n" style="color:#2471A3;">15</div><div class="stat-l">Regiones</div></div>
-  <div class="stat" style="border-bottom-color:#D68910;"><div class="stat-n" style="color:#D68910;">4</div><div class="stat-l">Vías Afectadas</div></div>
-</div>
-
-<div class="layout">
-  <div>
-    <div class="sec" style="margin-bottom:16px;">
-      <div class="sec-t">🔵 Orden Público · NACIONAL</div>
-      
+  <div class="layout">
+    <div>
+      <div class="sec" style="margin-bottom:16px;">
+        <div class="sec-t">🔵 Orden Público · NACIONAL</div>
+        
 <div style="border-left:3px solid #C0392B;padding:10px 14px;margin-bottom:10px;background:#fafafa;border-radius:0 6px 6px 0;border:1px solid #eee;border-left:3px solid #C0392B;">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
     <div style="font-size:13px;font-weight:600;color:#1a1a2e;flex:1;">Fuertes combates en Argelia, Cauca, dejan 2 disidentes FARC neutralizados</div>
@@ -193,10 +218,10 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f6f8;color:#2c3e50;}
     <span style="font-size:10px;padding:2px 7px;border-radius:4px;background:#f5f5f5;color:#999;">Policía Nacional</span>
   </div>
 </div>
-    </div>
-    <div class="sec" style="margin-bottom:16px;">
-      <div class="sec-t">🚗 Estado de Vías y Conectividad</div>
-      
+      </div>
+      <div class="sec" style="margin-bottom:16px;">
+        <div class="sec-t">🚗 Estado de Vías y Conectividad</div>
+        
 <div style="background:#fff;border-radius:8px;padding:14px;border-top:3px solid #C0392B;margin-bottom:10px;border:1px solid #eee;border-top:3px solid #C0392B;">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
     <span style="font-size:10px;color:#C0392B;font-weight:700;">● CERRADO</span>
@@ -257,11 +282,11 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f6f8;color:#2c3e50;}
     <span style="font-size:10px;padding:1px 6px;border-radius:3px;background:#f5f5f5;color:#999;">Blu Radio</span>
   </div>
 </div>
-    </div>
-    
-    <div class="sec" style="margin-bottom:16px;">
-      <div class="sec-t">⚠️ Alertas Ambientales</div>
+      </div>
       
+      <div class="sec" style="margin-bottom:16px;">
+        <div class="sec-t">⚠️ Alertas Ambientales</div>
+        
 <div style="background:#fff;border-radius:6px;padding:10px 12px;margin-bottom:8px;border-left:3px solid #D68910;border:1px solid #eee;border-left:3px solid #D68910;">
   <div style="font-size:11px;color:#D68910;font-weight:700;margin-bottom:3px;">⚠️ INUNDACIÓN</div>
   <div style="font-size:12px;color:#555;margin-bottom:4px;">IDEAM emite alerta roja por crecientes súbitas en los ríos Atrato, San Juan y Baudó en el departamento del Chocó, debido a las fuertes lluvias de las últimas 24 horas. Se recomienda a las comunidades ribereñas tomar medidas de precaución.</div>
@@ -280,65 +305,65 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f6f8;color:#2c3e50;}
   <span style="font-size:10px;padding:1px 6px;border-radius:3px;background:#e8f5e9;color:#1D8348;">📍 BOLÍVAR / ATLÁNTICO / MAGDALENA</span>
   <span style="font-size:10px;padding:1px 6px;border-radius:3px;background:#f5f5f5;color:#999;margin-left:4px;">IDEAM</span>
 </div>
-    </div>
-    <div class="sec">
-      <div class="sec-t">🔒 Recomendaciones de Seguridad</div>
-      <div class="rec-grid">
-        <div class="rec-card"><div class="rec-label" style="color:#2471A3;">LOGÍSTICA</div><div class="rec-text">Priorizar la revisión de rutas alternativas para el transporte de carga y personal hacia el suroccidente (Cauca, Nariño) y los llanos (Meta), debido a cierres viales y bloqueos. Mantener comunicación constante con conductores.</div></div>
-        <div class="rec-card"><div class="rec-label" style="color:#D68910;">PERÍMETROS</div><div class="rec-text">Reforzar la seguridad perimetral en instalaciones críticas ubicadas en zonas de alta presencia de grupos armados (Nariño, Norte de Santander, Cauca, Chocó). Establecer protocolos claros para alertas de seguridad.</div></div>
-        <div class="rec-card"><div class="rec-label" style="color:#C0392B;">OPERACIONAL</div><div class="rec-text">Aumentar la vigilancia y la inteligencia en las regiones de Catatumbo, Urabá y sur del Cauca ante la intensificación de acciones de grupos armados ilegales. Capacitar al personal sobre planes de contingencia ante ataques o bloqueos.</div></div>
-        <div class="rec-card"><div class="rec-label" style="color:#1D8348;">DIGITAL</div><div class="rec-text">Incrementar monitoreo de redes sociales y fuentes de inteligencia de código abierto (OSINT) para identificar amenazas emergentes, protestas no anunciadas y movimientos de grupos armados en tiempo real.</div></div>
       </div>
-    </div>
-  </div>
-
-  <div class="sidebar">
-    <div class="sec">
-      <div class="sec-t">⊕ Resumen Táctico</div>
-      <div style="background:#fdf2f2;border-radius:6px;padding:12px;margin-bottom:8px;border:1px solid #f5c6c6;">
-        <div style="font-size:10px;color:#C0392B;font-weight:700;letter-spacing:1px;margin-bottom:4px;">CRÍTICO</div>
-        <div style="font-size:12px;color:#1a1a2e;font-weight:600;margin-bottom:3px;">Amenaza Principal</div>
-        <div style="font-size:11px;color:#555;">La reactivación y disputa territorial entre grupos armados ilegales (ELN, disidencias FARC, Clan del Golfo) en el suroccidente y Catatumbo sigue siendo la amenaza principal, generando combates, atentados y desplazamiento forzado. Las condiciones climáticas adversas también impactan la seguridad vial y generan alertas ambientales en varias regiones.</div>
-      </div>
-      <div style="background:#fff8e1;border-radius:6px;padding:12px;margin-bottom:8px;border:1px solid #f9e4a0;">
-        <div style="font-size:10px;color:#D68910;font-weight:700;letter-spacing:1px;margin-bottom:4px;">ALERTA</div>
-        <div style="font-size:12px;color:#1a1a2e;font-weight:600;margin-bottom:3px;">Zona Crítica</div>
-        <div style="font-size:11px;color:#555;">Cauca, Nariño y Norte de Santander</div>
-      </div>
-      <div style="background:#e8f4fd;border-radius:6px;padding:12px;border:1px solid #aed6f1;">
-        <div style="font-size:10px;color:#2471A3;font-weight:700;letter-spacing:1px;margin-bottom:4px;">INFO</div>
-        <div style="font-size:12px;color:#1a1a2e;font-weight:600;margin-bottom:3px;">Fuentes Verificadas</div>
-        <div style="font-size:11px;color:#555;">12 fuentes consultadas</div>
+      <div class="sec">
+        <div class="sec-t">🔒 Recomendaciones de Seguridad</div>
+        <div class="rec-grid">
+          <div class="rec-card"><div class="rec-label" style="color:#2471A3;">LOGÍSTICA</div><div class="rec-text">Priorizar la revisión de rutas alternativas para el transporte de carga y personal hacia el suroccidente (Cauca, Nariño) y los llanos (Meta), debido a cierres viales y bloqueos. Mantener comunicación constante con conductores.</div></div>
+          <div class="rec-card"><div class="rec-label" style="color:#D68910;">PERÍMETROS</div><div class="rec-text">Reforzar la seguridad perimetral en instalaciones críticas ubicadas en zonas de alta presencia de grupos armados (Nariño, Norte de Santander, Cauca, Chocó). Establecer protocolos claros para alertas de seguridad.</div></div>
+          <div class="rec-card"><div class="rec-label" style="color:#C0392B;">OPERACIONAL</div><div class="rec-text">Aumentar la vigilancia y la inteligencia en las regiones de Catatumbo, Urabá y sur del Cauca ante la intensificación de acciones de grupos armados ilegales. Capacitar al personal sobre planes de contingencia ante ataques o bloqueos.</div></div>
+          <div class="rec-card"><div class="rec-label" style="color:#1D8348;">DIGITAL</div><div class="rec-text">Incrementar monitoreo de redes sociales y fuentes de inteligencia de código abierto (OSINT) para identificar amenazas emergentes, protestas no anunciadas y movimientos de grupos armados en tiempo real.</div></div>
+        </div>
       </div>
     </div>
 
-    <div class="sec">
-      <div class="sec-t">📊 Distribución por Ciudad</div>
-      
-      <div class="dist-row">
-        <span style="font-size:12px;color:#2c3e50;">Cali</span>
-        <span style="font-size:11px;color:#D68910;font-weight:700;">1 ev</span>
+    <div class="sidebar">
+      <div class="sec">
+        <div class="sec-t">⊕ Resumen Táctico</div>
+        <div style="background:#fdf2f2;border-radius:6px;padding:12px;margin-bottom:8px;border:1px solid #f5c6c6;">
+          <div style="font-size:10px;color:#C0392B;font-weight:700;letter-spacing:1px;margin-bottom:4px;">CRÍTICO</div>
+          <div style="font-size:12px;color:#1a1a2e;font-weight:600;margin-bottom:3px;">Amenaza Principal</div>
+          <div style="font-size:11px;color:#555;">La reactivación y disputa territorial entre grupos armados ilegales (ELN, disidencias FARC, Clan del Golfo) en el suroccidente y Catatumbo sigue siendo la amenaza principal, generando combates, atentados y desplazamiento forzado. Las condiciones climáticas adversas también impactan la seguridad vial y generan alertas ambientales en varias regiones.</div>
+        </div>
+        <div style="background:#fff8e1;border-radius:6px;padding:12px;margin-bottom:8px;border:1px solid #f9e4a0;">
+          <div style="font-size:10px;color:#D68910;font-weight:700;letter-spacing:1px;margin-bottom:4px;">ALERTA</div>
+          <div style="font-size:12px;color:#1a1a2e;font-weight:600;margin-bottom:3px;">Zona Crítica</div>
+          <div style="font-size:11px;color:#555;">Cauca, Nariño y Norte de Santander</div>
+        </div>
+        <div style="background:#e8f4fd;border-radius:6px;padding:12px;border:1px solid #aed6f1;">
+          <div style="font-size:10px;color:#2471A3;font-weight:700;letter-spacing:1px;margin-bottom:4px;">INFO</div>
+          <div style="font-size:12px;color:#1a1a2e;font-weight:600;margin-bottom:3px;">Fuentes Verificadas</div>
+          <div style="font-size:11px;color:#555;">12 fuentes consultadas</div>
+        </div>
       </div>
-      <div class="dist-row">
-        <span style="font-size:12px;color:#2c3e50;">Bogotá</span>
-        <span style="font-size:11px;color:#2471A3;font-weight:700;">1 ev</span>
-      </div>
-      <div class="dist-row">
-        <span style="font-size:12px;color:#2c3e50;">Tumaco</span>
-        <span style="font-size:11px;color:#C0392B;font-weight:700;">1 ev</span>
-      </div>
-    </div>
 
-    <div class="sec">
-      <div class="sec-t">🌡️ Índice por Departamento</div>
-      <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-        <span style="font-size:10px;">● <span style="color:#1D8348;">Bajo</span></span>
-        <span style="font-size:10px;">● <span style="color:#2471A3;">Mod.</span></span>
-        <span style="font-size:10px;">● <span style="color:#D68910;">Alto</span></span>
-        <span style="font-size:10px;">● <span style="color:#BA7517;">Muy Alto</span></span>
-        <span style="font-size:10px;">● <span style="color:#C0392B;">Crítico</span></span>
+      <div class="sec">
+        <div class="sec-t">📊 Distribución por Ciudad</div>
+        
+        <div class="dist-row">
+          <span style="font-size:12px;color:#2c3e50;">Cali</span>
+          <span style="font-size:11px;color:#D68910;font-weight:700;">1 ev</span>
+        </div>
+        <div class="dist-row">
+          <span style="font-size:12px;color:#2c3e50;">Bogotá</span>
+          <span style="font-size:11px;color:#2471A3;font-weight:700;">1 ev</span>
+        </div>
+        <div class="dist-row">
+          <span style="font-size:12px;color:#2c3e50;">Tumaco</span>
+          <span style="font-size:11px;color:#C0392B;font-weight:700;">1 ev</span>
+        </div>
       </div>
-      
+
+      <div class="sec">
+        <div class="sec-t">🌡️ Índice por Departamento</div>
+        <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+          <span style="font-size:10px;">● <span style="color:#1D8348;">Bajo</span></span>
+          <span style="font-size:10px;">● <span style="color:#2471A3;">Mod.</span></span>
+          <span style="font-size:10px;">● <span style="color:#D68910;">Alto</span></span>
+          <span style="font-size:10px;">● <span style="color:#BA7517;">Muy Alto</span></span>
+          <span style="font-size:10px;">● <span style="color:#C0392B;">Crítico</span></span>
+        </div>
+        
 <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #eee;">
   <div style="width:10px;height:10px;border-radius:50%;background:#C0392B;flex-shrink:0;"></div>
   <span style="font-size:11px;color:#2c3e50;flex:1;">Nariño</span>
@@ -429,30 +454,30 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f6f8;color:#2c3e50;}
   <span style="font-size:10px;padding:1px 6px;border-radius:3px;background:#1D834818;color:#1D8348;font-weight:600;">BAJO</span>
   <span style="font-size:10px;color:#999;">1ev</span>
 </div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="layout-full">
-  <div class="sec">
-    <div class="sec-t">🗺️ Mapa de Calor — Colombia · Criminalidad / Terrorismo / Grupos Armados</div>
-    <div id="map"></div>
-    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;">
-      <span style="font-size:11px;">⬤ <span style="color:#1D8348;">Bajo</span></span>
-      <span style="font-size:11px;">⬤ <span style="color:#2471A3;">Moderado</span></span>
-      <span style="font-size:11px;">⬤ <span style="color:#D68910;">Alto</span></span>
-      <span style="font-size:11px;">⬤ <span style="color:#BA7517;">Muy Alto</span></span>
-      <span style="font-size:11px;">⬤ <span style="color:#C0392B;">Crítico</span></span>
-      <span style="font-size:11px;color:#999;margin-left:auto;">Tamaño del círculo = intensidad del riesgo</span>
+  <div class="layout-full">
+    <div class="sec">
+      <div class="sec-t">🗺️ Mapa de Calor — Colombia · Criminalidad / Terrorismo / Grupos Armados</div>
+      <div id="map"></div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;">
+        <span style="font-size:11px;">⬤ <span style="color:#1D8348;">Bajo</span></span>
+        <span style="font-size:11px;">⬤ <span style="color:#2471A3;">Moderado</span></span>
+        <span style="font-size:11px;">⬤ <span style="color:#D68910;">Alto</span></span>
+        <span style="font-size:11px;">⬤ <span style="color:#BA7517;">Muy Alto</span></span>
+        <span style="font-size:11px;">⬤ <span style="color:#C0392B;">Crítico</span></span>
+        <span style="font-size:11px;color:#999;margin-left:auto;">Tamaño del círculo = intensidad del riesgo</span>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="footer">
-  Boletín Oficial VISE · Radar NACIONAL · Documento de Inteligencia Operacional<br>
-  Reservados todos los derechos · 2026 · Generado: 25/04/2026 15:30<br>
-  <span style="color:#C0392B;font-weight:700;">▲ CONFIDENCIAL · USO CORPORATIVO · VISE LTDA</span>
-</div>
+  <div class="footer">
+    Boletín Oficial VISE · Radar NACIONAL · Documento de Inteligencia Operacional<br>
+    Reservados todos los derechos · 2026 · Generado: 25/04/2026 15:30<br>
+    <span style="color:#C0392B;font-weight:700;">▲ CONFIDENCIAL · USO CORPORATIVO · VISE LTDA</span>
+  </div>
 
 </div>
 
@@ -582,6 +607,44 @@ L.circleMarker([4.71,-74.07], {
     fillOpacity: 0.75
   }).addTo(map).bindPopup('<b>Bogotá D.C.</b><br/>Nivel: MODERADO<br/>Eventos: 1<br/>Tipo: Seguridad urbana');
 map.fitBounds([[-4.5,-79.0],[13.5,-66.8]]);
+
+async function generarPDF() {
+  const btn = document.getElementById('btnPDF');
+  btn.innerHTML = '⏳ Generando PDF...';
+  btn.disabled = true;
+  btn.style.display = 'none';
+  try {
+    const { jsPDF } = window.jspdf;
+    const elemento = document.getElementById('contenido');
+    const canvas = await html2canvas(elemento, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#f4f6f8',
+      logging: false,
+      windowWidth: 1200
+    });
+    const imgData = canvas.toDataURL('image/jpeg', 0.92);
+    const pdf = new jsPDF('p','mm','a4');
+    const pdfW = pdf.internal.pageSize.getWidth();
+    const pdfH = pdf.internal.pageSize.getHeight();
+    const imgH = (canvas.height * pdfW) / canvas.width;
+    let posY = 0;
+    let pagina = 0;
+    while (posY < imgH) {
+      if (pagina > 0) pdf.addPage();
+      pdf.addImage(imgData, 'JPEG', 0, -posY, pdfW, imgH);
+      posY += pdfH;
+      pagina++;
+    }
+    pdf.save('VISE_Boletin_25042026_1530.pdf');
+  } catch(err) {
+    alert('Error generando PDF: ' + err.message);
+  }
+  btn.style.display = 'flex';
+  btn.innerHTML = '📄 Descargar PDF';
+  btn.disabled = false;
+}
 </script>
 </body>
 </html>
