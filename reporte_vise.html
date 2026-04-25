@@ -1,1 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VISE · Radar Estratégico · 25/04/2026 12:40</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',Arial,sans-serif; background:#0d0d0d; color:#c2c0b6; padding:20px; max-width:1100px; margin:0 auto; }
+  .header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; padding:20px 24px; background:#1a1a1a; border-radius:10px; border-bottom:3px solid #00c8a0; }
+  .stats-row { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:24px; }
+  .stat-box { background:#1a1a1a; border-radius:8px; padding:14px; text-align:center; border-bottom:2px solid #222; }
+  .stat-num { font-size:32px; font-weight:700; }
+  .stat-label { font-size:10px; color:#666; letter-spacing:1px; text-transform:uppercase; margin-top:6px; }
+  .section { background:#141414; border-radius:10px; padding:18px; margin-bottom:18px; border:1px solid #1e1e1e; }
+  .section-title { display:flex; align-items:center; gap:8px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#888780; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid #222; font-weight:600; }
+  .rec-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .rec-card { background:#1a1a1a; border-radius:6px; padding:14px; }
+  .rec-label { font-size:10px; letter-spacing:1.5px; font-weight:700; margin-bottom:6px; }
+  .rec-text { font-size:12px; color:#888780; line-height:1.6; }
+  .heat-legend { display:flex; gap:16px; margin-bottom:14px; flex-wrap:wrap; }
+  .vias-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+  .footer-bar { text-align:center; padding:16px; font-size:10px; color:#444; border-top:1px solid #1a1a1a; margin-top:24px; }
+  .dist-row { display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid #1a1a1a; }
+  @media print { body { background:#fff; color:#000; } }
+</style>
+</head>
+<body>
 
+<!-- HEADER -->
+<div class="header">
+  <div style="display:flex;align-items:center;gap:16px;">
+    <div style="width:48px;height:48px;background:#0f4a35;border-radius:50%;border:2px solid #1D9E75;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1D9E75;font-size:20px;">V</div>
+    <div>
+      <div style="font-size:10px;color:#888780;letter-spacing:2px;text-transform:uppercase;">VISE · Vigilancia Integrada · Estrategia Preventiva</div>
+      <div style="font-size:10px;color:#555;margin-top:2px;">Boletín Oficial · Radar NACIONAL</div>
+    </div>
+  </div>
+  <div style="text-align:right;">
+    <div style="font-size:28px;font-weight:700;color:#00c8a0;letter-spacing:3px;line-height:1.1;">RADAR<br>ESTRATÉGICO</div>
+    <div style="font-size:12px;color:#c2c0b6;margin-top:4px;">25/04/2026 · 12:40</div>
+    <span style="background:#E24B4A;color:white;font-size:10px;padding:3px 10px;border-radius:4px;letter-spacing:1px;margin-top:6px;display:inline-block;">● EN VIVO</span>
+  </div>
+</div>
+
+<!-- BANNER -->
+<div style="background:#0d1f17;border:1px solid #1D9E75;border-radius:8px;padding:10px 16px;margin-bottom:20px;font-size:11px;color:#1D9E75;letter-spacing:1px;text-align:center;text-transform:uppercase;">
+  REPORTE TÉCNICO INTEGRAL · ORDEN PÚBLICO · VÍAS · SEGURIDAD · COLOMBIA · NACIONAL
+</div>
+
+<!-- ESTADÍSTICAS -->
+<div class="stats-row">
+  <div class="stat-box"><div class="stat-num" style="color:#c2c0b6;">8</div><div class="stat-label">Total Eventos</div></div>
+  <div class="stat-box"><div class="stat-num" style="color:#E24B4A;">3</div><div class="stat-label">Críticos</div></div>
+  <div class="stat-box"><div class="stat-num" style="color:#EF9F27;">3</div><div class="stat-label">Alto Impacto</div></div>
+  <div class="stat-box"><div class="stat-num" style="color:#378ADD;">9</div><div class="stat-label">Regiones</div></div>
+  <div class="stat-box"><div class="stat-num" style="color:#EF9F27;">3</div><div class="stat-label">Vías Afectadas</div></div>
+</div>
+
+<!-- ORDEN PÚBLICO -->
+<div class="section">
+  <div class="section-title">🔵 Orden Público · NACIONAL</div>
+  
+  <div style="border-left:3px solid #E24B4A;padding:10px 12px;margin-bottom:10px;background:#1a1a1a;border-radius:0 6px 6px 0;">
+    <div style="font-size:13px;font-weight:600;color:#e8e6de;margin-bottom:4px;">Combates entre disidencias FARC y Ejército Nacional en el Catatumbo</div>
+    <div style="font-size:12px;color:#888780;margin-bottom:6px;">Intensos enfrentamientos armados se reportaron en zona rural de Tibú, Norte de Santander, entre el Frente 33 de las disidencias de las FARC y tropas del Ejército Nacional. Se confirma una baja y varios heridos.</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:#E24B4A20;color:#E24B4A;">CRÍTICO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#222;color:#888780;">COMBATE</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a2a1a;color:#1D9E75;">📍 NORTE DE SANTANDER</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a1a1a;color:#666;">Ejército Nacional</span>
+    </div>
+  </div>
+
+  <div style="border-left:3px solid #EF9F27;padding:10px 12px;margin-bottom:10px;background:#1a1a1a;border-radius:0 6px 6px 0;">
+    <div style="font-size:13px;font-weight:600;color:#e8e6de;margin-bottom:4px;">Ataque con explosivos a estación de Policía en Argelia, Cauca</div>
+    <div style="font-size:12px;color:#888780;margin-bottom:6px;">Una estación de Policía en el municipio de Argelia, Cauca, fue objeto de un ataque con artefactos explosivos improvisados, atribuido a estructuras armadas del Comando Coordinador de Occidente. No se reportan víctimas mortales, pero sí daños materiales significativos.</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:#EF9F2720;color:#EF9F27;">ALTO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#222;color:#888780;">ATAQUE</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a2a1a;color:#1D9E75;">📍 CAUCA</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a1a1a;color:#666;">Policía Nacional</span>
+    </div>
+  </div>
+
+  <div style="border-left:3px solid #E24B4A;padding:10px 12px;margin-bottom:10px;background:#1a1a1a;border-radius:0 6px 6px 0;">
+    <div style="font-size:13px;font-weight:600;color:#e8e6de;margin-bottom:4px;">Secuestro de empresario agropecuario en Tame, Arauca</div>
+    <div style="font-size:12px;color:#888780;margin-bottom:6px;">Un reconocido empresario del sector agropecuario fue secuestrado en la vía que conecta Tame con Saravena, Arauca. Se atribuye el hecho al ELN y se ha iniciado un operativo de búsqueda y rescate.</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:#E24B4A20;color:#E24B4A;">CRÍTICO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#222;color:#888780;">SECUESTRO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a2a1a;color:#1D9E75;">📍 ARAUCA</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a1a1a;color:#666;">Fiscalía General de la Nación</span>
+    </div>
+  </div>
+
+  <div style="border-left:3px solid #EF9F27;padding:10px 12px;margin-bottom:10px;background:#1a1a1a;border-radius:0 6px 6px 0;">
+    <div style="font-size:13px;font-weight:600;color:#e8e6de;margin-bottom:4px;">Bloqueo de la vía Puerto Gaitán-Villavicencio por comunidades indígenas</div>
+    <div style="font-size:12px;color:#888780;margin-bottom:6px;">Comunidades indígenas Sikuani mantienen un bloqueo indefinido en la Ruta 65, a la altura del Km 40 entre Puerto Gaitán y Villavicencio, Meta, exigiendo cumplimiento de acuerdos territoriales. La situación ha generado represamiento de carga.</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:#EF9F2720;color:#EF9F27;">ALTO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#222;color:#888780;">PROTESTA</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a2a1a;color:#1D9E75;">📍 META</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a1a1a;color:#666;">Gobernación del Meta</span>
+    </div>
+  </div>
+
+  <div style="border-left:3px solid #EF9F27;padding:10px 12px;margin-bottom:10px;background:#1a1a1a;border-radius:0 6px 6px 0;">
+    <div style="font-size:13px;font-weight:600;color:#e8e6de;margin-bottom:4px;">Desmantelamiento de laboratorio de cocaína de alta capacidad en Tumaco, Nariño</div>
+    <div style="font-size:12px;color:#888780;margin-bottom:6px;">En una operación conjunta entre Armada Nacional y CTI, fue desmantelado un complejo de producción de cocaína con capacidad de más de 3 toneladas mensuales en zona rural de Tumaco, Nariño, afectando las finanzas de grupos del narcotráfico.</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:#EF9F2720;color:#EF9F27;">ALTO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#222;color:#888780;">ANTINARCÓTICOS</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a2a1a;color:#1D9E75;">📍 NARIÑO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a1a1a;color:#666;">Armada Nacional</span>
+    </div>
+  </div>
+
+  <div style="border-left:3px solid #378ADD;padding:10px 12px;margin-bottom:10px;background:#1a1a1a;border-radius:0 6px 6px 0;">
+    <div style="font-size:13px;font-weight:600;color:#e8e6de;margin-bottom:4px;">Homicidio selectivo por microtráfico en Buenaventura</div>
+    <div style="font-size:12px;color:#888780;margin-bottom:6px;">Un joven fue asesinado en el barrio La Independencia de Buenaventura, Valle del Cauca, en lo que las autoridades investigan como un ajuste de cuentas relacionado con disputas por el control del microtráfico entre bandas locales.</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:#378ADD20;color:#378ADD;">MEDIO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#222;color:#888780;">ASESINATO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a2a1a;color:#1D9E75;">📍 VALLE DEL CAUCA</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a1a1a;color:#666;">Sijín - Policía Nacional</span>
+    </div>
+  </div>
+
+  <div style="border-left:3px solid #E24B4A;padding:10px 12px;margin-bottom:10px;background:#1a1a1a;border-radius:0 6px 6px 0;">
+    <div style="font-size:13px;font-weight:600;color:#e8e6de;margin-bottom:4px;">Reporte de desplazamiento forzado masivo en Puerto Guzmán, Putumayo</div>
+    <div style="font-size:12px;color:#888780;margin-bottom:6px;">Al menos 150 familias han sido desplazadas de sus comunidades rurales en Puerto Guzmán, Putumayo, debido a enfrentamientos y amenazas de grupos armados ilegales por el control territorial y de cultivos ilícitos.</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:#E24B4A20;color:#E24B4A;">CRÍTICO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#222;color:#888780;">DESPLAZAMIENTO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a2a1a;color:#1D9E75;">📍 PUTUMAYO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a1a1a;color:#666;">Defensoría del Pueblo</span>
+    </div>
+  </div>
+
+  <div style="border-left:3px solid #378ADD;padding:10px 12px;margin-bottom:10px;background:#1a1a1a;border-radius:0 6px 6px 0;">
+    <div style="font-size:13px;font-weight:600;color:#e8e6de;margin-bottom:4px;">Sabotaje a infraestructura eléctrica en el Bajo Baudó, Chocó</div>
+    <div style="font-size:12px;color:#888780;margin-bottom:6px;">La infraestructura de energía eléctrica que abastece varias localidades del Bajo Baudó, Chocó, sufrió un sabotaje que dejó sin servicio a miles de habitantes. Se investiga la autoría, con posibles nexos a grupos armados residuales.</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:#378ADD20;color:#378ADD;">MEDIO</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#222;color:#888780;">SABOTAJE</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a2a1a;color:#1D9E75;">📍 CHOCÓ</span>
+      <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#1a1a1a;color:#666;">Empresa de Energía del Pacífico (EPSA)</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- VÍAS -->
+<div class="section">
+  <div class="section-title">🚗 Estado de Vías y Conectividad</div>
+  <div class="vias-grid">
+  <div style="background:#1a1a1a;border-radius:6px;padding:12px;border-top:3px solid #EF9F27;">
+    <div style="font-size:10px;color:#EF9F27;letter-spacing:1px;font-weight:700;margin-bottom:4px;">● RESTRINGIDO</div>
+    <div style="font-size:13px;font-weight:600;color:#e8e6de;margin-bottom:4px;">Ruta 25, Tramo Dagua - Loboguerrero</div>
+    <div style="font-size:11px;color:#888780;margin-bottom:4px;">Cierre parcial por deslizamiento de tierra provocado por fuertes lluvias. Paso a un carril con maquinaria pesada trabajando en la zona.</div>
+    <div style="font-size:10px;color:#555;">📍 VALLE DEL CAUCA</div>
+  </div>
+
+  <div style="background:#1a1a1a;border-radius:6px;padding:12px;border-top:3px solid #BA7517;">
+    <div style="font-size:10px;color:#BA7517;letter-spacing:1px;font-weight:700;margin-bottom:4px;">● ALERTA</div>
+    <div style="font-size:13px;font-weight:600;color:#e8e6de;margin-bottom:4px;">Ruta 60, Tramo Florencia - La Montañita</div>
+    <div style="font-size:11px;color:#888780;margin-bottom:4px;">Presencia confirmada de artefactos explosivos improvisados en el margen de la vía, tras reportes de la comunidad. Se recomienda extrema precaución y evitar el tránsito nocturno.</div>
+    <div style="font-size:10px;color:#555;">📍 CAQUETÁ</div>
+  </div>
+
+  <div style="background:#1a1a1a;border-radius:6px;padding:12px;border-top:3px solid #E24B4A;">
+    <div style="font-size:10px;color:#E24B4A;letter-spacing:1px;font-weight:700;margin-bottom:4px;">● CERRADO</div>
+    <div style="font-size:13px;font-weight:600;color:#e8e6de;margin-bottom:4px;">Ruta 70, Tramo Quibdó - Medellín (sector Carmen de Atrato)</div>
+    <div style="font-size:11px;color:#888780;margin-bottom:4px;">Bloqueo total por protesta de mineros informales exigiendo formalización y rechazo a operativos militares en la zona.</div>
+    <div style="font-size:10px;color:#555;">📍 CHOCÓ</div>
+  </div>
+</div>
+</div>
+
+<!-- RECOMENDACIONES -->
+<div class="section">
+  <div class="section-title">🔒 Recomendaciones de Seguridad</div>
+  <div class="rec-grid">
+    <div class="rec-card"><div class="rec-label" style="color:#378ADD;">LOGÍSTICA</div><div class="rec-text">Revisar rutas alternativas para transporte de carga y personal en zonas de alta conflictividad (Catatumbo, Cauca, Arauca). Coordinar convoyes de seguridad para desplazamientos críticos y estratégicos.</div></div>
+    <div class="rec-card"><div class="rec-label" style="color:#EF9F27;">PERÍMETROS</div><div class="rec-text">Reforzar perímetros de seguridad en bases militares, estaciones de policía e infraestructura crítica en departamentos con presencia de grupos armados ilegales. Establecer zonas de exclusión temporal en áreas de operaciones militares activas.</div></div>
+    <div class="rec-card"><div class="rec-label" style="color:#E24B4A;">OPERACIONAL</div><div class="rec-text">Intensificar operaciones de inteligencia y contrainteligencia para anticipar amenazas. Fortalecer la coordinación interinstitucional para la respuesta rápida a eventos de orden público y humanitarios, especialmente en zonas rurales.</div></div>
+    <div class="rec-card"><div class="rec-label" style="color:#1D9E75;">DIGITAL</div><div class="rec-text">Mantener vigilancia constante sobre redes sociales y canales de comunicación cifrados para identificar amenazas, desinformación y actividades de cibercriminalidad. Reforzar medidas de ciberseguridad en infraestructura crítica del Estado.</div></div>
+  </div>
+</div>
+
+<!-- MAPA DE CALOR -->
+<div class="section">
+  <div class="section-title">🗺️ Mapa de Calor — Criminalidad / Terrorismo / Grupos Armados</div>
+  <div class="heat-legend">
+    <span style="font-size:11px;color:#666;">● <span style="color:#1D9E75;">Bajo</span></span>
+    <span style="font-size:11px;color:#666;">● <span style="color:#378ADD;">Moderado</span></span>
+    <span style="font-size:11px;color:#666;">● <span style="color:#EF9F27;">Alto</span></span>
+    <span style="font-size:11px;color:#666;">● <span style="color:#BA7517;">Muy Alto</span></span>
+    <span style="font-size:11px;color:#666;">● <span style="color:#E24B4A;">Crítico</span></span>
+  </div>
+  
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Norte de Santander</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:100%;height:8px;background:#E24B4A;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">4 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#E24B4A20;color:#E24B4A;margin-left:8px;min-width:55px;text-align:center;">CRÍTICO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Cauca</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:100%;height:8px;background:#E24B4A;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">4 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#E24B4A20;color:#E24B4A;margin-left:8px;min-width:55px;text-align:center;">CRÍTICO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Nariño</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:100%;height:8px;background:#E24B4A;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">3 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#E24B4A20;color:#E24B4A;margin-left:8px;min-width:55px;text-align:center;">CRÍTICO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Arauca</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:80%;height:8px;background:#BA7517;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">2 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#BA751720;color:#BA7517;margin-left:8px;min-width:55px;text-align:center;">MUY ALTO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Putumayo</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:80%;height:8px;background:#BA7517;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">2 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#BA751720;color:#BA7517;margin-left:8px;min-width:55px;text-align:center;">MUY ALTO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Chocó</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:80%;height:8px;background:#BA7517;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">3 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#BA751720;color:#BA7517;margin-left:8px;min-width:55px;text-align:center;">MUY ALTO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Antioquia</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:80%;height:8px;background:#BA7517;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">3 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#BA751720;color:#BA7517;margin-left:8px;min-width:55px;text-align:center;">MUY ALTO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Meta</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:60%;height:8px;background:#EF9F27;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">2 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#EF9F2720;color:#EF9F27;margin-left:8px;min-width:55px;text-align:center;">ALTO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Valle del Cauca</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:60%;height:8px;background:#EF9F27;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">2 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#EF9F2720;color:#EF9F27;margin-left:8px;min-width:55px;text-align:center;">ALTO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Caquetá</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:60%;height:8px;background:#EF9F27;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">1 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#EF9F2720;color:#EF9F27;margin-left:8px;min-width:55px;text-align:center;">ALTO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Bolívar</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:60%;height:8px;background:#EF9F27;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">2 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#EF9F2720;color:#EF9F27;margin-left:8px;min-width:55px;text-align:center;">ALTO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Guaviare</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:60%;height:8px;background:#EF9F27;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">1 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#EF9F2720;color:#EF9F27;margin-left:8px;min-width:55px;text-align:center;">ALTO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Santander</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:40%;height:8px;background:#378ADD;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">1 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#378ADD20;color:#378ADD;margin-left:8px;min-width:55px;text-align:center;">MODERADO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Magdalena</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:40%;height:8px;background:#378ADD;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">1 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#378ADD20;color:#378ADD;margin-left:8px;min-width:55px;text-align:center;">MODERADO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Córdoba</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:40%;height:8px;background:#378ADD;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">1 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#378ADD20;color:#378ADD;margin-left:8px;min-width:55px;text-align:center;">MODERADO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Huila</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:20%;height:8px;background:#1D9E75;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">1 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#1D9E7520;color:#1D9E75;margin-left:8px;min-width:55px;text-align:center;">BAJO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">Tolima</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:40%;height:8px;background:#378ADD;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">1 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#378ADD20;color:#378ADD;margin-left:8px;min-width:55px;text-align:center;">MODERADO</span>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #2a2a2a;">
+    <span style="font-size:13px;color:#c2c0b6;min-width:140px;">La Guajira</span>
+    <div style="flex:1;margin:0 12px;">
+      <div style="width:20%;height:8px;background:#1D9E75;border-radius:4px;transition:width 0.3s;"></div>
+    </div>
+    <span style="font-size:11px;color:#888780;min-width:70px;text-align:right;">1 eventos</span>
+    <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:#1D9E7520;color:#1D9E75;margin-left:8px;min-width:55px;text-align:center;">BAJO</span>
+  </div>
+
+</div>
+
+<!-- DISTRIBUCIÓN -->
+<div class="section">
+  <div class="section-title">📊 Distribución de Alertas por Ciudad</div>
+  
+    <div class="dist-row">
+      <span style="font-size:13px;color:#c2c0b6;">Bogotá</span>
+      <span style="font-size:12px;color:#378ADD;font-weight:700;">2 eventos</span>
+    </div>
+  
+    <div class="dist-row">
+      <span style="font-size:13px;color:#c2c0b6;">Cali</span>
+      <span style="font-size:12px;color:#378ADD;font-weight:700;">2 eventos</span>
+    </div>
+  
+    <div class="dist-row">
+      <span style="font-size:13px;color:#c2c0b6;">Medellín</span>
+      <span style="font-size:12px;color:#378ADD;font-weight:700;">1 eventos</span>
+    </div>
+  
+    <div class="dist-row">
+      <span style="font-size:13px;color:#c2c0b6;">Cúcuta</span>
+      <span style="font-size:12px;color:#378ADD;font-weight:700;">1 eventos</span>
+    </div>
+  
+    <div class="dist-row">
+      <span style="font-size:13px;color:#c2c0b6;">Buenaventura</span>
+      <span style="font-size:12px;color:#378ADD;font-weight:700;">1 eventos</span>
+    </div>
+  
+    <div class="dist-row">
+      <span style="font-size:13px;color:#c2c0b6;">Popayán</span>
+      <span style="font-size:12px;color:#378ADD;font-weight:700;">1 eventos</span>
+    </div>
+  
+</div>
+
+<!-- FOOTER -->
+<div class="footer-bar">
+  Boletín Oficial VISE · Radar NACIONAL · Documento de Inteligencia Operacional<br>
+  Reservados todos los derechos · 2026<br>
+  <span style="color:#E24B4A;font-weight:700;">▲ CONFIDENCIAL · USO CORPORATIVO</span><br>
+  <span style="color:#555;">Generado: 25/04/2026 12:40</span>
+</div>
+
+</body>
+</html>
