@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>VISE ALTUM · Boletín Oficial de Inteligencia</title>
+<title>VISE ALTUM · Boletín Oficial de Inteligencia Corporativa</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -240,7 +240,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
   <div class="hero-content">
     <div class="hero-alerta">Alerta Táctica: Madrugada 29 Abril</div>
     <div class="hero-title">Hostigamientos y Bloqueos: Reporte AM</div>
-    <div class="hero-sub">Reporte de inteligencia consolidado. Novedades registradas desde ayer 18:00 hasta la mañana de hoy en los corredores del Suroccidente y Oriente.</div>
+    <div class="hero-sub">Ultimo Reporte de inteligencia consolidado. </div>
   </div>
 </div>
 
@@ -443,12 +443,12 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
       </div>
 
       <div class="sb-section">
-        <div class="sb-title">Centrales de Emergencia GRI</div>
+        <div class="sb-title">Centrales Operacion</div>
         <div class="gri-wrap">
           <div class="gri-header">
             <span>Ciudad</span><span style="margin-left:auto;">Contacto</span>
           </div>
-          <div class="gri-item"><span class="gri-city">Bogotá</span><span class="gri-phone">316 868 0868</span></div>
+          <div class="gri-item"><span class="gri-city">Bogotá</span><span class="gri-phone">310 868 0868</span></div>
           <div class="gri-item"><span class="gri-city">Cali</span><span class="gri-phone">314 359 3007</span></div>
           <div class="gri-item"><span class="gri-city">Cartagena</span><span class="gri-phone">320 838 3520</span></div>
           <div class="gri-item"><span class="gri-city">Bucaramanga</span><span class="gri-phone">314 359 6622</span></div>
@@ -532,42 +532,110 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 })();
 
 setTimeout(function(){
-  var map = L.map('map',{center:[4.5,-74.0],zoom:5});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© CartoDB'}).addTo(map);
+  var map = L.map('map', { center: [4.5, -74.0], zoom: 5 });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    { attribution: '© CartoDB' }).addTo(map);
 
-  var puntos = [
-    {coords:[2.4,-76.6],nivel:5,dept:'Cauca',eventos:4},
-    {coords:[3.8,-76.5],nivel:4,dept:'Valle del Cauca',eventos:3},
-    {coords:[2.5,-75.5],nivel:3,dept:'Huila',eventos:2},
-    {coords:[7.1,-70.8],nivel:3,dept:'Arauca',eventos:2},
-    {coords:[4.71,-74.07],nivel:2,dept:'Bogotá',eventos:1},
-    {coords:[6.7,-75.5],nivel:2,dept:'Antioquia',eventos:1},
+  // ── ZONAS HISTÓRICAS DE ALTA CRIMINALIDAD (fijas, no basadas en noticias) ──
+  var zonasCalor = [
+    // CRÍTICO (5)
+    { coords:[2.0,-77.2], r:38, nivel:5, nombre:'Tumaco', dept:'Nariño',
+      detalle:'Mayor tráfico de cocaína del país. Disputas FARC-ELN-Clan del Golfo.' },
+    { coords:[2.4,-76.6], r:36, nivel:5, nombre:'Norte del Cauca', dept:'Cauca',
+      detalle:'Corredor estratégico de grupos armados. Hostigamientos frecuentes.' },
+    { coords:[7.1,-70.8], r:32, nivel:5, nombre:'Arauca', dept:'Arauca',
+      detalle:'Zona de disputa ELN-FARC. Ataques a infraestructura petrolera.' },
+    { coords:[8.0,-76.7], r:34, nivel:5, nombre:'Urabá', dept:'Antioquia/Chocó',
+      detalle:'Clan del Golfo. Corredor estratégico narco hacia el Pacífico.' },
+    { coords:[3.8,-76.9], r:30, nivel:5, nombre:'Buenaventura', dept:'Valle del Cauca',
+      detalle:'Puerto con mayor índice de homicidios. Control narco portuario.' },
+
+    // MUY ALTO (4)
+    { coords:[5.5,-75.8], r:28, nivel:4, nombre:'Bajo Cauca', dept:'Antioquia',
+      detalle:'Minería ilegal y presencia de grupos armados.' },
+    { coords:[8.3,-73.3], r:28, nivel:4, nombre:'Catatumbo', dept:'Norte de Santander',
+      detalle:'ELN y disidencias FARC. Corredor fronterizo Venezuela.' },
+    { coords:[5.7,-77.1], r:26, nivel:4, nombre:'Medio Atrato', dept:'Chocó',
+      detalle:'Desplazamientos masivos. Control territorial armado.' },
+    { coords:[1.2,-77.3], r:24, nivel:4, nombre:'Putumayo norte', dept:'Putumayo',
+      detalle:'Coca y FARC-disidencias. Frontera Ecuador.' },
+    { coords:[3.8,-76.5], r:22, nivel:4, nombre:'Sur Cali / Jamundí', dept:'Valle del Cauca',
+      detalle:'Periferia urbana conflictiva. Hurto y microtráfico.' },
+    { coords:[4.71,-74.25], r:22, nivel:4, nombre:'Ciudad Bolívar / Bosa', dept:'Bogotá D.C.',
+      detalle:'Localidades con mayor índice de hurto, homicidio y microtráfico en Bogotá.' },
+
+    // ALTO (3)
+    { coords:[6.7,-75.5], r:20, nivel:3, nombre:'Medellín periférico', dept:'Antioquia',
+      detalle:'Comunas 1,8,13. Combos y sicariato.' },
+    { coords:[10.4,-75.5], r:20, nivel:3, nombre:'Cartagena periférico', dept:'Bolívar',
+      detalle:'Olivos, Nelson Mandela. Hurto y extorsión.' },
+    { coords:[4.71,-74.07], r:18, nivel:3, nombre:'Bogotá centro-sur', dept:'Bogotá D.C.',
+      detalle:'Kennedy, Mártires, Santa Fe. Alta incidencia hurto y riñas.' },
+    { coords:[7.9,-72.5], r:18, nivel:3, nombre:'Cúcuta', dept:'Norte de Santander',
+      detalle:'Frontera activa. Tráfico y extorsión.' },
+    { coords:[2.9,-75.3], r:18, nivel:3, nombre:'Sur del Huila', dept:'Huila',
+      detalle:'Corredor disidencias FARC hacia Putumayo.' },
+
+    // MODERADO (2)
+    { coords:[11.0,-74.8], r:16, nivel:2, nombre:'Barranquilla sur', dept:'Atlántico',
+      detalle:'Rebolo, La Chinita. Violencia urbana moderada.' },
+    { coords:[6.9,-75.3], r:16, nivel:2, nombre:'Nordeste antioqueño', dept:'Antioquia',
+      detalle:'Minería y presencia residual grupos armados.' },
+    { coords:[5.1,-75.6], r:14, nivel:2, nombre:'Manizales periférico', dept:'Caldas',
+      detalle:'Comunas altas con presencia de pandillas.' },
+    { coords:[9.3,-75.4], r:14, nivel:2, nombre:'Montes de María', dept:'Bolívar/Sucre',
+      detalle:'Recuperación post-conflicto con reactivaciones esporádicas.' },
   ];
 
-  var cols = ['','#2A9D8F','#457B9D','#E8750A','#E9C46A','#C8102E'];
-  var labs = ['','BAJO','MODERADO','ALTO','MUY ALTO','CRÍTICO'];
+  var paleta  = ['','#3B82F6','#22C55E','#F59E0B','#EF4444','#7F1D1D'];
+  var etiquetas = ['','BAJO','MODERADO','ALTO','MUY ALTO','CRÍTICO'];
 
-  puntos.forEach(function(p){
-    L.circleMarker(p.coords,{
-      radius:10+(p.nivel*5),
-      fillColor:cols[p.nivel],
-      color:'#fff',weight:2,
-      fillOpacity:0.75
-    }).bindPopup('<strong>'+p.dept+'</strong><br>Nivel: '+labs[p.nivel]+'<br>Eventos: '+p.eventos).addTo(map);
+  zonasCalor.forEach(function(z) {
+    L.circleMarker(z.coords, {
+      radius: z.r,
+      fillColor: paleta[z.nivel],
+      color: '#fff',
+      weight: 1.5,
+      fillOpacity: 0.55
+    })
+    .bindPopup(
+      '<div style="font-family:Barlow Condensed,sans-serif;min-width:180px;">' +
+      '<strong style="font-size:15px;color:#1B2A4A;">' + z.nombre + '</strong>' +
+      '<br><span style="font-size:10px;color:#6B7280;letter-spacing:1px;">' + z.dept.toUpperCase() + '</span>' +
+      '<br><span style="background:' + paleta[z.nivel] + ';color:#fff;padding:2px 8px;font-size:10px;font-weight:700;letter-spacing:1px;">' + etiquetas[z.nivel] + '</span>' +
+      '<br><br><span style="font-size:11px;color:#374151;">' + z.detalle + '</span>' +
+      '</div>'
+    )
+    .addTo(map);
   });
 
-  var legend = L.control({position:'bottomright'});
-  legend.onAdd = function(){
+  // ── Leyenda ────────────────────────────────────────────────────
+  var legend = L.control({ position: 'bottomright' });
+  legend.onAdd = function() {
     var div = L.DomUtil.create('div');
-    div.style.cssText = 'background:white;padding:10px 14px;border:1px solid #D1D9E6;font-family:Barlow Condensed,sans-serif;font-size:11px;line-height:1.8;';
-    div.innerHTML = '<strong style="letter-spacing:2px;font-size:9px;color:#6B7280;">ÍNDICE DE CALOR</strong><br>'+
-      ['#2A9D8F','#457B9D','#E8750A','#E9C46A','#C8102E'].map(function(c,i){
-        return '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'+c+';margin-right:5px;"></span>'+labs[i+1];
-      }).join('<br>');
+    div.style.cssText = 'background:white;padding:10px 14px;border:1px solid #D1D9E6;font-family:Barlow Condensed,sans-serif;font-size:11px;line-height:2;box-shadow:0 2px 8px rgba(0,0,0,0.15);';
+    div.innerHTML =
+      '<strong style="letter-spacing:2px;font-size:9px;color:#6B7280;display:block;margin-bottom:4px;">ÍNDICE HISTÓRICO DE RIESGO</strong>' +
+      [['#7F1D1D','CRÍTICO'],['#EF4444','MUY ALTO'],['#F59E0B','ALTO'],['#22C55E','MODERADO'],['#3B82F6','BAJO']]
+        .map(function(c) {
+          return '<span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:' + c[0] + ';margin-right:6px;vertical-align:middle;opacity:0.75;"></span>' + c[1];
+        }).join('<br>') +
+      '<br><span style="font-size:9px;color:#9CA3AF;display:block;margin-top:6px;letter-spacing:1px;">Datos: INDEPAZ · Fuerzas Militares · ONU</span>';
     return div;
   };
   legend.addTo(map);
-},300);
+
+  // ── Nota de fuente ─────────────────────────────────────────────
+  var info = L.control({ position: 'topleft' });
+  info.onAdd = function() {
+    var div = L.DomUtil.create('div');
+    div.style.cssText = 'background:rgba(27,42,74,0.9);color:white;padding:6px 12px;font-family:Barlow Condensed,sans-serif;font-size:10px;letter-spacing:1px;';
+    div.innerHTML = '⚠ MAPA DE RIESGO ESTRUCTURAL · No refleja eventos del día';
+    return div;
+  };
+  info.addTo(map);
+
+}, 300);
 
 async function generarPDF(){
   var btn=document.getElementById('btnPDF');
