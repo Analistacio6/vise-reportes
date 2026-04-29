@@ -36,7 +36,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;}
 .page{max-width:1100px;margin:0 auto;padding:20px;background:var(--white);}
- 
+
 .header{display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;gap:0;border-bottom:3px solid var(--navy);background:var(--white);overflow:hidden;}
 .logo-wrap{display:flex;align-items:stretch;gap:0;padding:18px 28px 18px 0;border-right:1px solid var(--border);}
 .logo-bar{width:6px;background:var(--red2);flex-shrink:0;margin-right:16px;}
@@ -50,7 +50,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .hr-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:3px;color:var(--gray);text-transform:uppercase;font-weight:700;}
 .hr-datetime{font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:900;color:var(--navy);line-height:1.05;letter-spacing:0;margin-top:2px;}
 .hr-ampm{font-family:'Barlow Condensed',sans-serif;font-size:18px;color:var(--gray);font-weight:600;}
- 
+
 .hero{position:relative;overflow:hidden;background:var(--navy);color:var(--white);margin:0;padding:28px 32px 24px;}
 .hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg, rgba(11,18,40,0.97) 40%, rgba(11,18,40,0.75) 100%);}
 .hero-content{position:relative;z-index:2;}
@@ -63,12 +63,12 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .hero-estado-val{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:#4ADE80;text-transform:uppercase;margin-top:3px;text-align:right;}
 .hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(30px,4.5vw,58px);font-weight:900;color:#FFFFFF;line-height:1.0;letter-spacing:0.5px;text-transform:uppercase;max-width:700px;margin-bottom:10px;}
 .hero-sub{font-size:12px;color:rgba(255,255,255,0.55);font-style:italic;max-width:600px;}
- 
+
 .radar-bar{display:flex;justify-content:space-between;align-items:center;background:var(--navy2);color:var(--white);padding:9px 20px;margin-bottom:0;}
 .radar-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;gap:10px;}
 .radar-update{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);font-style:italic;}
 .nivel-badge{background:var(--red2);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;padding:4px 16px;letter-spacing:2px;text-transform:uppercase;}
- 
+
 .stats-row{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:2px solid var(--border);margin-bottom:18px;}
 .stat{border-right:1px solid var(--border);padding:14px 12px;text-align:center;}
 .stat:last-child{border-right:none;}
@@ -79,13 +79,28 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .stat-l{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
 .stat-bar{height:3px;margin-top:8px;border-radius:2px;background:var(--border2);}
 .stat-bar-fill{height:100%;border-radius:2px;}
- 
-/* FIX 3: main-layout usa flex en lugar de grid para evitar hueco */
+
+/* ── LAYOUT PRINCIPAL ── */
+.content-wrap{border:2px solid var(--border);margin-bottom:0;}
 .main-layout{display:flex;align-items:stretch;gap:0;}
-.main-content{flex:1;padding:18px 20px 18px 0;border-right:1px solid var(--border);min-width:0;}
-.sidebar{width:240px;flex-shrink:0;padding:18px 0 18px 20px;}
-.content-wrap{border:2px solid var(--border);border-top:2px solid var(--border);margin-bottom:0;}
- 
+
+/* Columna izquierda — crece libremente */
+.main-content{
+  flex:1;
+  min-width:0;
+  padding:18px 20px 18px 0;
+  border-right:1px solid var(--border);
+  display:flex;
+  flex-direction:column;
+}
+
+/* Sidebar — ancho fijo, se estira hasta el final de la columna izquierda */
+.sidebar{
+  width:240px;
+  flex-shrink:0;
+  padding:18px 0 18px 20px;
+}
+
 .cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
 .info-card{border:1px solid var(--border);padding:14px;background:var(--white);}
 .info-card-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
@@ -93,12 +108,11 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .info-card-body{font-size:12px;color:var(--text2);line-height:1.6;font-style:italic;}
 .info-card.border-red{border-top:3px solid var(--red2);}
 .info-card.border-blue{border-top:3px solid var(--blue);}
- 
-/* FIX 2: flash-bar con padding correcto a ambos lados */
+
 .flash-bar{background:var(--navy);color:var(--white);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:0;}
 .flash-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
 .flash-badge{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.5);white-space:nowrap;margin-left:12px;}
- 
+
 .evento{border-bottom:1px solid var(--border2);padding:14px 0;}
 .evento:last-child{border-bottom:none;}
 .evento-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px;}
@@ -117,41 +131,13 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .tag-institucional{background:var(--blue);color:#fff;}
 .tag-geo{background:var(--blue-light);color:var(--blue);border:1px solid rgba(40,81,163,0.2);}
 .tag-fuente{background:#F3F4F6;color:var(--gray);border:1px solid var(--border);}
- 
-.sb-section{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:16px;}
-.sb-section:last-child{border-bottom:none;}
-.sb-title{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);border-bottom:2px solid var(--navy);padding-bottom:6px;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
-.sb-title::before{content:'▸';color:var(--red2);}
- 
-.nodo-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2);}
-.nodo-item:last-child{border-bottom:none;}
-.nodo-name{font-size:11px;color:var(--text2);line-height:1.3;}
-.nodo-pct{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;line-height:1;}
-.nodo-nivel-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-align:right;}
- 
-.gri-header{background:var(--navy);color:var(--white);padding:8px 12px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;gap:6px;margin-bottom:0;}
-.gri-item{display:grid;grid-template-columns:1fr auto;align-items:center;padding:7px 12px;border-bottom:1px solid var(--border2);background:var(--white);}
-.gri-item:nth-child(even){background:#FAFBFD;}
-.gri-city{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy2);}
-.gri-phone{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--blue2);font-weight:600;}
-.gri-wrap{border:1px solid var(--border);overflow:hidden;}
- 
-.rec-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border2);font-size:11px;color:var(--text2);line-height:1.5;}
-.rec-item:last-child{border-bottom:none;}
-.rec-icon{color:var(--red2);flex-shrink:0;margin-top:1px;font-size:13px;}
- 
-.tac-item{padding:10px 12px;margin-bottom:8px;background:var(--bg);border-left:3px solid var(--border);}
-.tac-item.critico{border-left-color:var(--red2);background:#FFF5F5;}
-.tac-item.alerta{border-left-color:var(--orange);background:#FFFBF0;}
-.tac-nivel{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px;}
-.tac-label{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:var(--navy);margin-bottom:3px;}
-.tac-val{font-size:11px;color:var(--text2);line-height:1.4;}
- 
-.dist-item{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border2);}
-.dist-ciudad{font-size:11px;color:var(--text2);}
-.dist-ev{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;}
- 
-.vias-section{margin:0;border-top:2px solid var(--border);}
+
+/* ── VÍAS — ahora vive DENTRO de main-content ── */
+.vias-section{
+  margin-top:20px;
+  border-top:2px solid var(--border);
+  /* Se estira al ancho del flex item padre (main-content) */
+}
 .vias-header{background:var(--navy);color:var(--white);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
 .vias-h-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
 .vias-h-update{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);}
@@ -170,25 +156,61 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .estatus-alerta{background:var(--yellow);color:#1F2937;}
 .estatus-normal{background:var(--green);color:#fff;}
 .via-obs{font-size:11px;color:var(--muted);line-height:1.5;}
- 
-.map-section{margin:18px 0 0;border-top:2px solid var(--border);}
+
+/* ── SIDEBAR ── */
+.sb-section{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:16px;}
+.sb-section:last-child{border-bottom:none;}
+.sb-title{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);border-bottom:2px solid var(--navy);padding-bottom:6px;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.sb-title::before{content:'▸';color:var(--red2);}
+
+.nodo-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2);}
+.nodo-item:last-child{border-bottom:none;}
+.nodo-name{font-size:11px;color:var(--text2);line-height:1.3;}
+.nodo-pct{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;line-height:1;}
+.nodo-nivel-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-align:right;}
+
+.gri-header{background:var(--navy);color:var(--white);padding:8px 12px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;gap:6px;margin-bottom:0;}
+.gri-item{display:grid;grid-template-columns:1fr auto;align-items:center;padding:7px 12px;border-bottom:1px solid var(--border2);background:var(--white);}
+.gri-item:nth-child(even){background:#FAFBFD;}
+.gri-city{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy2);}
+.gri-phone{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--blue2);font-weight:600;}
+.gri-wrap{border:1px solid var(--border);overflow:hidden;}
+
+.rec-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border2);font-size:11px;color:var(--text2);line-height:1.5;}
+.rec-item:last-child{border-bottom:none;}
+.rec-icon{color:var(--red2);flex-shrink:0;margin-top:1px;font-size:13px;}
+
+.tac-item{padding:10px 12px;margin-bottom:8px;background:var(--bg);border-left:3px solid var(--border);}
+.tac-item.critico{border-left-color:var(--red2);background:#FFF5F5;}
+.tac-item.alerta{border-left-color:var(--orange);background:#FFFBF0;}
+.tac-nivel{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px;}
+.tac-label{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:var(--navy);margin-bottom:3px;}
+.tac-val{font-size:11px;color:var(--text2);line-height:1.4;}
+
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border2);}
+.dist-ciudad{font-size:11px;color:var(--text2);}
+.dist-ev{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;}
+
+/* ── MAPA — debajo de todo, fuera del content-wrap ── */
+.map-section{border-top:2px solid var(--border);}
 .map-header{background:var(--navy);color:var(--white);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
 .map-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
 #map{height:400px;border:1px solid var(--border);border-top:none;}
- 
+
 .footer{background:var(--navy);color:var(--white);text-align:center;padding:14px;margin-top:0;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;font-size:10px;}
 .footer-conf{color:#FF6B6B;font-weight:700;letter-spacing:2px;display:block;margin-top:3px;}
- 
+
 .btn-pdf{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--red2);color:#fff;border:none;padding:12px 20px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;cursor:pointer;box-shadow:0 4px 16px rgba(200,16,46,0.4);display:flex;align-items:center;gap:8px;transition:all 0.2s;}
 .btn-pdf:hover{background:#a00020;transform:translateY(-2px);}
 </style>
 </head>
 <body>
- 
+
 <button class="btn-pdf" id="btnPDF" onclick="generarPDF()">📄 Descargar PDF</button>
- 
+
 <div class="page" id="contenido">
- 
+
+<!-- ══ HEADER ══ -->
 <div class="header">
   <div class="logo-wrap">
     <div class="logo-bar"></div>
@@ -201,14 +223,14 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
     <div class="hc-tipo">PREVENTIVA</div>
     <div class="hc-sub">Boletín Oficial de Inteligencia</div>
   </div>
-  <!-- FIX 1: Fecha dinámica desde JS Colombia (UTC-5) -->
   <div class="header-right">
     <div class="hr-label">Monitoreo Estratégico Nacional</div>
     <div class="hr-datetime" id="headerDateTime">—</div>
     <div class="hr-ampm" id="headerAMPM"></div>
   </div>
 </div>
- 
+
+<!-- ══ HERO ══ -->
 <div class="hero">
   <div class="hero-overlay"></div>
   <div class="hero-estado">
@@ -221,7 +243,8 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
     <div class="hero-sub">Reporte de inteligencia consolidado. Novedades registradas desde ayer 18:00 hasta la mañana de hoy en los corredores del Suroccidente y Oriente.</div>
   </div>
 </div>
- 
+
+<!-- ══ RADAR BAR ══ -->
 <div class="radar-bar">
   <div class="radar-label">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 7.4 16.8"/><circle cx="12" cy="12" r="3"/></svg>
@@ -230,7 +253,8 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
   <div class="radar-update">UPDATE: 28/04 (18H) - 29/04 (07H)</div>
   <div class="nivel-badge">NIVEL 5: CRÍTICO</div>
 </div>
- 
+
+<!-- ══ STATS ══ -->
 <div class="stats-row">
   <div class="stat">
     <div class="stat-n">11</div>
@@ -258,206 +282,217 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
     <div class="stat-bar"><div class="stat-bar-fill" style="width:50%;background:var(--orange);"></div></div>
   </div>
 </div>
- 
+
+<!-- ══ CONTENT WRAP ══ -->
 <div class="content-wrap">
-<div class="main-layout">
-  <div class="main-content">
- 
-    <div class="cards-grid">
-      <div class="info-card border-red">
-        <div class="info-card-label">Inteligencia Táctica</div>
-        <div class="info-card-title">Análisis de Operaciones Nocturnas</div>
-        <div class="info-card-body">Durante la noche del 28 y madrugada del 29 de abril, se reportaron hostigamientos coordinados en Toribío y Corinto. Inteligencia ALTUM detectó movimientos de drones de vigilancia en el corredor Jamundí-Timba. Se confirma el despliegue de unidades especiales del Ejército para asegurar el puente de Río Claro.</div>
-      </div>
-      <div class="info-card border-blue">
-        <div class="info-card-label">Infraestructura Crítica</div>
-        <div class="info-card-title">Amenazas en Neiva y Huila</div>
-        <div class="info-card-body">A las 03:45 AM se reportó el hallazgo de un paquete sospechoso cerca de una subestación eléctrica en la vía Neiva-Aipe. Los nodos de analítica térmica Radar IA permitieron el acordonamiento preventivo. El tránsito en la zona se realiza con restricciones.</div>
-      </div>
-    </div>
- 
-    <div class="flash-bar">
-      <span class="flash-title">Reporte de Novedades (Desde Ayer 18:00 Hasta Hoy 07:28) &nbsp;&nbsp; 24H Flash</span>
-      <span class="flash-badge">▲ Fuentes Verificadas</span>
-    </div>
- 
-    <div class="evento">
-      <div class="evento-header">
-        <div class="evento-title">Hostigamientos en Corinto y Toribío (29 Abr - Madrugada)</div>
-        <div class="evento-fecha">29/04/2026 01:20</div>
-      </div>
-      <div class="evento-desc">Desde las 01:20 AM se registraron ráfagas de fusil dirigidas a las estaciones de policía de ambos municipios. El hostigamiento se prolongó de forma intermitente hasta las 05:00 AM. Se reportan daños en el sistema de transformadores de energía.</div>
-      <div class="evento-tags">
-        <span class="tag tag-critico">CRÍTICO</span>
-        <span class="tag tag-hostil">HOSTIL</span>
-        <span class="tag tag-geo">📍 Corinto, Cauca</span>
-        <span class="tag tag-fuente">Fuente verificada</span>
-      </div>
-    </div>
- 
-    <div class="evento">
-      <div class="evento-header">
-        <div class="evento-title">Aseguramiento de Río Claro - Jamundí (29 Abr - 06:00 AM)</div>
-        <div class="evento-fecha">29/04/2026 06:00</div>
-      </div>
-      <div class="evento-desc">Unidades del Ejército han tomado posición sobre el puente de Río Claro tras la incineración del vehículo ayer. Se realiza inspección técnica ante posible presencia de artefactos explosivos improvisados (AEI) en las bermas. Movilidad nula.</div>
-      <div class="evento-tags">
-        <span class="tag tag-alto">ALTO</span>
-        <span class="tag tag-operativo">OPERATIVO</span>
-        <span class="tag tag-geo">📍 Jamundí, Valle del Cauca</span>
-        <span class="tag tag-fuente">Ejército Nacional</span>
-      </div>
-    </div>
- 
-    <div class="evento">
-      <div class="evento-header">
-        <div class="evento-title">Militarización y Cierre de Cajibío (28 Abr - 20:30 PM)</div>
-        <div class="evento-fecha">28/04/2026 20:30</div>
-      </div>
-      <div class="evento-desc">Consolidación del balance tras el atentado. Se decretó toque de queda permanente. Más de 300 efectivos adicionales llegaron para asegurar el casco urbano y evitar nuevas incursiones tras la masacre reportada ayer.</div>
-      <div class="evento-tags">
-        <span class="tag tag-critico">CRÍTICO</span>
-        <span class="tag tag-hostil">HOSTIL</span>
-        <span class="tag tag-geo">📍 Cajibío, Cauca</span>
-        <span class="tag tag-fuente">Policía Nacional</span>
-      </div>
-    </div>
- 
-    <div class="evento">
-      <div class="evento-header">
-        <div class="evento-title">Consejo de Seguridad Cali (28 Abr - 19:15 PM)</div>
-        <div class="evento-fecha">28/04/2026 19:15</div>
-      </div>
-      <div class="evento-desc">Autoridades locales y departamentales definieron el refuerzo de los anillos de seguridad en los accesos sur de Cali (Pance y Cañasgordas) ante la inestabilidad de Jamundí. Se activó patrullaje conjunto con tecnología Radar IA de la Alianza.</div>
-      <div class="evento-tags">
-        <span class="tag tag-medio">MEDIO</span>
-        <span class="tag tag-institucional">INSTITUCIONAL</span>
-        <span class="tag tag-geo">📍 Cali, Valle del Cauca</span>
-        <span class="tag tag-fuente">Alcaldía Cali</span>
-      </div>
-    </div>
- 
-    <div class="evento">
-      <div class="evento-header">
-        <div class="evento-title">Amenaza a Activo Petrolero - Aipe, Huila (29 Abr - 04:30 AM)</div>
-        <div class="evento-fecha">29/04/2026 04:30</div>
-      </div>
-      <div class="evento-desc">Panfletos y banderas de estructuras ilegales aparecieron en la entrada a campos de extracción. Se recomienda suspender cambios de turno de personal civil hasta que se complete el barrido de seguridad en las rutas.</div>
-      <div class="evento-tags">
-        <span class="tag tag-alto">ALTO</span>
-        <span class="tag tag-alerta">ALERTA</span>
-        <span class="tag tag-geo">📍 Aipe, Huila</span>
-        <span class="tag tag-fuente">Ecopetrol</span>
-      </div>
-    </div>
- 
-  </div>
- 
-  <div class="sidebar">
-    <div class="sb-section">
-      <div class="sb-title">Nivel de Riesgo por Nodo</div>
-      <div class="nodo-item">
-        <span class="nodo-name">Nodo Sur<br>(Cauca/Valle)</span>
-        <div style="text-align:right;"><div class="nodo-pct" style="color:#C8102E;">99%</div><div class="nodo-nivel-label" style="color:#C8102E;">Crítico</div></div>
-      </div>
-      <div class="nodo-item">
-        <span class="nodo-name">Nodo Oriente<br>(Huila/Arauca)</span>
-        <div style="text-align:right;"><div class="nodo-pct" style="color:#E8750A;">82%</div><div class="nodo-nivel-label" style="color:#E8750A;">Alto</div></div>
-      </div>
-    </div>
- 
-    <div class="sb-section">
-      <div class="sb-title">Centrales de Emergencia GRI</div>
-      <div class="gri-wrap">
-        <div class="gri-header">
-          <span>Ciudad</span><span style="margin-left:auto;">Contacto</span>
+  <div class="main-layout">
+
+    <!-- ── COLUMNA PRINCIPAL ── -->
+    <div class="main-content">
+
+      <!-- Cards tácticas -->
+      <div class="cards-grid">
+        <div class="info-card border-red">
+          <div class="info-card-label">Inteligencia Táctica</div>
+          <div class="info-card-title">Análisis de Operaciones Nocturnas</div>
+          <div class="info-card-body">Durante la noche del 28 y madrugada del 29 de abril, se reportaron hostigamientos coordinados en Toribío y Corinto. Inteligencia ALTUM detectó movimientos de drones de vigilancia en el corredor Jamundí-Timba. Se confirma el despliegue de unidades especiales del Ejército para asegurar el puente de Río Claro.</div>
         </div>
-        <div class="gri-item"><span class="gri-city">Bogotá</span><span class="gri-phone">316 868 0868</span></div>
-        <div class="gri-item"><span class="gri-city">Cali</span><span class="gri-phone">314 359 3007</span></div>
-        <div class="gri-item"><span class="gri-city">Cartagena</span><span class="gri-phone">320 838 3520</span></div>
-        <div class="gri-item"><span class="gri-city">Bucaramanga</span><span class="gri-phone">314 359 6622</span></div>
-        <div class="gri-item"><span class="gri-city">Medellín</span><span class="gri-phone">314 359 6762</span></div>
-        <div class="gri-item"><span class="gri-city">B/quilla</span><span class="gri-phone">310 322 7362</span></div>
-        <div class="gri-item"><span class="gri-city">Pereira</span><span class="gri-phone">314 359 6715</span></div>
-        <div class="gri-item"><span class="gri-city">Graboot</span><span class="gri-phone">314 359 6639</span></div>
+        <div class="info-card border-blue">
+          <div class="info-card-label">Infraestructura Crítica</div>
+          <div class="info-card-title">Amenazas en Neiva y Huila</div>
+          <div class="info-card-body">A las 03:45 AM se reportó el hallazgo de un paquete sospechoso cerca de una subestación eléctrica en la vía Neiva-Aipe. Los nodos de analítica térmica Radar IA permitieron el acordonamiento preventivo. El tránsito en la zona se realiza con restricciones.</div>
+        </div>
       </div>
-    </div>
- 
-    <div class="sb-section">
-      <div class="sb-title">Recomendaciones</div>
-      <div class="rec-item"><span class="rec-icon">▲</span><span><strong>LOGÍSTICA:</strong> Suspensión inmediata de tránsitos nocturnos en el eje Valle-Cauca-Huila por hostigamientos activos.</span></div>
-      <div class="rec-item"><span class="rec-icon">◉</span><span><strong>PERÍMETROS:</strong> Reforzar seguridad física y tecnológica en subestaciones eléctricas del nodo sur ante riesgo de sabotaje.</span></div>
-      <div class="rec-item"><span class="rec-icon">◎</span><span><strong>DIGITAL:</strong> Verificación de GPS dinámico en todos los vehículos de flota logística cada 5 minutos.</span></div>
-    </div>
- 
-    <div class="sb-section">
-      <div class="sb-title">Resumen Táctico</div>
-      <div class="tac-item critico">
-        <div class="tac-nivel" style="color:var(--red2);">CRÍTICO</div>
-        <div class="tac-label">Amenaza</div>
-        <div class="tac-val">Hostigamientos coordinados en Cauca con daños a infraestructura eléctrica y bloqueo vial total en Jamundí.</div>
+
+      <!-- Flash bar -->
+      <div class="flash-bar">
+        <span class="flash-title">Reporte de Novedades (Desde Ayer 18:00 Hasta Hoy 07:28) &nbsp;&nbsp; 24H Flash</span>
+        <span class="flash-badge">▲ Fuentes Verificadas</span>
       </div>
-      <div class="tac-item alerta">
-        <div class="tac-nivel" style="color:var(--orange);">ALERTA</div>
-        <div class="tac-label">Zona Crítica</div>
-        <div class="tac-val">Nodo Sur (Cauca/Valle) y Huila</div>
+
+      <!-- Eventos -->
+      <div class="evento">
+        <div class="evento-header">
+          <div class="evento-title">Hostigamientos en Corinto y Toribío (29 Abr - Madrugada)</div>
+          <div class="evento-fecha">29/04/2026 01:20</div>
+        </div>
+        <div class="evento-desc">Desde las 01:20 AM se registraron ráfagas de fusil dirigidas a las estaciones de policía de ambos municipios. El hostigamiento se prolongó de forma intermitente hasta las 05:00 AM. Se reportan daños en el sistema de transformadores de energía.</div>
+        <div class="evento-tags">
+          <span class="tag tag-critico">CRÍTICO</span>
+          <span class="tag tag-hostil">HOSTIL</span>
+          <span class="tag tag-geo">📍 Corinto, Cauca</span>
+          <span class="tag tag-fuente">Fuente verificada</span>
+        </div>
       </div>
-    </div>
- 
-    <div class="sb-section">
-      <div class="sb-title">Distribución</div>
-      <div class="dist-item"><span class="dist-ciudad">Cauca</span><span class="dist-ev" style="color:#C8102E;">4 ev</span></div>
-      <div class="dist-item"><span class="dist-ciudad">Valle del Cauca</span><span class="dist-ev" style="color:#E8750A;">3 ev</span></div>
-      <div class="dist-item"><span class="dist-ciudad">Huila</span><span class="dist-ev" style="color:#2851A3;">2 ev</span></div>
-      <div class="dist-item"><span class="dist-ciudad">Arauca</span><span class="dist-ev" style="color:#2851A3;">2 ev</span></div>
-    </div>
-  </div>
-</div><!-- /main-layout -->
- 
-<div class="vias-section">
-  <div class="vias-header">
-    <span class="vias-h-title">Estado de Conectividad Vial Nacional (Update 07:28 AM)</span>
-    <span class="vias-h-update">🚧 4 corredores afectados</span>
-  </div>
-  <table class="vias-table">
-    <thead>
-      <tr>
-        <th>Corredor Estratégico</th>
-        <th>Tramo Crítico</th>
-        <th>Estatus Actual</th>
-        <th>Observaciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><div class="via-name">Jamundí – Timba</div></td>
-        <td><div class="via-tramo">Río Claro / Villa Paz</div></td>
-        <td><span class="estatus-pill estatus-bloqueo">BLOQUEO TOTAL</span></td>
-        <td class="via-obs">Presencia militar. Barrido antiexplosivos en curso. No usar.</td>
-      </tr>
-      <tr>
-        <td><div class="via-name">Vía Panamericana</div></td>
-        <td><div class="via-tramo">Rosas (Cauca)</div></td>
-        <td><span class="estatus-pill estatus-cerrado">CIERRE</span></td>
-        <td class="via-obs">Sin paso. Inestabilidad geológica y riesgo operacional.</td>
-      </tr>
-      <tr>
-        <td><div class="via-name">Vía al Llano</div></td>
-        <td><div class="via-tramo">Guayabetal / Km 58</div></td>
-        <td><span class="estatus-pill estatus-restringido">RESTRINGIDO</span></td>
-        <td class="via-obs">Paso por bloques horarios supeditado a lluvias.</td>
-      </tr>
-      <tr>
-        <td><div class="via-name">Neiva – Aipé</div></td>
-        <td><div class="via-tramo">Sector Pozos</div></td>
-        <td><span class="estatus-pill estatus-alerta">ALERTA</span></td>
-        <td class="via-obs">Paso a un carril por operativo de seguridad.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+      <div class="evento">
+        <div class="evento-header">
+          <div class="evento-title">Aseguramiento de Río Claro - Jamundí (29 Abr - 06:00 AM)</div>
+          <div class="evento-fecha">29/04/2026 06:00</div>
+        </div>
+        <div class="evento-desc">Unidades del Ejército han tomado posición sobre el puente de Río Claro tras la incineración del vehículo ayer. Se realiza inspección técnica ante posible presencia de artefactos explosivos improvisados (AEI) en las bermas. Movilidad nula.</div>
+        <div class="evento-tags">
+          <span class="tag tag-alto">ALTO</span>
+          <span class="tag tag-operativo">OPERATIVO</span>
+          <span class="tag tag-geo">📍 Jamundí, Valle del Cauca</span>
+          <span class="tag tag-fuente">Ejército Nacional</span>
+        </div>
+      </div>
+
+      <div class="evento">
+        <div class="evento-header">
+          <div class="evento-title">Militarización y Cierre de Cajibío (28 Abr - 20:30 PM)</div>
+          <div class="evento-fecha">28/04/2026 20:30</div>
+        </div>
+        <div class="evento-desc">Consolidación del balance tras el atentado. Se decretó toque de queda permanente. Más de 300 efectivos adicionales llegaron para asegurar el casco urbano y evitar nuevas incursiones tras la masacre reportada ayer.</div>
+        <div class="evento-tags">
+          <span class="tag tag-critico">CRÍTICO</span>
+          <span class="tag tag-hostil">HOSTIL</span>
+          <span class="tag tag-geo">📍 Cajibío, Cauca</span>
+          <span class="tag tag-fuente">Policía Nacional</span>
+        </div>
+      </div>
+
+      <div class="evento">
+        <div class="evento-header">
+          <div class="evento-title">Consejo de Seguridad Cali (28 Abr - 19:15 PM)</div>
+          <div class="evento-fecha">28/04/2026 19:15</div>
+        </div>
+        <div class="evento-desc">Autoridades locales y departamentales definieron el refuerzo de los anillos de seguridad en los accesos sur de Cali (Pance y Cañasgordas) ante la inestabilidad de Jamundí. Se activó patrullaje conjunto con tecnología Radar IA de la Alianza.</div>
+        <div class="evento-tags">
+          <span class="tag tag-medio">MEDIO</span>
+          <span class="tag tag-institucional">INSTITUCIONAL</span>
+          <span class="tag tag-geo">📍 Cali, Valle del Cauca</span>
+          <span class="tag tag-fuente">Alcaldía Cali</span>
+        </div>
+      </div>
+
+      <div class="evento">
+        <div class="evento-header">
+          <div class="evento-title">Amenaza a Activo Petrolero - Aipe, Huila (29 Abr - 04:30 AM)</div>
+          <div class="evento-fecha">29/04/2026 04:30</div>
+        </div>
+        <div class="evento-desc">Panfletos y banderas de estructuras ilegales aparecieron en la entrada a campos de extracción. Se recomienda suspender cambios de turno de personal civil hasta que se complete el barrido de seguridad en las rutas.</div>
+        <div class="evento-tags">
+          <span class="tag tag-alto">ALTO</span>
+          <span class="tag tag-alerta">ALERTA</span>
+          <span class="tag tag-geo">📍 Aipe, Huila</span>
+          <span class="tag tag-fuente">Ecopetrol</span>
+        </div>
+      </div>
+
+      <!-- ══ VÍAS — AHORA DENTRO DE MAIN-CONTENT ══ -->
+      <div class="vias-section">
+        <div class="vias-header">
+          <span class="vias-h-title">Estado de Conectividad Vial Nacional (Update 07:28 AM)</span>
+          <span class="vias-h-update">🚧 4 corredores afectados</span>
+        </div>
+        <table class="vias-table">
+          <thead>
+            <tr>
+              <th>Corredor Estratégico</th>
+              <th>Tramo Crítico</th>
+              <th>Estatus Actual</th>
+              <th>Observaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="via-name">Jamundí – Timba</div></td>
+              <td><div class="via-tramo">Río Claro / Villa Paz</div></td>
+              <td><span class="estatus-pill estatus-bloqueo">BLOQUEO TOTAL</span></td>
+              <td class="via-obs">Presencia militar. Barrido antiexplosivos en curso. No usar.</td>
+            </tr>
+            <tr>
+              <td><div class="via-name">Vía Panamericana</div></td>
+              <td><div class="via-tramo">Rosas (Cauca)</div></td>
+              <td><span class="estatus-pill estatus-cerrado">CIERRE</span></td>
+              <td class="via-obs">Sin paso. Inestabilidad geológica y riesgo operacional.</td>
+            </tr>
+            <tr>
+              <td><div class="via-name">Vía al Llano</div></td>
+              <td><div class="via-tramo">Guayabetal / Km 58</div></td>
+              <td><span class="estatus-pill estatus-restringido">RESTRINGIDO</span></td>
+              <td class="via-obs">Paso por bloques horarios supeditado a lluvias.</td>
+            </tr>
+            <tr>
+              <td><div class="via-name">Neiva – Aipé</div></td>
+              <td><div class="via-tramo">Sector Pozos</div></td>
+              <td><span class="estatus-pill estatus-alerta">ALERTA</span></td>
+              <td class="via-obs">Paso a un carril por operativo de seguridad.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /vias-section -->
+
+    </div><!-- /main-content -->
+
+    <!-- ── SIDEBAR ── -->
+    <div class="sidebar">
+      <div class="sb-section">
+        <div class="sb-title">Nivel de Riesgo por Nodo</div>
+        <div class="nodo-item">
+          <span class="nodo-name">Nodo Sur<br>(Cauca/Valle)</span>
+          <div style="text-align:right;"><div class="nodo-pct" style="color:#C8102E;">99%</div><div class="nodo-nivel-label" style="color:#C8102E;">Crítico</div></div>
+        </div>
+        <div class="nodo-item">
+          <span class="nodo-name">Nodo Oriente<br>(Huila/Arauca)</span>
+          <div style="text-align:right;"><div class="nodo-pct" style="color:#E8750A;">82%</div><div class="nodo-nivel-label" style="color:#E8750A;">Alto</div></div>
+        </div>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-title">Centrales de Emergencia GRI</div>
+        <div class="gri-wrap">
+          <div class="gri-header">
+            <span>Ciudad</span><span style="margin-left:auto;">Contacto</span>
+          </div>
+          <div class="gri-item"><span class="gri-city">Bogotá</span><span class="gri-phone">316 868 0868</span></div>
+          <div class="gri-item"><span class="gri-city">Cali</span><span class="gri-phone">314 359 3007</span></div>
+          <div class="gri-item"><span class="gri-city">Cartagena</span><span class="gri-phone">320 838 3520</span></div>
+          <div class="gri-item"><span class="gri-city">Bucaramanga</span><span class="gri-phone">314 359 6622</span></div>
+          <div class="gri-item"><span class="gri-city">Medellín</span><span class="gri-phone">314 359 6762</span></div>
+          <div class="gri-item"><span class="gri-city">B/quilla</span><span class="gri-phone">310 322 7362</span></div>
+          <div class="gri-item"><span class="gri-city">Pereira</span><span class="gri-phone">314 359 6715</span></div>
+          <div class="gri-item"><span class="gri-city">Graboot</span><span class="gri-phone">314 359 6639</span></div>
+        </div>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-title">Recomendaciones</div>
+        <div class="rec-item"><span class="rec-icon">▲</span><span><strong>LOGÍSTICA:</strong> Suspensión inmediata de tránsitos nocturnos en el eje Valle-Cauca-Huila por hostigamientos activos.</span></div>
+        <div class="rec-item"><span class="rec-icon">◉</span><span><strong>PERÍMETROS:</strong> Reforzar seguridad física y tecnológica en subestaciones eléctricas del nodo sur ante riesgo de sabotaje.</span></div>
+        <div class="rec-item"><span class="rec-icon">◎</span><span><strong>DIGITAL:</strong> Verificación de GPS dinámico en todos los vehículos de flota logística cada 5 minutos.</span></div>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-title">Resumen Táctico</div>
+        <div class="tac-item critico">
+          <div class="tac-nivel" style="color:var(--red2);">CRÍTICO</div>
+          <div class="tac-label">Amenaza</div>
+          <div class="tac-val">Hostigamientos coordinados en Cauca con daños a infraestructura eléctrica y bloqueo vial total en Jamundí.</div>
+        </div>
+        <div class="tac-item alerta">
+          <div class="tac-nivel" style="color:var(--orange);">ALERTA</div>
+          <div class="tac-label">Zona Crítica</div>
+          <div class="tac-val">Nodo Sur (Cauca/Valle) y Huila</div>
+        </div>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-title">Distribución</div>
+        <div class="dist-item"><span class="dist-ciudad">Cauca</span><span class="dist-ev" style="color:#C8102E;">4 ev</span></div>
+        <div class="dist-item"><span class="dist-ciudad">Valle del Cauca</span><span class="dist-ev" style="color:#E8750A;">3 ev</span></div>
+        <div class="dist-item"><span class="dist-ciudad">Huila</span><span class="dist-ev" style="color:#2851A3;">2 ev</span></div>
+        <div class="dist-item"><span class="dist-ciudad">Arauca</span><span class="dist-ev" style="color:#2851A3;">2 ev</span></div>
+      </div>
+    </div><!-- /sidebar -->
+
+  </div><!-- /main-layout -->
 </div><!-- /content-wrap -->
- 
+
+<!-- ══ MAPA — debajo del layout completo ══ -->
 <div class="map-section">
   <div class="map-header">
     <span class="map-title">Mapa de Calor · Colombia</span>
@@ -465,19 +500,19 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
   </div>
   <div id="map"></div>
 </div>
- 
+
+<!-- ══ FOOTER ══ -->
 <div class="footer">
   Intel Ops Document · VISE-ALTUM · Estrategia Integrada © 2026
   <span class="footer-conf">CONFIDENCIAL · REPORTE TÁCTICO ALIANZA VISE-ALTUM · RESERVADO II &nbsp;·&nbsp; ESTRATEGIA 2026-B &nbsp; V.5.0.1</span>
 </div>
- 
+
 </div><!-- /page -->
- 
+
 <script>
-// FIX 1: Fecha y hora dinámica en zona Colombia (UTC-5)
+// Fecha/hora dinámica Colombia (UTC-5)
 (function(){
   var now = new Date();
-  // Colombia es UTC-5 (sin horario de verano)
   var col = new Date(now.getTime() - (5 * 60 * 60 * 1000));
   var dd   = String(col.getUTCDate()).padStart(2,'0');
   var mm   = String(col.getUTCMonth()+1).padStart(2,'0');
@@ -488,18 +523,18 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
   var ampm = hh >= 12 ? 'p. m.' : 'a. m.';
   var hh12 = hh % 12 || 12;
   var hh12s = String(hh12).padStart(2,'0');
- 
+
   document.getElementById('headerDateTime').textContent =
     dd+'/'+mm+'/'+yyyy+', '+hh12s+':'+min+':'+ss;
   document.getElementById('headerAMPM').textContent = ampm;
   document.getElementById('mapDateTime').textContent =
     dd+'/'+mm+'/'+yyyy+' · '+hh12s+':'+min;
 })();
- 
+
 setTimeout(function(){
   var map = L.map('map',{center:[4.5,-74.0],zoom:5});
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© CartoDB'}).addTo(map);
-  
+
   var puntos = [
     {coords:[2.4,-76.6],nivel:5,dept:'Cauca',eventos:4},
     {coords:[3.8,-76.5],nivel:4,dept:'Valle del Cauca',eventos:3},
@@ -508,10 +543,10 @@ setTimeout(function(){
     {coords:[4.71,-74.07],nivel:2,dept:'Bogotá',eventos:1},
     {coords:[6.7,-75.5],nivel:2,dept:'Antioquia',eventos:1},
   ];
-  
+
   var cols = ['','#2A9D8F','#457B9D','#E8750A','#E9C46A','#C8102E'];
   var labs = ['','BAJO','MODERADO','ALTO','MUY ALTO','CRÍTICO'];
-  
+
   puntos.forEach(function(p){
     L.circleMarker(p.coords,{
       radius:10+(p.nivel*5),
@@ -520,7 +555,7 @@ setTimeout(function(){
       fillOpacity:0.75
     }).bindPopup('<strong>'+p.dept+'</strong><br>Nivel: '+labs[p.nivel]+'<br>Eventos: '+p.eventos).addTo(map);
   });
-  
+
   var legend = L.control({position:'bottomright'});
   legend.onAdd = function(){
     var div = L.DomUtil.create('div');
@@ -533,7 +568,7 @@ setTimeout(function(){
   };
   legend.addTo(map);
 },300);
- 
+
 async function generarPDF(){
   var btn=document.getElementById('btnPDF');
   btn.innerHTML='⏳ Generando...';
