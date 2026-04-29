@@ -286,7 +286,7 @@ body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--text);mi
 
 <script>
 // --- INYECTAR DATOS DESDE N8N AL CLIENTE ---
-var datos = {"sistema":"VISE","pais":"Colombia","fecha_generacion":"2026-04-28T22:13:00-05:00","solicitado_por":"","categorias":{"seguridad_orden_publico":{"ultimas_12h":{"status":"Sin novedades","eventos":[]}},"vias_alertas_ambientales":{"ultimas_12h":{"status":"Sin novedades","eventos":[]}}}};
+var datos = {"header":{"date":"2026-04-28T19:54:20.529-05:00","requestor":"","generation_time":"2026-04-28T00:54:00.000-05:00"},"country_info":{"country":"Colombia","sections":{"security_public_order":{"last_12_hours":[],"summary":"No se encontraron noticias de seguridad en las últimas 12 horas."},"roads_environmental_alerts":{"last_12_hours":[],"summary":"No se reportaron cierres o novedades viales en las últimas 12 horas."}}},"fecha":"29/04/2026","hora":"12:54 a. m.","zona":"NACIONAL","resumen":{"total_eventos":0,"criticos":0,"alto_impacto":0,"regiones":0,"vias_afectadas":0},"orden_publico":[],"vias":[],"alertas_ambientales":[],"mapa_calor":[],"distribucion":[],"recomendaciones":{"logistica":"Sin datos","perimetros":"Sin datos","operacional":"Sin datos","digital":"Sin datos"},"resumen_tactico":{"amenaza_principal":"Sin datos","zona_critica":"N/A","tendencia":"MEDIA","fuentes_consultadas":0},"titulo_hero":"Reporte Nacional 29/04/2026"};
 
 var C = { red:'#E63946', orange:'#F4A261', yellow:'#E9C46A', green:'#2A9D8F', blue:'#457B9D', muted:'#6B7A99', text:'#C8D6E5', white:'#F0F4FF' };
 function cNivel(n){ return {CRÍTICO:C.red,CRITICO:C.red,ALTO:C.orange,MEDIO:C.blue,BAJO:C.green}[n]||C.muted; }
