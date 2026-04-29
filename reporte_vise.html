@@ -8,153 +8,211 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
 :root {
-  --red:     #E63946;
-  --orange:  #F4A261;
-  --yellow:  #E9C46A;
-  --green:   #2A9D8F;
-  --blue:    #457B9D;
-  --dark:    #0A0E1A;
-  --dark2:   #111827;
-  --dark3:   #1C2333;
-  --dark4:   #242E42;
-  --border:  #2A3347;
-  --text:    #C8D6E5;
-  --muted:   #6B7A99;
-  --white:   #F0F4FF;
+  --bg: #F5F6F8;
+  --white: #FFFFFF;
+  --dark: #0D1117;
+  --dark2: #1A2035;
+  --navy: #1B2A4A;
+  --navy2: #243555;
+  --blue: #2851A3;
+  --blue2: #3A6BC4;
+  --blue-light: #EEF3FC;
+  --red: #C8102E;
+  --red2: #E8192C;
+  --orange: #E8750A;
+  --yellow: #F0B429;
+  --green: #0A7C5C;
+  --gray: #6B7280;
+  --gray2: #9CA3AF;
+  --border: #D1D9E6;
+  --border2: #E5EAF2;
+  --text: #1F2937;
+  --text2: #374151;
+  --muted: #6B7280;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--text);min-height:100vh;}
-.page{max-width:1200px;margin:0 auto;padding:20px;}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;}
+.page{max-width:1100px;margin:0 auto;padding:20px;background:var(--white);}
 
-.header{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:2px solid var(--border);background:var(--dark2);position:relative;overflow:hidden;}
-.header::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.012) 40px,rgba(255,255,255,0.012) 41px),repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,0.012) 40px,rgba(255,255,255,0.012) 41px);pointer-events:none;}
-.logo-area{display:flex;align-items:center;gap:20px;position:relative;}
-.logo-text{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:var(--white);letter-spacing:2px;border-left:4px solid var(--red);padding-left:14px;line-height:1;}
-.logo-sub{font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:4px;}
-.header-center{text-align:center;position:relative;}
-.header-center .badge{font-size:10px;letter-spacing:3px;font-weight:700;color:var(--red);text-transform:uppercase;border:1px solid var(--red);padding:3px 10px;border-radius:2px;display:inline-block;margin-bottom:6px;font-family:'Barlow Condensed',sans-serif;}
-.header-center .doc-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
-.header-right{text-align:right;position:relative;}
-.header-right .label{font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;}
-.header-right .datetime{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--white);line-height:1.1;margin-top:2px;}
-.header-right .ampm{font-family:'Barlow Condensed',sans-serif;font-size:18px;color:var(--muted);}
+/* HEADER */
+.header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;padding:16px 24px 14px;border-bottom:3px solid var(--navy);background:var(--white);}
+.logo-wrap{display:flex;align-items:flex-start;gap:14px;}
+.logo-bar{width:4px;background:var(--red2);align-self:stretch;flex-shrink:0;}
+.logo-text{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--navy);letter-spacing:0px;line-height:1;text-transform:uppercase;}
+.logo-sub{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:3px;color:var(--gray);text-transform:uppercase;margin-top:3px;font-weight:600;}
+.header-center{text-align:center;}
+.hc-tipo{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--navy);text-transform:uppercase;border:1.5px solid var(--navy);padding:3px 12px;display:inline-block;margin-bottom:5px;}
+.hc-sub{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;color:var(--gray);text-transform:uppercase;font-style:italic;}
+.header-right{text-align:right;}
+.hr-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:3px;color:var(--gray);text-transform:uppercase;font-weight:700;}
+.hr-datetime{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--navy);line-height:1.1;letter-spacing:0;}
+.hr-ampm{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gray);font-weight:600;}
 
-.hero{position:relative;overflow:hidden;background:var(--dark2);border:1px solid var(--border);margin:16px 0;min-height:220px;}
-.hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%, rgba(230,57,70,0.12) 0%, transparent 60%),radial-gradient(ellipse at 20% 80%, rgba(69,123,157,0.1) 0%, transparent 50%),linear-gradient(135deg, #0A0E1A 0%, #111827 100%);}
-.hero-circuit{position:absolute;top:0;left:0;right:0;bottom:0;opacity:0.07;background-image:linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px),linear-gradient(rgba(230,57,70,0.3) 1px, transparent 1px),linear-gradient(90deg, rgba(230,57,70,0.3) 1px, transparent 1px);background-size:60px 60px, 60px 60px, 300px 300px, 300px 300px;}
-.hero-content{position:relative;z-index:2;padding:24px 28px;}
-.hero-alerta{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:14px;}
-.hero-alerta::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.5s infinite;flex-shrink:0;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
-.hero-radar-badge{position:absolute;top:20px;right:28px;z-index:2;text-align:right;}
-.hero-radar-text{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;display:flex;align-items:center;gap:8px;justify-content:flex-end;}
-.estado-dot{width:8px;height:8px;border-radius:50%;background:#2A9D8F;animation:pulse 2s infinite;display:inline-block;}
-.hero-estado-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;color:#2A9D8F;font-weight:700;margin-top:4px;}
-.hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--white);line-height:1.05;letter-spacing:1px;text-transform:uppercase;max-width:700px;}
-.hero-sub{font-size:13px;color:var(--muted);margin-top:10px;font-style:italic;max-width:640px;line-height:1.5;}
+/* HERO */
+.hero{position:relative;overflow:hidden;background:var(--navy);color:var(--white);margin:0;padding:28px 32px 24px;}
+.hero-img{position:absolute;top:0;left:0;right:0;bottom:0;background:url('') center/cover no-repeat;opacity:0.18;}
+.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg, rgba(11,18,40,0.97) 40%, rgba(11,18,40,0.75) 100%);}
+.hero-content{position:relative;z-index:2;}
+.hero-alerta{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;color:#FF6B6B;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:10px;font-style:italic;}
+.hero-alerta::before{content:'●';font-size:8px;animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero-estado{position:absolute;top:0;right:0;padding:12px 20px;text-align:right;}
+.hero-estado-dot{display:flex;align-items:center;gap:6px;justify-content:flex-end;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.5);text-transform:uppercase;}
+.hero-estado-dot::before{content:'●';color:#4ADE80;font-size:10px;animation:blink 2s infinite;}
+.hero-estado-val{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:#4ADE80;text-transform:uppercase;margin-top:3px;text-align:right;}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(30px,4.5vw,58px);font-weight:900;color:#FFFFFF;line-height:1.0;letter-spacing:0.5px;text-transform:uppercase;max-width:700px;margin-bottom:10px;}
+.hero-sub{font-size:12px;color:rgba(255,255,255,0.55);font-style:italic;max-width:600px;}
 
-.radar-bar{display:flex;justify-content:space-between;align-items:center;background:var(--dark3);border:1px solid var(--border);padding:10px 20px;margin-bottom:16px;}
-.radar-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;color:var(--white);text-transform:uppercase;display:flex;align-items:center;gap:10px;}
-.radar-label::before{content:'◉';color:var(--red);font-size:14px;}
-.radar-update{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);}
-.nivel-badge{background:var(--red);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;padding:4px 14px;letter-spacing:2px;}
+/* RADAR BAR */
+.radar-bar{display:flex;justify-content:space-between;align-items:center;background:var(--navy2);color:var(--white);padding:9px 20px;margin-bottom:0;}
+.radar-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;gap:10px;}
+.radar-label svg{width:16px;height:16px;opacity:0.7;}
+.radar-update{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);font-style:italic;}
+.nivel-badge{background:var(--red2);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;padding:4px 16px;letter-spacing:2px;text-transform:uppercase;}
 
-.main-grid{display:grid;grid-template-columns:1fr 1fr 280px;gap:14px;margin-bottom:16px;}
-.card{background:var(--dark3);border:1px solid var(--border);padding:0;}
-.card-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:3px;font-weight:700;color:var(--muted);text-transform:uppercase;padding:10px 14px 0;}
-.card-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--white);padding:4px 14px 10px;border-bottom:1px solid var(--border);}
-.card-body{padding:12px 14px;font-size:12px;color:var(--text);line-height:1.6;}
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:2px solid var(--border);margin-bottom:18px;}
+.stat{border-right:1px solid var(--border);padding:14px 12px;text-align:center;}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;line-height:1;color:var(--navy);}
+.stat-n.red{color:var(--red2);}
+.stat-n.orange{color:var(--orange);}
+.stat-n.blue{color:var(--blue);}
+.stat-l{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+.stat-bar{height:3px;margin-top:8px;border-radius:2px;background:var(--border2);}
+.stat-bar-fill{height:100%;border-radius:2px;}
 
-.sidebar{display:flex;flex-direction:column;gap:14px;}
-.sec{background:var(--dark3);border:1px solid var(--border);padding:16px;}
-.sec-t{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
-.sec-t::before{content:'▸';color:var(--red);}
+/* LAYOUT PRINCIPAL */
+.main-layout{display:grid;grid-template-columns:1fr 240px;gap:0;border-top:2px solid var(--border);}
+.main-content{padding:18px 20px 18px 0;border-right:1px solid var(--border);}
+.sidebar{padding:18px 0 18px 20px;}
 
-.nodo-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
+/* CARDS TÁCTICOS */
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
+.info-card{border:1px solid var(--border);padding:14px;background:var(--white);}
+.info-card-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.info-card-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:8px;border-bottom:1px solid var(--border2);padding-bottom:8px;}
+.info-card-body{font-size:12px;color:var(--text2);line-height:1.6;font-style:italic;}
+.info-card.border-red{border-top:3px solid var(--red2);}
+.info-card.border-orange{border-top:3px solid var(--orange);}
+.info-card.border-blue{border-top:3px solid var(--blue);}
+
+/* FLASH BAR */
+.flash-bar{background:var(--navy);color:var(--white);padding:8px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:0;}
+.flash-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
+.flash-badge{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.5);}
+
+/* EVENTOS */
+.evento{border-bottom:1px solid var(--border2);padding:14px 0;}
+.evento:last-child{border-bottom:none;}
+.evento-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px;}
+.evento-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--navy);line-height:1.2;flex:1;font-style:italic;}
+.evento-fecha{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);white-space:nowrap;margin-top:3px;}
+.evento-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:8px;}
+.evento-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.tag{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:1px;}
+.tag-critico{background:var(--red2);color:#fff;}
+.tag-alto{background:var(--orange);color:#fff;}
+.tag-medio{background:var(--blue);color:#fff;}
+.tag-bajo{background:var(--green);color:#fff;}
+.tag-hostil{background:var(--red2);color:#fff;}
+.tag-operativo{background:var(--navy);color:#fff;}
+.tag-alerta{background:var(--orange);color:#fff;}
+.tag-institucional{background:var(--blue);color:#fff;}
+.tag-geo{background:var(--blue-light);color:var(--blue);border:1px solid rgba(40,81,163,0.2);}
+.tag-fuente{background:#F3F4F6;color:var(--gray);border:1px solid var(--border);}
+
+/* SIDEBAR SECTIONS */
+.sb-section{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:16px;}
+.sb-section:last-child{border-bottom:none;}
+.sb-title{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);border-bottom:2px solid var(--navy);padding-bottom:6px;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.sb-title::before{content:'▸';color:var(--red2);}
+
+/* NODO RIESGO */
+.nodo-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2);}
 .nodo-item:last-child{border-bottom:none;}
-.nodo-name{font-size:12px;color:var(--text);}
-.nodo-pct{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;}
-.nodo-nivel{font-size:10px;font-weight:700;letter-spacing:1px;margin-left:4px;}
+.nodo-name{font-size:11px;color:var(--text2);line-height:1.3;}
+.nodo-pct{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;line-height:1;}
+.nodo-nivel-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-align:right;}
 
-.gri-item{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);}
-.gri-city{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;font-weight:700;}
-.gri-phone{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--white);}
+/* CONTACTOS GRI */
+.gri-header{background:var(--navy);color:var(--white);padding:8px 12px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;gap:6px;margin-bottom:0;}
+.gri-item{display:grid;grid-template-columns:1fr auto;align-items:center;padding:7px 12px;border-bottom:1px solid var(--border2);background:var(--white);}
+.gri-item:nth-child(even){background:#FAFBFD;}
+.gri-city{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy2);}
+.gri-phone{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--blue2);font-weight:600;}
+.gri-wrap{border:1px solid var(--border);overflow:hidden;}
 
-.rec-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:11px;color:var(--text);line-height:1.5;}
-.rec-icon{color:var(--red);flex-shrink:0;margin-top:2px;}
+/* RECOMENDACIONES */
+.rec-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border2);font-size:11px;color:var(--text2);line-height:1.5;}
+.rec-item:last-child{border-bottom:none;}
+.rec-icon{color:var(--red2);flex-shrink:0;margin-top:1px;font-size:13px;}
 
-.flash-bar{background:var(--dark4);border:1px solid var(--border);padding:10px 18px;margin-bottom:14px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--white);text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;}
-.flash-right{font-size:11px;color:var(--muted);letter-spacing:1px;font-weight:400;}
+/* TACTICO */
+.tac-item{padding:10px 12px;margin-bottom:8px;background:var(--bg);border-left:3px solid var(--border);}
+.tac-item.critico{border-left-color:var(--red2);background:#FFF5F5;}
+.tac-item.alerta{border-left-color:var(--orange);background:#FFFBF0;}
+.tac-nivel{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px;}
+.tac-label{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:var(--navy);margin-bottom:3px;}
+.tac-val{font-size:11px;color:var(--text2);line-height:1.4;}
 
-.evento{border-left:3px solid var(--border);padding:12px 16px;margin-bottom:10px;background:var(--dark2);}
-.evento-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px;}
-.evento-titulo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--white);flex:1;}
-.evento-fecha{font-size:10px;color:var(--muted);white-space:nowrap;margin-top:2px;}
-.evento-desc{font-size:12px;color:var(--text);line-height:1.6;margin-bottom:8px;}
-.evento-tags{display:flex;gap:6px;flex-wrap:wrap;}
-.tag{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:1px;}
-.tag-critico{background:rgba(230,57,70,0.15);color:var(--red);border:1px solid rgba(230,57,70,0.3);}
-.tag-alto{background:rgba(244,162,97,0.15);color:var(--orange);border:1px solid rgba(244,162,97,0.3);}
-.tag-medio{background:rgba(69,123,157,0.15);color:var(--blue);border:1px solid rgba(69,123,157,0.3);}
-.tag-bajo{background:rgba(42,157,143,0.15);color:var(--green);border:1px solid rgba(42,157,143,0.3);}
-.tag-hostil{background:rgba(230,57,70,0.2);color:var(--red);border:1px solid var(--red);}
-.tag-operativo{background:rgba(69,123,157,0.2);color:var(--blue);border:1px solid var(--blue);}
-.tag-alerta{background:rgba(244,162,97,0.2);color:var(--orange);border:1px solid var(--orange);}
-.tag-institucional{background:rgba(42,157,143,0.2);color:var(--green);border:1px solid var(--green);}
-.tag-geo{background:rgba(200,214,229,0.08);color:var(--text);}
+/* DISTRIBUCIÓN */
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border2);}
+.dist-ciudad{font-size:11px;color:var(--text2);}
+.dist-ev{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;}
 
-.vias-table{width:100%;border-collapse:collapse;font-size:12px;}
-.vias-table thead tr{background:var(--dark4);}
-.vias-table th{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:10px 12px;text-align:left;font-weight:700;border-bottom:1px solid var(--border);}
-.vias-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle;}
-.via-corredor{font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--white);font-size:13px;letter-spacing:1px;}
-.via-tramo{font-size:11px;color:var(--muted);}
-.estado-pill{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:3px 10px;display:inline-block;}
-.estado-cerrado{background:var(--red);color:#fff;}
-.estado-bloqueo{background:#7B0D1E;color:var(--red);border:1px solid var(--red);}
-.estado-restringido{background:rgba(244,162,97,0.2);color:var(--orange);border:1px solid var(--orange);}
-.estado-alerta{background:rgba(233,196,106,0.15);color:var(--yellow);border:1px solid rgba(233,196,106,0.4);}
-.estado-normal{background:rgba(42,157,143,0.15);color:var(--green);border:1px solid rgba(42,157,143,0.3);}
+/* VÍAS TABLE */
+.vias-section{margin:18px 0 0;border-top:2px solid var(--border);}
+.vias-header{background:var(--navy);color:var(--white);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
+.vias-h-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
+.vias-h-update{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);}
+.vias-table{width:100%;border-collapse:collapse;}
+.vias-table thead tr{background:var(--navy2);}
+.vias-table th{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.7);padding:9px 14px;text-align:left;}
+.vias-table td{padding:10px 14px;border-bottom:1px solid var(--border2);font-size:12px;color:var(--text2);vertical-align:middle;}
+.vias-table tr:nth-child(even) td{background:#F8FAFF;}
+.vias-table tr:hover td{background:var(--blue-light);}
+.via-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--navy);letter-spacing:0.5px;}
+.via-tramo{font-size:11px;color:var(--muted);margin-top:1px;}
+.estatus-pill{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;display:inline-block;border-radius:1px;}
+.estatus-cerrado{background:var(--red2);color:#fff;}
+.estatus-bloqueo{background:#7B0D1E;color:#fff;}
+.estatus-restringido{background:var(--orange);color:#fff;}
+.estatus-alerta{background:var(--yellow);color:#1F2937;}
+.estatus-normal{background:var(--green);color:#fff;}
 .via-obs{font-size:11px;color:var(--muted);line-height:1.5;}
 
-.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px;}
-.stat{background:var(--dark3);border:1px solid var(--border);padding:14px;text-align:center;border-top:2px solid var(--border);}
-.stat-n{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:800;line-height:1;}
-.stat-l{font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:5px;}
+/* MAPA */
+.map-section{margin:18px 0 0;border-top:2px solid var(--border);}
+.map-header{background:var(--navy);color:var(--white);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
+.map-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
+#map{height:400px;border:1px solid var(--border);border-top:none;}
 
-.map-sec{background:var(--dark3);border:1px solid var(--border);padding:16px;margin-bottom:16px;}
-#map{height:420px;border:1px solid var(--border);}
+/* FOOTER */
+.footer{background:var(--navy);color:var(--white);text-align:center;padding:14px;margin-top:0;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;font-size:10px;}
+.footer-conf{color:#FF6B6B;font-weight:700;letter-spacing:2px;display:block;margin-top:3px;}
 
-.alerta-ambiental{border-left:2px solid var(--orange);padding:8px 12px;background:rgba(244,162,97,0.05);margin-bottom:8px;}
-.alerta-tipo{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--orange);margin-bottom:3px;}
-.alerta-desc{font-size:12px;color:var(--text);line-height:1.5;}
+/* BTN PDF */
+.btn-pdf{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--red2);color:#fff;border:none;padding:12px 20px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;cursor:pointer;box-shadow:0 4px 16px rgba(200,16,46,0.4);display:flex;align-items:center;gap:8px;transition:all 0.2s;}
+.btn-pdf:hover{background:#a00020;transform:translateY(-2px);}
 
-.tactico-item{padding:10px 12px;margin-bottom:8px;border:1px solid var(--border);background:var(--dark2);}
-.tactico-nivel{font-size:9px;font-weight:700;letter-spacing:2px;margin-bottom:3px;}
-.tactico-label{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--white);margin-bottom:3px;}
-.tactico-val{font-size:11px;color:var(--text);line-height:1.4;}
-
-.dist-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);}
-.dist-ciudad{font-size:12px;color:var(--text);}
-.dist-ev{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;}
-
-.calor-item{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
-.calor-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.calor-dept{font-size:11px;color:var(--text);flex:1;}
-.calor-badge{font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 6px;}
-.calor-ev{font-size:10px;color:var(--muted);}
-
-.footer{text-align:center;padding:16px;font-size:10px;color:var(--muted);border-top:1px solid var(--border);margin-top:20px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;}
-.footer-conf{color:var(--red);font-weight:700;letter-spacing:2px;}
-
-.btn-pdf{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--red);color:#fff;border:none;padding:14px 22px;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;cursor:pointer;box-shadow:0 4px 20px rgba(230,57,70,0.4);display:flex;align-items:center;gap:8px;transition:all 0.2s;}
-.btn-pdf:hover{background:#c1121f;transform:translateY(-2px);}
-@media(max-width:900px){.main-grid{grid-template-columns:1fr 1fr;}.main-grid .sidebar{grid-column:span 2;}.stats-row{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:600px){.main-grid{grid-template-columns:1fr;}.main-grid .sidebar{grid-column:auto;}.stats-row{grid-template-columns:repeat(2,1fr);}.hero-title{font-size:26px;}.page{padding:10px;}}
-@media print{*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}body{background:var(--dark)!important;}.btn-pdf{display:none!important;}#map{height:300px;}}
+@media(max-width:768px){
+  .main-layout{grid-template-columns:1fr;}
+  .main-content{padding:14px 0;border-right:none;}
+  .sidebar{padding:14px 0 0;}
+  .stats-row{grid-template-columns:repeat(3,1fr);}
+  .cards-grid{grid-template-columns:1fr;}
+  .header{grid-template-columns:1fr;text-align:center;}
+  .hr-datetime{font-size:22px;}
+}
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+  .btn-pdf{display:none!important;}
+  #map{height:280px;}
+}
 </style>
 </head>
 <body>
@@ -163,225 +221,356 @@ body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--text);mi
 
 <div class="page" id="contenido">
 
+<!-- HEADER -->
 <div class="header">
-  <div class="logo-area">
+  <div class="logo-wrap">
+    <div class="logo-bar"></div>
     <div>
       <div class="logo-text">VISE ALTUM</div>
       <div class="logo-sub">Estrategia de Vigilancia Integrada</div>
     </div>
   </div>
   <div class="header-center">
-    <div class="badge" id="h-badge">PREVENTIVA</div>
-    <div class="doc-title">Boletín Oficial de Inteligencia</div>
+    <div class="hc-tipo" id="h-tipo">PREVENTIVA</div>
+    <div class="hc-sub">Boletín Oficial de Inteligencia</div>
   </div>
   <div class="header-right">
-    <div class="label">Monitoreo Estratégico Nacional</div>
-    <div class="datetime" id="h-fecha"></div>
-    <div class="ampm" id="h-ampm"></div>
+    <div class="hr-label">Monitoreo Estratégico Nacional</div>
+    <div class="hr-datetime" id="h-fecha">—</div>
+    <div class="hr-ampm" id="h-hora">—</div>
   </div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-circuit"></div>
-  <div class="hero-radar-badge">
-    <div class="hero-radar-text"><span class="estado-dot"></span> Estado Radar</div>
-    <div class="hero-estado-label">ACTIVO · TIEMPO REAL</div>
+  <div class="hero-img" id="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-estado">
+    <div class="hero-estado-dot">Estado Radar</div>
+    <div class="hero-estado-val">ACTIVO · TIEMPO REAL</div>
   </div>
   <div class="hero-content">
-    <div class="hero-alerta" id="hero-alerta-label"></div>
-    <div class="hero-title" id="hero-title">Cargando Título...</div>
-    <div class="hero-sub">Reporte de inteligencia consolidado. Novedades registradas desde ayer 18:00 hasta el corte actual.</div>
+    <div class="hero-alerta" id="hero-alerta-label">Alerta Táctica · —</div>
+    <div class="hero-title" id="hero-title">Cargando...</div>
+    <div class="hero-sub">Reporte de inteligencia consolidado. Novedades registradas desde ayer 18:00 hasta la mañana de hoy en los corredores estratégicos nacionales.</div>
   </div>
 </div>
 
+<!-- RADAR BAR -->
 <div class="radar-bar">
-  <div class="radar-label">Radar de Sucesos Nacionales</div>
-  <div class="radar-update" id="radar-update"></div>
-  <div class="nivel-badge" id="radar-nivel"></div>
+  <div class="radar-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 7.4 16.8"/><circle cx="12" cy="12" r="3"/></svg>
+    Radar de Sucesos Nacionales
+  </div>
+  <div class="radar-update" id="radar-update">—</div>
+  <div class="nivel-badge" id="radar-nivel">NIVEL 5: CRÍTICO</div>
 </div>
 
-<div class="stats-row" id="stats-row">
-  <div class="stat" style="border-top-color:#6B7A99;"><div class="stat-n" id="st-total" style="color:var(--white);">—</div><div class="stat-l">Total Eventos</div></div>
-  <div class="stat" style="border-top-color:var(--red);"><div class="stat-n" id="st-crit" style="color:var(--red);">—</div><div class="stat-l">Críticos</div></div>
-  <div class="stat" style="border-top-color:var(--orange);"><div class="stat-n" id="st-alto" style="color:var(--orange);">—</div><div class="stat-l">Alto Impacto</div></div>
-  <div class="stat" style="border-top-color:var(--blue);"><div class="stat-n" id="st-reg" style="color:var(--blue);">—</div><div class="stat-l">Regiones</div></div>
-  <div class="stat" style="border-top-color:var(--orange);"><div class="stat-n" id="st-vias" style="color:var(--orange);">—</div><div class="stat-l">Vías Afectadas</div></div>
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat">
+    <div class="stat-n" id="st-total">—</div>
+    <div class="stat-l">Total Eventos</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:70%;background:var(--navy);"></div></div>
+  </div>
+  <div class="stat">
+    <div class="stat-n red" id="st-crit">—</div>
+    <div class="stat-l">Críticos</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:40%;background:var(--red2);"></div></div>
+  </div>
+  <div class="stat">
+    <div class="stat-n orange" id="st-alto">—</div>
+    <div class="stat-l">Alto Impacto</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:55%;background:var(--orange);"></div></div>
+  </div>
+  <div class="stat">
+    <div class="stat-n blue" id="st-reg">—</div>
+    <div class="stat-l">Regiones</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:60%;background:var(--blue);"></div></div>
+  </div>
+  <div class="stat">
+    <div class="stat-n orange" id="st-vias">—</div>
+    <div class="stat-l">Vías Afectadas</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:50%;background:var(--orange);"></div></div>
+  </div>
 </div>
 
-<div class="main-grid">
-  <div class="card" id="card-tactica">
-    <div class="card-label">Inteligencia Táctica</div>
-    <div class="card-title">—</div>
-    <div class="card-body">—</div>
-  </div>
-  <div class="card" id="card-infra">
-    <div class="card-label">Infraestructura Crítica</div>
-    <div class="card-title">—</div>
-    <div class="card-body">—</div>
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
+  <div class="main-content">
+
+    <!-- Cards tácticos -->
+    <div class="cards-grid">
+      <div class="info-card border-red" id="card-tactica">
+        <div class="info-card-label">Inteligencia Táctica</div>
+        <div class="info-card-title">—</div>
+        <div class="info-card-body">—</div>
+      </div>
+      <div class="info-card border-blue" id="card-infra">
+        <div class="info-card-label">Infraestructura Crítica</div>
+        <div class="info-card-title">—</div>
+        <div class="info-card-body">—</div>
+      </div>
+    </div>
+
+    <!-- Flash bar -->
+    <div class="flash-bar">
+      <span class="flash-title">Reporte de Novedades (Últimas 24H) &nbsp; 24H Flash</span>
+      <span class="flash-badge">▲ Fuentes Verificadas</span>
+    </div>
+
+    <!-- Eventos -->
+    <div id="eventos-container"></div>
+
   </div>
 
+  <!-- SIDEBAR -->
   <div class="sidebar">
-    <div class="sec">
-      <div class="sec-t">Nivel de Riesgo por Nodo</div>
+    <div class="sb-section">
+      <div class="sb-title">Nivel de Riesgo por Nodo</div>
       <div id="nodos-container"></div>
     </div>
-    <div class="sec">
-      <div class="sec-t">Centrales GRI</div>
-      <div class="gri-item"><span class="gri-city">Bogotá</span><span class="gri-phone">316 868 0868</span></div>
-      <div class="gri-item"><span class="gri-city">Cali</span><span class="gri-phone">314 359 3007</span></div>
+
+    <!-- GRI Contactos -->
+    <div class="sb-section">
+      <div class="sb-title">Centrales de Emergencia GRI</div>
+      <div class="gri-wrap">
+        <div class="gri-header">
+          <span>Ciudad</span>
+          <span style="margin-left:auto;">Contacto</span>
+        </div>
+        <div class="gri-item"><span class="gri-city">Bogotá</span><span class="gri-phone">316 868 0868</span></div>
+        <div class="gri-item"><span class="gri-city">Cali</span><span class="gri-phone">314 359 3007</span></div>
+        <div class="gri-item"><span class="gri-city">Cartagena</span><span class="gri-phone">320 838 3520</span></div>
+        <div class="gri-item"><span class="gri-city">Bucaramanga</span><span class="gri-phone">314 359 6622</span></div>
+        <div class="gri-item"><span class="gri-city">Medellín</span><span class="gri-phone">314 359 6762</span></div>
+        <div class="gri-item"><span class="gri-city">B/quilla</span><span class="gri-phone">310 322 7362</span></div>
+        <div class="gri-item"><span class="gri-city">Pereira</span><span class="gri-phone">314 359 6715</span></div>
+        <div class="gri-item"><span class="gri-city">Graboot</span><span class="gri-phone">314 359 6639</span></div>
+      </div>
     </div>
-    <div class="sec">
-      <div class="sec-t">Recomendaciones</div>
+
+    <div class="sb-section">
+      <div class="sb-title">Recomendaciones</div>
       <div id="rec-container"></div>
     </div>
-  </div>
-</div>
 
-<div class="flash-bar">
-  <span>Reporte de Novedades (Últimas 24H)</span>
-  <span class="flash-right">▲ FUENTES VERIFICADAS</span>
-</div>
-
-<div style="display:grid;grid-template-columns:1fr 280px;gap:14px;margin-bottom:16px;">
-  <div id="eventos-container"></div>
-  <div class="sidebar">
-    <div class="sec">
-      <div class="sec-t">Resumen Táctico</div>
-      <div class="tactico-item"><div class="tactico-nivel" style="color:var(--red);">CRÍTICO</div><div class="tactico-label">Amenaza</div><div class="tactico-val" id="tac-amenaza"></div></div>
-      <div class="tactico-item"><div class="tactico-nivel" style="color:var(--orange);">ALERTA</div><div class="tactico-label">Zona Crítica</div><div class="tactico-val" id="tac-zona"></div></div>
+    <div class="sb-section">
+      <div class="sb-title">Resumen Táctico</div>
+      <div class="tac-item critico">
+        <div class="tac-nivel" style="color:var(--red2);">CRÍTICO</div>
+        <div class="tac-label">Amenaza</div>
+        <div class="tac-val" id="tac-amenaza">—</div>
+      </div>
+      <div class="tac-item alerta">
+        <div class="tac-nivel" style="color:var(--orange);">ALERTA</div>
+        <div class="tac-label">Zona Crítica</div>
+        <div class="tac-val" id="tac-zona">—</div>
+      </div>
     </div>
-    <div class="sec"><div class="sec-t">Distribución</div><div id="dist-container"></div></div>
-    <div class="sec"><div class="sec-t">Índice por Depto</div><div id="calor-lista"></div></div>
+
+    <div class="sb-section">
+      <div class="sb-title">Distribución</div>
+      <div id="dist-container"></div>
+    </div>
   </div>
 </div>
 
-<div class="sec" style="margin-bottom:16px;">
-  <div class="sec-t">Estado de Conectividad Vial Nacional</div>
-  <div style="overflow-x:auto;">
-    <table class="vias-table">
-      <thead><tr><th>Corredor</th><th>Tramo / Causa</th><th>Estatus</th><th>Observaciones</th></tr></thead>
-      <tbody id="vias-tbody"></tbody>
-    </table>
+<!-- VÍAS -->
+<div class="vias-section">
+  <div class="vias-header">
+    <span class="vias-h-title">Estado de Conectividad Vial Nacional</span>
+    <span class="vias-h-update" id="vias-update">—</span>
   </div>
+  <table class="vias-table">
+    <thead>
+      <tr>
+        <th>Corredor Estratégico</th>
+        <th>Tramo Crítico</th>
+        <th>Estatus Actual</th>
+        <th>Observaciones</th>
+      </tr>
+    </thead>
+    <tbody id="vias-tbody"></tbody>
+  </table>
 </div>
 
-<div id="alertas-sec" style="display:none;" class="sec" style="margin-bottom:16px;">
-  <div class="sec-t">Alertas Ambientales</div>
-  <div id="alertas-container"></div>
-</div>
-
-<div class="map-sec">
-  <div class="sec-t">Mapa de Calor · Colombia</div>
+<!-- MAPA -->
+<div class="map-section">
+  <div class="map-header">
+    <span class="map-title">Mapa de Calor · Colombia</span>
+    <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);" id="map-update">—</span>
+  </div>
   <div id="map"></div>
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
-  Boletín Oficial VISE ALTUM · Documento de Inteligencia<br>
-  Reservados todos los derechos · <span id="footer-year"></span><br>
-  <span class="footer-conf">▲ CONFIDENCIAL · REPORTE TÁCTICO ALIANZA VISE-ALTUM</span>
+  Intel Ops Document · VISE-ALTUM · Estrategia Integrada © <span id="footer-year"></span>
+  <span class="footer-conf">CONFIDENCIAL · REPORTE TÁCTICO ALIANZA VISE-ALTUM · RESERVADO II</span>
 </div>
 
-</div>
+</div><!-- .page -->
 
 <script>
-// --- INYECTAR DATOS DESDE N8N AL CLIENTE ---
-var datos = {"fecha":"28/04/2026","hora":"23:24","zona":"NACIONAL","titulo_hero":"INTENSA JORNADA EN COLOMBIA: HOMICIDIO EN BOGOTÁ, CAPTURAS CLAVE Y AFECTACIONES VIALES POR ACCIDENTES Y ALERTAS AMBIENTALES","resumen":{"total_eventos":11,"criticos":2,"alto_impacto":3,"regiones":4,"vias_afectadas":4},"orden_publico":[{"titulo":"Secuestro y robo violento a familia en vía Bogotá-Girardot","descripcion":"Gobernador de Cundinamarca se pronunció por el secuestro y violento robo a familia cerca de peaje en vía Bogotá-Girardot. El vehículo fue hallado en Soacha, y se solicita formalizar la denuncia para avanzar en la investigación.","fecha_evento":"29/04/2026 04:07","nivel":"ALTO","tipo":"SECUESTRO","departamento":"CUNDINAMARCA","municipio":"Soacha","fuente":"El Tiempo","url_fuente":"https://www.eltiempo.com/bogota/gobernador-de-cundinamarca-se-pronuncio-por-el-secuestro-y-violento-robo-a-familia-cerca-de-peaje-en-via-bogota-girardot-no-hay-una-denuncia-formal-3551597"},{"titulo":"Homicidio de ciudadano judío estadounidense en Bogotá","descripcion":"Se investiga el crimen de un ciudadano judío estadounidense hallado sin vida en el sur de Bogotá, dentro de un armario de plástico. Había estado frecuentando una sinagoga en la capital.","fecha_evento":"29/04/2026 03:39","nivel":"CRÍTICO","tipo":"HOMICIDIO","departamento":"BOGOTÁ D.C.","municipio":"Bogotá","fuente":"El Tiempo","url_fuente":"https://www.eltiempo.com/bogota/primera-hipotesis-del-crimen-del-ciudadano-judio-estadounidense-que-fue-hallado-sin-vida-en-el-sur-de-bogota-datos-ineditos-de-su-viaje-a-colombia-3551724"},{"titulo":"Estrategia para prevenir muertes en siniestros viales en Bogotá","descripcion":"Lanzan estrategia en Bogotá para prevenir muertes en siniestros viales, que ya suman 204 fallecidos en 2026. Incluye intervenciones pedagógicas, experimentos sociales y acciones dirigidas a motociclistas.","fecha_evento":"29/04/2026 02:04","nivel":"MEDIO","tipo":"OTRO","departamento":"BOGOTÁ D.C.","municipio":"Bogotá","fuente":"El Tiempo","url_fuente":"https://www.eltiempo.com/bogota/lanzan-estrategia-en-bogota-que-busca-prevenir-muertes-en-siniestros-viales-van-204-fallecidos-en-3551725"},{"titulo":"Cierre de pista en El Dorado por presencia de dron","descripcion":"Pista internacional del aeropuerto El Dorado fue cerrada por 45 minutos debido a la presencia de un dron, activándose protocolos de inspección para salvaguardar aeronaves y pasajeros.","fecha_evento":"29/04/2026 03:53","nivel":"ALTO","tipo":"OTRO","departamento":"BOGOTÁ D.C.","municipio":"Bogotá","fuente":"El Tiempo","url_fuente":"https://www.eltiempo.com/bogota/aerocivil-entrego-minuto-a-minuto-del-cierre-de-pista-internacional-en-el-dorado-tras-presencia-de-dron-operaciones-detenidas-durante-45-minutos-3551722"},{"titulo":"Captura de hombre armado con cédulas falsas en velorio de Bogotá","descripcion":"La Policía capturó a un hombre armado con cinco cédulas en su poder y anotaciones judiciales, durante un velorio en el barrio San Fernando Occidental, localidad de Barrios Unidos en Bogotá.","fecha_evento":"28/04/2026 23:24","nivel":"ALTO","tipo":"CAPTURA","departamento":"BOGOTÁ D.C.","municipio":"Bogotá","fuente":"El Tiempo","url_fuente":"https://www.eltiempo.com/bogota/policia-captura-a-un-hombre-armado-en-un-velorio-en-bogota-y-con-cinco-cedulas-en-su-poder-tenia-anotaciones-judiciales-3551682"},{"titulo":"Captura de cabecilla responsable de atentado con 20 muertos en Cauca","descripcion":"La Policía de Colombia capturó a un cabecilla criminal vinculado al atentado que resultó en la muerte de 20 personas en el departamento del Cauca.","fecha_evento":"28/04/2026 21:19","nivel":"CRÍTICO","tipo":"CAPTURA","departamento":"CAUCA","municipio":"No especificado","fuente":"Ecuavisa","url_fuente":"https://news.google.com/rss/articles/CBMirAFBVV95cUxQcGkxVU15bzVZTWU3U1g3aGdCMDVUb2Nqb2hNRVpZN2J4V3kwMVRIdmtJTnppWEtOTGk0em1YRmdha1dXRVpjVkZiUEdjTFVrbzFfVEF5bzVTWHFYeDhHN3NGZXhHbWQwcXhNQWJaQ0t1S2NUT2hFVFU3Ui1VdlVtaVFwX255TnQ4Zk5wbTMtZkZGWEZlcERtYkp6RWlIaDl0RExQY045TXFzV1Rn0gGyAUFVX3lxTFBpTWhJU2V0QTRoOXpHWm1tVXhWZ05sZDdzeXZ4YmtVOUpRS3I1bEdoaWgwa1NrUzhYWnRMTG95ZlphUlVuSDBrZXVEQU1GSnVwYzZQQkpkMnUtM2dqVHVYX3dGTXN2ckpEX1I5UVdpbG9MQUg4QjZCU2pxdjV6dllQQXlaWlI0MmtGN3dLQ28xd0ZSM3hzWWt2VmdjUGwwMDdIUEpwY2ZrU1RXN1o4NzEzdEE?oc=5"}],"vias":[{"via":"Vía Bogotá-Girardot","ruta":"Ruta Nacional","estado":"ALERTA","descripcion":"Secuestro y robo violento a familia cerca de peaje en vía Bogotá-Girardot. Vehículo hallado en Soacha. Se recomienda precaución en la zona.","causa":"OTRO","fecha_reporte":"29/04/2026 04:07","tiempo_estimado":"Indefinido","alternativa":"No especificada","region":"CUNDINAMARCA","fuente":"El Tiempo"},{"via":"Autopista Sur","ruta":"Ruta Nacional","estado":"CERRADO","descripcion":"Volcamiento de bus intermunicipal en la Autopista Sur hacia Bogotá, causando cierre total y fuerte congestión. Autoridades trabajan en el retiro del vehículo.","causa":"ACCIDENTE","fecha_reporte":"29/04/2026 04:02","tiempo_estimado":"Varias horas","alternativa":"No especificada","region":"BOGOTÁ D.C.","fuente":"El Tiempo"},{"via":"Puntos clave de movilidad","ruta":"Varias rutas","estado":"RESTRINGIDO","descripcion":"Reporte general de manifestaciones y accidentes bloqueando puntos clave de la movilidad en diferentes zonas del país.","causa":"PROTESTA","fecha_reporte":"28/04/2026 20:38","tiempo_estimado":"Indefinido","alternativa":"No especificada","region":"NACIONAL","fuente":"hsb noticias"},{"via":"Red vial nacional","ruta":"Varias rutas","estado":"ALERTA","descripcion":"Alerta del Ideam por lluvias intensas y alto riesgo de deslizamientos que pueden afectar la red vial nacional.","causa":"DERRUMBE","fecha_reporte":"28/04/2026 19:52","tiempo_estimado":"Continuo","alternativa":"Monitoreo constante y precaución","region":"NACIONAL","fuente":"IDEAM / Diario del Huila"}],"alertas_ambientales":[{"tipo":"DESLIZAMIENTO","descripcion":"Ideam alerta por lluvias intensas y riesgo de deslizamientos a nivel nacional.","departamento":"NACIONAL","nivel":"ALTO","fuente":"IDEAM / Diario del Huila"}],"recomendaciones":{"logistica":"Planificar rutas alternativas y monitorear el estado de las vías, especialmente en la Autopista Sur y rutas nacionales por riesgo de deslizamientos y manifestaciones.","perimetros":"Aumentar la vigilancia en zonas de alto tránsito como aeropuertos (El Dorado) y verificar documentos en aglomeraciones públicas. Precaución en la vía Bogotá-Girardot por riesgos de seguridad.","operacional":"Fortalecer operativos de seguridad en áreas urbanas críticas como Bogotá y en regiones con presencia criminal como Cauca. Implementar estrategias de prevención vial.","digital":"Verificar fuentes de información para reportes de seguridad y movilidad. Reportar actividades sospechosas de drones cerca de infraestructuras críticas."},"mapa_calor":[{"departamento":"Bogotá D.C.","codigo":"BOG","lat":4.65,"lng":-74.05,"nivel":4,"eventos":5,"tipo_principal":"Homicidio / Incidentes urbanos"},{"departamento":"Cundinamarca","codigo":"CUN","lat":4.5,"lng":-74.3,"nivel":3,"eventos":1,"tipo_principal":"Secuestro / Robo"},{"departamento":"Cauca","codigo":"CAU","lat":2.44,"lng":-76.6,"nivel":4,"eventos":1,"tipo_principal":"Crimen organizado"},{"departamento":"Nacional","codigo":"COL","lat":4,"lng":-72,"nivel":3,"eventos":2,"tipo_principal":"Riesgos ambientales / Movilidad"}],"distribucion":[{"ciudad":"Bogotá","eventos":5,"nivel":"CRÍTICO"}],"resumen_tactico":{"amenaza_principal":"La capital colombiana enfrenta una compleja situación de seguridad con un homicidio, un incidente en infraestructura aérea y una captura importante. A nivel nacional, el crimen organizado en regiones como Cauca y los riesgos viales por accidentes y fenómenos naturales son amenazas persistentes.","zona_critica":"Bogotá D.C. y Cauca","tendencia":"ALTA","fuentes_consultadas":4}};
+var datos = {"fecha":"29/04/2026","hora":"00:33","zona":"NACIONAL","titulo_hero":"INCIDENTES DE SEGURIDAD CRÍTICOS Y ALTERACIONES VIALES EN CUNDINAMARCA Y CAUCA, CON ALERTA AMBIENTAL POR LLUVIAS","resumen":{"total_eventos":10,"criticos":3,"alto_impacto":6,"regiones":3,"vias_afectadas":4},"orden_publico":[{"titulo":"Gobernador de Cundinamarca se pronunció por el secuestro y violento robo a familia cerca de peaje en vía Bogotá-Girardot: 'No hay una denuncia formal'","descripcion":"El mandatario se refirió al vehículo hallado en Soacha y pidió formalizar el caso para avanzar en la investigación.","fecha_evento":"29/04/2026 04:07","nivel":"CRÍTICO","tipo":"SECUESTRO","departamento":"CUNDINAMARCA","municipio":"Soacha","fuente":"El Tiempo","url_fuente":"https://www.eltiempo.com/bogota/gobernador-de-cundinamarca-se-pronuncio-por-el-secuestro-y-violento-robo-a-familia-cerca-de-peaje-en-via-bogota-girardot-no-hay-una-denuncia-formal-3551597"},{"titulo":"Primera hipótesis del crimen del ciudadano judío estadounidense que fue hallado sin vida en el sur de Bogotá: datos inéditos de su viaje a Colombia","descripcion":"El hombre había estado frecuentando una sinagoga en la capital días antes del hallazgo de su cuerpo sin vida dentro de un armario de plástico.","fecha_evento":"29/04/2026 03:39","nivel":"CRÍTICO","tipo":"HOMICIDIO","departamento":"CUNDINAMARCA","municipio":"Bogotá","fuente":"El Tiempo","url_fuente":"https://www.eltiempo.com/bogota/primera-hipotesis-del-crimen-del-ciudadano-judio-estadounidense-que-fue-hallado-sin-vida-en-el-sur-de-bogota-datos-ineditos-de-su-viaje-a-colombia-3551724"},{"titulo":"Revelan minuto a minuto del cierre de pista internacional en El Dorado tras presencia de dron: 'Operaciones detenidas durante 45 minutos'","descripcion":"Aerocivil aseguró que se 'activaron los protocolos de inspección y la necesidad de salvaguardar las aeronaves y los pasajeros'.","fecha_evento":"29/04/2026 05:09","nivel":"ALTO","tipo":"OPERATIVO","departamento":"CUNDINAMARCA","municipio":"Bogotá","fuente":"El Tiempo","url_fuente":"https://www.eltiempo.com/bogota/aerocivil-entrego-minuto-a-minuto-del-cierre-de-pista-internacional-en-el-dorado-tras-presencia-de-dron-operaciones-detenidas-durante-45-minutos-3551722"},{"titulo":"Policía captura a un hombre armado en un velorio en Bogotá y con cinco cédulas en su poder: tenía anotaciones judiciales","descripcion":"Los hechos ocurrieron en el barrio San Fernando Occidental de la localidad de Barrios Unidos.","fecha_evento":"28/04/2026 23:24","nivel":"ALTO","tipo":"CAPTURA","departamento":"CUNDINAMARCA","municipio":"Bogotá","fuente":"El Tiempo","url_fuente":"https://www.eltiempo.com/bogota/policia-captura-a-un-hombre-armado-en-un-velorio-en-bogota-y-con-cinco-cedulas-en-su-poder-tenia-anotaciones-judiciales-3551682"},{"titulo":"Policía de Colombia captura a cabecilla criminal responsable del atentado que dejó 20 muertos en el Cauca","descripcion":"Policía de Colombia captura a cabecilla criminal responsable del atentado que dejó 20 muertos en el Cauca.","fecha_evento":"28/04/2026 21:19","nivel":"CRÍTICO","tipo":"CAPTURA","departamento":"CAUCA","municipio":"N/A","fuente":"Ecuavisa","url_fuente":"https://news.google.com/rss/articles/CBMirAFBVV95cUxQcGkxVU15bzVZTWU3U1g3aGdCMDVUb2Nqb2hNRVpZN2J4V3kwMVRIdmtJTnppWEtOTGk0em1YRmdha1dXRVpjVkZiUEdjTFVrbzFfVEF5bzVTWHFYeDhHN3NGZXhHbWQwcXhNQWJaQ0t1S2NUT2hFVFU3Ui1VdlVtaVFwX255TnQ4Zk5wbTMtZkZGWEZlcERtYkp6RWlIaDl0RExQY045TXFzV1Rn0gGyAUFVX3lxTFBpTWhJU2V0QTRoOXpHWm1tVXhWZ05sZDdzeXZ4YmtVOUpRS3I1bEdoaWgwa1NrUzhYWnRMTG95ZlphUlVuSDBrZXVEQU1GSnVwYzZQQkpkMnUtM2dqVHVYX3dGTXN2ckpEX1I5UVdpbG9MQUg4QjZCU2pxdjV6dllQQXlaWlI0MmtGN3dLQ28xd0ZSM3hzWWt2VmdjUGwwMDdIUEpwY2ZrU1RXN1o4NzEzdEE?oc=5"}],"vias":[{"via":"Vía Bogotá-Girardot","ruta":"N/A","estado":"ALERTA","descripcion":"Secuestro y robo violento a familia cerca de peaje en vía Bogotá-Girardot, generando alerta por seguridad.","causa":"OTRO","fecha_reporte":"29/04/2026 04:07","tiempo_estimado":"Indefinido","alternativa":"N/A","region":"CUNDINAMARCA","fuente":"El Tiempo"},{"via":"Autopista Sur","ruta":"N/A","estado":"CERRADO","descripcion":"Volcamiento de bus intermunicipal en la autopista Sur hacia Bogotá causó cierre total y fuerte congestión.","causa":"ACCIDENTE","fecha_reporte":"29/04/2026 04:02","tiempo_estimado":"Varias horas","alternativa":"N/A","region":"CUNDINAMARCA","fuente":"El Tiempo"},{"via":"Múltiples vías nacionales","ruta":"N/A","estado":"RESTRINGIDO","descripcion":"Manifestaciones y accidentes bloquean puntos clave de la movilidad en diferentes zonas del país.","causa":"PROTESTA, ACCIDENTE","fecha_reporte":"28/04/2026 20:38","tiempo_estimado":"Indefinido","alternativa":"N/A","region":"NACIONAL","fuente":"hsb noticias"},{"via":"Vías nacionales (riesgo)","ruta":"N/A","estado":"ALERTA","descripcion":"Ideam alerta por lluvias intensas y riesgo de deslizamientos en Colombia que pueden afectar la infraestructura vial.","causa":"DERRUMBE","fecha_reporte":"28/04/2026 19:52","tiempo_estimado":"Indefinido","alternativa":"N/A","region":"NACIONAL","fuente":"IDEAM / Diario del Huila"}],"alertas_ambientales":[{"tipo":"DESLIZAMIENTO","descripcion":"Alerta por lluvias intensas y riesgo de deslizamientos en varias regiones de Colombia.","departamento":"NACIONAL","nivel":"ALTO","fuente":"IDEAM"}],"recomendaciones":{"logistica":"Planificar rutas alternas y horarios, especialmente en la Autopista Sur y vías nacionales con riesgo de deslizamientos. Considerar demoras en trayectos aéreos por protocolos de seguridad.","perimetros":"Reforzar la seguridad en zonas aledañas a la vía Bogotá-Girardot y en áreas urbanas de Bogotá con historial delictivo. Extremar precauciones en infraestructuras críticas como aeropuertos.","operacional":"Mantener vigilancia activa en vías nacionales y urbanas por incidentes y manifestaciones. Coordinar respuesta interinstitucional ante alertas ambientales y eventos de orden público de alto impacto.","digital":"Monitorear redes sociales y fuentes oficiales (ej. Aerocivil, INVIAS, IDEAM) para obtener actualizaciones en tiempo real sobre seguridad, estado de vías y alertas meteorológicas."},"mapa_calor":[{"departamento":"Cundinamarca","codigo":"CUN","lat":4.6097,"lng":-74.0817,"nivel":5,"eventos":6,"tipo_principal":"Homicidio"},{"departamento":"Cauca","codigo":"CAU","lat":2.441,"lng":-76.606,"nivel":4,"eventos":1,"tipo_principal":"Captura"},{"departamento":"Nacional","codigo":"COL","lat":4.5709,"lng":-74.2973,"nivel":3,"eventos":3,"tipo_principal":"Deslizamiento"}],"distribucion":[{"ciudad":"Bogotá","eventos":4,"nivel":"CRÍTICO"},{"ciudad":"Soacha","eventos":1,"nivel":"ALTO"},{"ciudad":"Popayán","eventos":1,"nivel":"CRÍTICO"}],"resumen_tactico":{"amenaza_principal":"La amenaza principal incluye la criminalidad organizada con secuestros y homicidios, incidentes de seguridad operacional aérea y afectaciones viales por accidentes, manifestaciones y fenómenos naturales.","zona_critica":"CUNDINAMARCA (principalmente Bogotá y alrededores) y CAUCA.","tendencia":"ALTA","fuentes_consultadas":5}};
 
-var C = { red:'#E63946', orange:'#F4A261', yellow:'#E9C46A', green:'#2A9D8F', blue:'#457B9D', muted:'#6B7A99', text:'#C8D6E5', white:'#F0F4FF' };
-function cNivel(n){ return {CRÍTICO:C.red,CRITICO:C.red,ALTO:C.orange,MEDIO:C.blue,BAJO:C.green}[n]||C.muted; }
-function cCalor(n){ return ['','#2A9D8F','#457B9D','#F4A261','#E9C46A','#E63946'][n]||C.muted; }
+function cNivel(n){
+  return {CRÍTICO:'var(--red2)',CRITICO:'var(--red2)',ALTO:'var(--orange)',MEDIO:'var(--blue)',BAJO:'var(--green)'}[n]||'var(--muted)';
+}
+function cssNivel(n){
+  return {CRÍTICO:'#C8102E',CRITICO:'#C8102E',ALTO:'#E8750A',MEDIO:'#2851A3',BAJO:'#0A7C5C'}[n]||'#6B7280';
+}
 function lCalor(n){ return ['','BAJO','MODERADO','ALTO','MUY ALTO','CRÍTICO'][n]||''; }
+function cCalor(n){ return ['','#2A9D8F','#457B9D','#E8750A','#E9C46A','#C8102E'][n]||'#6B7280'; }
 
-var coordsDept={ 'ANTIOQUIA':[6.7,-75.5], 'BOGOTÁ':[4.7,-74.1], 'VALLE DEL CAUCA':[3.8,-76.5], 'CAUCA':[2.4,-76.6], 'NARIÑO':[1.2,-77.3] };
+var coordsDept={
+  'ANTIOQUIA':[6.7,-75.5],'BOGOTÁ':[4.71,-74.07],'BOGOTA':[4.71,-74.07],
+  'VALLE DEL CAUCA':[3.8,-76.5],'CAUCA':[2.4,-76.6],'NARIÑO':[1.2,-77.3],
+  'CUNDINAMARCA':[5.0,-74.3],'HUILA':[2.5,-75.5],'TOLIMA':[4.1,-75.2],
+  'SANTANDER':[6.9,-73.1],'CÓRDOBA':[8.3,-75.9],'CESAR':[10.0,-73.5],
+  'META':[3.5,-73.4],'BOLÍVAR':[8.7,-74.0],'MAGDALENA':[10.4,-74.4],
+  'NACIONAL':[4.5,-74.0]
+};
 
 function render(){
-  // Textos Generales
-  document.getElementById('h-fecha').textContent = datos.fecha + ', ' + datos.hora;
-  document.getElementById('hero-alerta-label').textContent = 'Alerta Táctica · ' + datos.fecha;
+  document.getElementById('h-fecha').textContent = datos.fecha;
+  document.getElementById('h-hora').textContent = datos.hora + ' ' + (parseInt(datos.hora)>=12?'p.m.':'a.m.');
+  document.getElementById('hero-alerta-label').textContent = 'Alerta Táctica: ' + (datos.zona||'Nacional') + ' ' + datos.fecha;
   document.getElementById('hero-title').textContent = datos.titulo_hero || 'Reporte Nacional';
-  document.getElementById('radar-nivel').textContent = 'NIVEL ' + (datos.resumen.criticos>0?'5: CRÍTICO':'3: MEDIO');
+  document.getElementById('radar-update').textContent = 'UPDATE: ' + datos.fecha + ' (' + datos.hora + ')';
+  document.getElementById('vias-update').textContent = 'Update ' + datos.hora + ' AM';
+  document.getElementById('map-update').textContent = datos.fecha + ' · ' + datos.hora;
   document.getElementById('footer-year').textContent = new Date().getFullYear();
-
-  // Resumen
+  
   var r = datos.resumen||{};
   document.getElementById('st-total').textContent = r.total_eventos||0;
   document.getElementById('st-crit').textContent = r.criticos||0;
   document.getElementById('st-alto').textContent = r.alto_impacto||0;
   document.getElementById('st-reg').textContent = r.regiones||0;
   document.getElementById('st-vias').textContent = r.vias_afectadas||0;
+  document.getElementById('radar-nivel').textContent = 'NIVEL ' + (r.criticos>0?'5: CRÍTICO':'3: MEDIO');
 
-  // Cards principales
   var ops = datos.orden_publico||[];
-  if(ops[0]) {
+  if(ops[0]){
     var c1 = document.getElementById('card-tactica');
-    c1.querySelector('.card-title').textContent = ops[0].titulo;
-    c1.querySelector('.card-body').textContent = ops[0].descripcion;
-    c1.style.borderTop = '3px solid ' + cNivel(ops[0].nivel);
+    c1.querySelector('.info-card-title').textContent = ops[0].titulo;
+    c1.querySelector('.info-card-body').textContent = ops[0].descripcion;
   }
-  if(ops[1]) {
+  if(ops[1]){
     var c2 = document.getElementById('card-infra');
-    c2.querySelector('.card-title').textContent = ops[1].titulo;
-    c2.querySelector('.card-body').textContent = ops[1].descripcion;
-    c2.style.borderTop = '3px solid ' + cNivel(ops[1].nivel);
+    c2.querySelector('.info-card-title').textContent = ops[1].titulo;
+    c2.querySelector('.info-card-body').textContent = ops[1].descripcion;
   }
 
-  // Nodos y Recomendaciones
+  // Nodos
   var nc = document.getElementById('nodos-container');
-  nc.innerHTML = (datos.nodos_riesgo||[]).map(n=>'<div class="nodo-item"><span class="nodo-name">'+n.nombre+'</span><span><span class="nodo-pct" style="color:'+cNivel(n.nivel)+'">'+n.porcentaje+'%</span></span></div>').join('');
-  
+  nc.innerHTML = (datos.nodos_riesgo||[]).map(n=>
+    '<div class="nodo-item"><span class="nodo-name">'+n.nombre+'</span>'+
+    '<div style="text-align:right;"><div class="nodo-pct" style="color:'+cssNivel(n.nivel)+'">'+n.porcentaje+'%</div>'+
+    '<div class="nodo-nivel-label" style="color:'+cssNivel(n.nivel)+'">'+n.nivel+'</div></div></div>'
+  ).join('');
+
+  // Recomendaciones
   var recs = datos.recomendaciones||{};
-  document.getElementById('rec-container').innerHTML = 
-    '<div class="rec-item"><span class="rec-icon">▲</span><span><strong>LOGÍSTICA:</strong> '+recs.logistica+'</span></div>' +
-    '<div class="rec-item"><span class="rec-icon">◉</span><span><strong>PERÍMETROS:</strong> '+recs.perimetros+'</span></div>';
+  document.getElementById('rec-container').innerHTML = [
+    ['▲','LOGÍSTICA',recs.logistica],
+    ['◉','PERÍMETROS',recs.perimetros],
+    ['◈','OPERACIONAL',recs.operacional||''],
+    ['◎','DIGITAL',recs.digital||'']
+  ].filter(x=>x[2]).map(x=>
+    '<div class="rec-item"><span class="rec-icon">'+x[0]+'</span>'+
+    '<span><strong>'+x[1]+':</strong> '+x[2]+'</span></div>'
+  ).join('');
+
+  // Táctico
+  document.getElementById('tac-amenaza').textContent = (datos.resumen_tactico||{}).amenaza_principal||'N/A';
+  document.getElementById('tac-zona').textContent = (datos.resumen_tactico||{}).zona_critica||'N/A';
+
+  // Distribución
+  document.getElementById('dist-container').innerHTML = (datos.distribucion||[]).map(d=>
+    '<div class="dist-item"><span class="dist-ciudad">'+d.ciudad+'</span>'+
+    '<span class="dist-ev" style="color:'+cssNivel(d.nivel)+'">'+d.eventos+' ev</span></div>'
+  ).join('');
 
   // Eventos
   document.getElementById('eventos-container').innerHTML = ops.map(e=>{
-  var tagClass = {CRÍTICO:'tag-critico',ALTO:'tag-alto',MEDIO:'tag-medio',BAJO:'tag-bajo'}[e.nivel]||'tag-medio';
-  var tipoClass = ['COMBATE','ATENTADO','SECUESTRO','MASACRE'].includes(e.tipo)?'tag-hostil':
-                  ['CAPTURA','OPERATIVO'].includes(e.tipo)?'tag-operativo':'tag-alerta';
-  return '<div class="evento" style="border-left-color:'+cNivel(e.nivel)+';"><div class="evento-header"><div><div class="evento-titulo">'+e.titulo+'</div><div class="evento-fecha">🕐 '+( e.fecha_evento||'')+'</div></div></div><div class="evento-desc">'+e.descripcion+'</div><div class="evento-tags"><span class="tag '+tagClass+'">'+e.nivel+'</span><span class="tag '+tipoClass+'">'+e.tipo+'</span><span class="tag tag-geo">📍 '+(e.municipio?e.municipio+', ':'')+e.departamento+'</span><span class="tag tag-institucional">'+e.fuente+'</span></div></div>';
-}).join('');
+    var tagClass = {CRÍTICO:'tag-critico',ALTO:'tag-alto',MEDIO:'tag-medio',BAJO:'tag-bajo'}[e.nivel]||'tag-medio';
+    var tipoClass = ['COMBATE','ATENTADO','SECUESTRO','MASACRE'].includes(e.tipo)?'tag-hostil':
+                    ['CAPTURA','OPERATIVO'].includes(e.tipo)?'tag-operativo':'tag-alerta';
+    return '<div class="evento">'+
+      '<div class="evento-header">'+
+        '<div class="evento-title">'+e.titulo+'</div>'+
+        '<div class="evento-fecha">'+( e.fecha_evento||'')+'</div>'+
+      '</div>'+
+      '<div class="evento-desc">'+e.descripcion+'</div>'+
+      '<div class="evento-tags">'+
+        '<span class="tag '+tagClass+'">'+e.nivel+'</span>'+
+        '<span class="tag '+tipoClass+'">'+e.tipo+'</span>'+
+        '<span class="tag tag-geo">📍 '+(e.municipio?e.municipio+', ':'')+e.departamento+'</span>'+
+        '<span class="tag tag-fuente">'+e.fuente+'</span>'+
+      '</div></div>';
+  }).join('');
 
-  // Táctico y Distribución
-  document.getElementById('tac-amenaza').textContent = (datos.resumen_tactico||{}).amenaza_principal||'N/A';
-  document.getElementById('tac-zona').textContent = (datos.resumen_tactico||{}).zona_critica||'N/A';
-  document.getElementById('dist-container').innerHTML = (datos.distribucion||[]).map(d=>'<div class="dist-row"><span>'+d.ciudad+'</span><span style="color:'+cNivel(d.nivel)+'">'+d.eventos+' ev</span></div>').join('');
-  
   // Vías
-  document.getElementById('vias-tbody').innerHTML = (datos.vias||[]).map(v=>'<tr><td><div class="via-corredor">'+(v.via||'—')+'</div></td><td>'+(v.region||'')+'</td><td><span class="estado-pill" style="background:var(--red);color:#fff;">'+v.estado+'</span></td><td class="via-obs">'+(v.descripcion||'')+'</td></tr>').join('');
+  var estadoClass = {CERRADO:'estatus-cerrado','BLOQUEO TOTAL':'estatus-bloqueo',RESTRINGIDO:'estatus-restringido',ALERTA:'estatus-alerta',NORMAL:'estatus-normal'};
+  document.getElementById('vias-tbody').innerHTML = (datos.vias||[]).map(v=>{
+    var ec = estadoClass[v.estado]||'estatus-alerta';
+    return '<tr>'+
+      '<td><div class="via-name">'+(v.via||'—')+'</div></td>'+
+      '<td><div class="via-tramo">'+(v.region||v.ruta||'Nacional')+'</div></td>'+
+      '<td><span class="estatus-pill '+ec+'">'+v.estado+'</span></td>'+
+      '<td class="via-obs">'+(v.descripcion||'')+'</td>'+
+    '</tr>';
+  }).join('');
 
-  // Mapa
-  var map = L.map('map',{center:[4.5,-74.0],zoom:5,zoomControl:true});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
-  (datos.mapa_calor||[]).forEach(d => {
-    var coords = coordsDept[d.departamento.toUpperCase()] || [4.5,-74.0];
-    L.circleMarker(coords, { radius:8+(d.nivel*4), fillColor:cCalor(d.nivel), color:'#000', weight:1, fillOpacity:0.8 }).addTo(map);
-  });
+  // MAPA
+  setTimeout(function(){
+    var map = L.map('map',{center:[4.5,-74.0],zoom:5});
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© CartoDB'}).addTo(map);
+    
+    (datos.mapa_calor||[]).forEach(d=>{
+      var dept = (d.departamento||'').toUpperCase();
+      var coords = coordsDept[dept]||[4.5+(Math.random()-0.5)*4,-74.0+(Math.random()-0.5)*4];
+      var col = cCalor(d.nivel||2);
+      L.circleMarker(coords,{
+        radius:10+(d.nivel||2)*4,
+        fillColor:col,color:'#fff',weight:2,fillOpacity:0.75
+      }).bindPopup('<strong>'+d.departamento+'</strong><br>Nivel: '+lCalor(d.nivel)+'<br>Eventos: '+(d.eventos||'')).addTo(map);
+    });
+    
+    // También pintar eventos en mapa
+    (datos.orden_publico||[]).forEach(e=>{
+      var dept = (e.departamento||'').toUpperCase();
+      var coords = coordsDept[dept];
+      if(coords){
+        var col = cssNivel(e.nivel);
+        L.circleMarker([coords[0]+(Math.random()-0.5)*0.4,coords[1]+(Math.random()-0.5)*0.4],{
+          radius:6,fillColor:col,color:'#fff',weight:1.5,fillOpacity:0.9
+        }).bindPopup('<strong>'+e.titulo+'</strong><br>'+e.departamento+(e.municipio?', '+e.municipio:'')).addTo(map);
+      }
+    });
+  },300);
 }
 
 document.addEventListener('DOMContentLoaded', render);
 
-async function generarPDF() {
-  var btn = document.getElementById('btnPDF');
-  btn.innerHTML = '⏳ Generando...';
-  btn.style.display = 'none';
+async function generarPDF(){
+  var btn=document.getElementById('btnPDF');
+  btn.innerHTML='⏳ Generando...';
+  btn.style.display='none';
   await new Promise(r=>setTimeout(r,500));
-  var canvas = await html2canvas(document.getElementById('contenido'), { scale:2, useCORS:true, backgroundColor:'#0A0E1A' });
-  var imgData = canvas.toDataURL('image/png');
-  var pdf = new window.jspdf.jsPDF('p','mm','a4');
-  var pdfW = pdf.internal.pageSize.getWidth();
-  var pdfH = pdf.internal.pageSize.getHeight();
-  var imgH = (canvas.height*pdfW)/canvas.width;
-  var posY = 0, pg = 0;
-  while(posY < imgH){
-    if(pg>0) pdf.addPage();
-    pdf.addImage(imgData,'PNG',0,-posY,pdfW,imgH);
-    posY+=pdfH; pg++;
-  }
+  var canvas=await html2canvas(document.getElementById('contenido'),{scale:2,useCORS:true,backgroundColor:'#FFFFFF'});
+  var imgData=canvas.toDataURL('image/png');
+  var pdf=new window.jspdf.jsPDF('p','mm','a4');
+  var pdfW=pdf.internal.pageSize.getWidth();
+  var pdfH=pdf.internal.pageSize.getHeight();
+  var imgH=(canvas.height*pdfW)/canvas.width;
+  var posY=0,pg=0;
+  while(posY<imgH){if(pg>0)pdf.addPage();pdf.addImage(imgData,'PNG',0,-posY,pdfW,imgH);posY+=pdfH;pg++;}
   pdf.save('VISE_ALTUM.pdf');
-  btn.style.display = 'flex';
-  btn.innerHTML = '📄 Descargar PDF';
+  btn.style.display='flex';
+  btn.innerHTML='📄 Descargar PDF';
 }
 </script>
 </body>
