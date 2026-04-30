@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1200">
 <title>VISE ALTUM · Boletín 30/04/2026</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
   --border:#D1D9E6;--border2:#E5EAF2;--text:#1F2937;--text2:#374151;--muted:#6B7280;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;min-width:1100px;}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;min-width:1100px;word-spacing:normal;letter-spacing:normal;}
 * {-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 .page{max-width:1100px;margin:0 auto;padding:20px;background:var(--white);}
 
@@ -82,8 +82,8 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
 .info-card{border:1px solid var(--border);padding:14px;background:var(--white);}
 .info-card-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.info-card-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:8px;border-bottom:1px solid var(--border2);padding-bottom:8px;}
-.info-card-body{font-size:12px;color:var(--text2);line-height:1.6;font-style:italic;}
+.info-card-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:8px;border-bottom:1px solid var(--border2);padding-bottom:8px;word-break:break-word;overflow-wrap:break-word;}
+.info-card-body{font-size:12px;color:var(--text2);line-height:1.6;font-style:italic;word-break:break-word;overflow-wrap:break-word;}
 .info-card.border-red{border-top:3px solid var(--red2);}
 .info-card.border-blue{border-top:3px solid var(--blue);}
 
@@ -101,9 +101,9 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .evento:last-child{border-bottom:none;}
 .evento-bogota{background:rgba(40,81,163,0.04);border-left:3px solid var(--blue);padding-left:10px;}
 .evento-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px;}
-.evento-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--navy);line-height:1.2;flex:1;font-style:italic;}
+.evento-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--navy);line-height:1.2;flex:1;font-style:italic;word-break:break-word;overflow-wrap:break-word;}
 .evento-fecha{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);white-space:nowrap;margin-top:3px;}
-.evento-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:8px;}
+.evento-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:8px;word-break:break-word;overflow-wrap:break-word;}
 .evento-tags{display:flex;gap:5px;flex-wrap:wrap;}
 .tag{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:1px;}
 .tag-critico{background:var(--red2);color:#fff;}
@@ -137,7 +137,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .estatus-restringido{background:var(--orange);color:#fff;}
 .estatus-alerta{background:var(--yellow);color:#1F2937;}
 .estatus-normal{background:var(--green);color:#fff;}
-.via-obs{font-size:11px;color:var(--muted);line-height:1.5;}
+.via-obs{font-size:11px;color:var(--muted);line-height:1.5;word-break:break-word;overflow-wrap:break-word;}
 
 /* SIDEBAR */
 .sb-section{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:16px;}
@@ -155,7 +155,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .gri-city{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy2);}
 .gri-phone{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--blue2);font-weight:600;}
 .gri-wrap{border:1px solid var(--border);overflow:hidden;}
-.rec-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border2);font-size:11px;color:var(--text2);line-height:1.5;}
+.rec-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border2);font-size:11px;color:var(--text2);line-height:1.5;word-break:break-word;overflow-wrap:break-word;}
 .rec-item:last-child{border-bottom:none;}
 .rec-icon{color:var(--red2);flex-shrink:0;margin-top:1px;font-size:13px;}
 .tac-item{padding:10px 12px;margin-bottom:8px;background:var(--bg);border-left:3px solid var(--border);}
@@ -163,7 +163,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .tac-item.alerta{border-left-color:var(--orange);background:#FFFBF0;}
 .tac-nivel{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px;}
 .tac-label{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:var(--navy);margin-bottom:3px;}
-.tac-val{font-size:11px;color:var(--text2);line-height:1.4;}
+.tac-val{font-size:11px;color:var(--text2);line-height:1.4;word-break:break-word;overflow-wrap:break-word;}
 .dist-item{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border2);}
 .dist-item:last-child{border-bottom:none;}
 .dist-bogota{background:rgba(40,81,163,0.04);padding-left:4px;}
@@ -171,10 +171,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .dist-ev{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;}
 
 /* MAPA */
-.map-section{border-top:2px solid var(--border);}
-.map-header{background:var(--navy);color:var(--white);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
-.map-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
-#map{height:400px;border:1px solid var(--border);border-top:none;}
+/* mapa eliminado */
 
 /* FOOTER */
 .footer{background:var(--navy);color:var(--white);text-align:center;padding:14px;margin-top:0;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;font-size:10px;}
@@ -203,7 +200,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 <!-- HEADER -->
 <div class="header">
   <div class="logo-wrap">
-    <img src="data:image/jpeg;base64,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" alt="VISE ALTUM Logo" style="height:70px;width:70px;object-fit:contain;margin-right:14px;flex-shrink:0;">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQA2wMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAAAQcFBggDBAL/xABCEAABAwMBBAYGBwUIAwAAAAABAAIDBAURBhIhMUEHE1FhcYEiMlKRk9EUFSNCobHBJFRig9IWM1WCkuHw8TZzdP/EABgBAQADAQAAAAAAAAAAAAAAAAABAgME/8QAIhEBAAICAwACAgMAAAAAAAAAAAECAxESITFBUQQTIjJh/9oADAMBAAIRAxEAPwC8UREBERAREQEREBEUE4CCVBXzV1wpaCLrauZkTO1x4rUrn0gwRktt1K6b+OQ7LVWbxHqtr1r63XKZVS1muL3OT1c0cDeyOPePMrGv1Ne3OybnUZ/y/JU/bDGfyI+IXZkKQexUg3VN9jOW3SfPfsn9FkaTpCvdNjruoqWj22YJ8x8kjJVMZ6/K30WjWrpJttSWsuMT6Rx4u9ZnvW5UtXBVwtmpZo5Y3cHMdkLSJifGtb1t490UA71KlYREQEREBERAREQEREBERAREQFB4KVBQCcBajqXWMVEX0ttDZqgbnSZ9Bh7O8r01JdZp3Pt9tc4cppWn3gH8/FaTW2t8AyRjdu7ljkvMdQwyXmOoTSUl01NUSPbOyWZgy4SvxgHsHYvrdoe+HcGU3xT8liLRcZLLdYqphIDDh7R95p4hXLSzsqYI54XB0cjQ5pHMFUpWL+qUpW/qrHaDvp4Mpvin5LydoG/jPoUpP/uPyW/6y1RS6VtJrapvWyvOxBA04MjuzuA5lVTprW981FrChZcbiYKY1DAymppxCw5cBsn0S6Tj6uQeZIC6K/jxMbXnBRlT0fagz6lJ8c/0r8no81D7NH8c/wBK1q3dI9+sdfiGudc6EBp6uonE+0CATiTZaQeO4gY4Ec1eem75R6itMNyoHExSDe13rMdzae8Jb8fj6j9FFXHo71FndHRj+ef6VjnyXrRV0bCypiZPgOdFG8vYQeThgf8ACrnvlzgtFrnr6gjYibkD2jyC58uNdNcK2asqXbUszi9x7+5ZWrFfFMlK08XPpDWtHqBjaeQCCvA3xZ3P7S08/BbW05XMbJnxytljkcyRpy2RpwWkc88vFXL0ea0+vYfq+4OaLlE3O1jAmb2gdvaFetvtpjy76lvCKAcqVduIiICIiAiIgIiICIiAiIgglYLVl5+qqENjcBUTnZZ/COZWcJ4rV6CptGpLnVxVVLHJNTP2Yy77zO0earb6Vv5p8+ljTkDrXAu7SvXVRptj0NknH3Ss9FZ7fD/dUrG+GVMtooJhiSmY4d+VXh1pTh1pSdc4GU+K3no0ve2x9pnflzBtw5PFvMeS2h2lrG71rbCfIrU9Z2NtjfTXuyRCH6O4daxnDuPhyKrFJr2pXHNJ2+PpGtlNfNS09PXXWKnjgjjDKfLg4l8jQXcOw7I78Kt7iH6Qq7fWWG7MlnkjJe6JztkbLz6wwMtOAMHdljsrfek21v1JY6HU9nY6R8UezPHH62xnJ4c2lV/oOipbvqKlhrYG1MDpIyQ57sAdY0cgc5ydxwN67qd03Ett7e2mrZSaiZLVXi6vFQJo4z1jpHueMgccO4jdvPLsVm9EtLS2uSsoqK5R1UUkMVQ5jQ/0XHI2hkAAHHBUvdYG0lwfT07HRMBYGRte528gcCQCeJ5c1aumqaXQOhqm4VzCy6XEgRQni3dho928pl6p3JM6jbx6VtRfTbg2007x1FKcykH1pOzyWgOeOZCurRekKSKysmvNLHUVtSeulMrclueSz40vYv8ACqX4YXHx5dywnFN53LnIvHIr0o66agrIaukl6uaFwcwg810T/Zexf4VSfDC/LtL2EEH6qpB/LCcNEYJj5TpO+w6hssFfDshzhsysB9R44hZlaRSahtNr1rHpm3U0MLJYyZHxjA63iG+OMrdgrw3qlERSsIiICIiAiIgIiICHgiFBi9SVn0Gx1lQD6TYzs+J3KoLTc5bTcYK2InajPpj2weIVi9Jc3Vad2AcdZM0Kqi/PYTw3rnyz3ty5p/nC+qKqjrKaKpp3B0MrA9ru0FfQq46M78GSustQ/c7L6Yk8D95v6jzVjgras8odFbbhK8KumiqqaSCZgdHI0tcD2Fe6g8FZZW+lqiTS2qKjTlc/9mqnbdK93AnkPMfiO9bG/RFhN3iu8NGaWtjeJNumkMYeQc+k0HDt4HEL5ekXT77taRV0WRX0X2kTm8SBvIHfzHh3r79FX9uorBFVnDahn2VQ0fdkHHyO4juIUVmY6Z16nTxs2htPWWq+mQUfWVQ39fUyule3wLicLWabOuNcGoOXWi0uwzskf/3+A71l+ky/SW61stlAdq43I9VGG8WtO4nx34HeVmdHWGLT9igogAZcbUzvaeePkOHkkzNpJ7tpm29y/SjGFKloLBa0v8Wm7DPXyYMuNiBntyHgP18lmzwznC5+6VNTm/X801O/NDQExswdz5OD3eA4DwPaomdKZLcYavDdJ6e6R3WSRz52TieR/NxBy73jIXUtJM2opopm42ZGBwx3hcludkEcscF0v0d1BqtE2aV5JcaVgcTzICrVnh+YbGiIrtxERAREQEREBERAREKDSOlXdYoD2Tj8lVJf3q4Ok2nM+lpntGTC9r/AZ3qmS5YZI7cWf+73hqpaeeKenk6uWJ4ex45EHcr20xeYr7aKevi3F4xIzPqPHEfLuXP5dvW2dGuofqm8/RKh+zS1hDHZPqycGu/Q+SUnScN9TqV1KCoHHipW7sQeBVZ1bhoLXH0wjYsl3BEuOEUgyfwJ9zj7Ks3AWI1XYoNRWOot0x2HPG1FLjJjePVd7/eMqJUvEzDSNEU82qtU1eq69hEELuqo43D1ccPcDk97u5Wa0L4bJbKe0Wumt9I3EUEYaO13aT3k5K+8KYTSuoSoPFSvKpmip4XzzvbHFG0ve9xwGgbySizTelXVH9n9PmCll2a+uzHCQd7G/ff5A7u8hc9+qAOA7OxZrWeopNTahqLiS4Qf3dNG77kY4bu08T49ywDnLOfXLe3KX7Lt4xxXSXRb/wCBWb/5wuZZZAxhdngCV1ToihNt0jaKR49OKlY13jjerVXxR3tnERFZuIiICIiAiIgIiICIiD4bzRNuFqq6Nw3TROb+C53lY+GR8UmQ9ji1wPaNy6VKpXpQsrrbfDXRM/Zqz0sgcHjiP1WeSOnPnrvtp7nLzLt+c4PaoLt6/DncVk5l79HWoRfrIwTPzWU2I5u09jvP8wVti510XqF+nr9DVlx+jSfZTtHAsPPyXQ0L2yxskY7aY4Za4HiDzW9Z3DsxW5Q9FBUorNUYHYgUoggqq+m3VIpKFmn6R/29UNqpwfVj5N8/yHerGvlzp7Naqm4VbsRU7C87+J5DzXLV7utRebrU3KscTNUPLiPZHIeAGB5KsyzyW1GnxudgkHiF5lyguX4LuShzsppm2vveordbWM2hPO0PBGRsDe7PkD711jE1rI2saMNaAAFTPQNpxxdU6iqmbiDBS5H+pw/AeSugK0Q6ccahKIilcREQEREBERAREQEREEcliNT2SDUFomoZ8Nc4ZjkxvY4cCswodwKImIn1zLc6Ke2VstHWRmOeJ2y5v6+BXwucr513o6LU1J1lPsRXGJv2ch4PHsO7u/kqJuNLU2+slo66F0FTEcSRvG8H9R2FYzXTjvj4z/jwc4Eb1cvQ/qb6fbzZ6t/7TSNzFni6P/ZUuXLfOhqzTVuoTdMvZT0bSMtO573cvDG/3KapxT/JeiKApWrsFB4KVBUCkOm3VP0usZp+leeppzt1Jadzn8mnw4qqS7dnOVtPSdYJ9P6qqWyF8lPVuM8MjuYJ3jPcVqJcVDlvvaS5ZnR+nKrVd7it1KCI87VRLyjZzPj2L5tOWG46mubbfaYS+Q73yH1Im+048h+a6Y0RpKg0jaRRUg25nYdUVDh6Urvl2BIhalN9stabfTWu3QUNHGI4IGBjGjsC+xEVnQIiICIiAiIgIiICIiAiIgIiIPy7geOe5YDVWkrXqenDK+MsnaMRVMYxJH3Z5juO5bCiImN+uc9U6Bv2nXPkdCa2iG8VVM3OB/Gzi38QtXhrqiFhFNUSxsJyerlIBPkV1meC1u+6G05fHOkrbbG2c8Z4Ps3nxI4+eVXiynD9OcDdK/8Af6r4zvmvwbpX/v8AVfGd81b1f0KUcji63Xiohb7E0YePeMLDS9CV32z1V3oi3ltMeD+SjUqfrurd11r/AN/qvjO+a8zda/8Af6r4zvmrMh6ELoX4qLxSNYeJjjeT+OFm7d0I2mFwNyudXVY+7E1sQ/VSmKWUhPWVFUWMnnmmOcMa55ccnsC3vR/RPe749lReGPtdBx9MfbyD+Fh9Xxd7irusOkrBp7fabXTwSc5tnakP+Y5P4rOBTppXHHssVpzT9s03QChtFKyCIHLiN7pHe048SVlkRS0EREBERAREQEREBERAREQEREBERAREQEREBQpRBCKUQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERB/9k=" alt="VISE ALTUM Logo" style="height:90px;width:90px;object-fit:contain;margin-right:14px;flex-shrink:0;">
     <div class="logo-inner">
       <div class="logo-text">VISE ALTUM</div>
       <div class="logo-sub">Estrategia de Vigilancia Integrada</div>
@@ -228,9 +225,9 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
     <div class="hero-estado-val">ACTIVO · TIEMPO REAL</div>
   </div>
   <div class="hero-content">
-    <div class="hero-alerta">Boletín BOGOTÁ · 30/04/2026 05:28</div>
-    <div class="hero-title">ALERTA POR LLUVIAS, MOVILIDAD CRÍTICA Y SINIESTRALIDAD EN BOGOTÁ Y CUNDINAMARCA</div>
-    <div class="hero-sub">Reporte consolidado de inteligencia. 10 fuentes consultadas.</div>
+    <div class="hero-alerta">Boletín BOGOTÁ · 30/04/2026 09:45</div>
+    <div class="hero-title">BOGOTÁ LIDERA AGENDA CON CAPTURAS POR TRÁFICO, CIERRE PREVENTIVO DE EL DORADO Y ALERTAS POR CLIMA</div>
+    <div class="hero-sub">Reporte consolidado de inteligencia. 4 fuentes consultadas.</div>
   </div>
 </div>
 
@@ -240,15 +237,15 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 7.4 16.8"/><circle cx="12" cy="12" r="3"/></svg>
     Radar de Sucesos — BOGOTÁ
   </div>
-  <div class="radar-update">PERÍODO: 30/04/2026 05:28</div>
+  <div class="radar-update">PERÍODO: 30/04/2026 09:45</div>
 </div>
 
 <!-- STATS — 4 columnas claras -->
 <div class="stats-row">
   <div class="stat">
-    <div class="stat-n">3</div>
+    <div class="stat-n">5</div>
     <div class="stat-l">Eventos Seguridad</div>
-    <div class="stat-bar"><div class="stat-bar-fill" style="width:30%;background:var(--navy);"></div></div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:50%;background:var(--navy);"></div></div>
   </div>
   <div class="stat">
     <div class="stat-n blue">2</div>
@@ -261,9 +258,9 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
     <div class="stat-bar"><div class="stat-bar-fill" style="width:60%;background:var(--orange);"></div></div>
   </div>
   <div class="stat">
-    <div class="stat-n green">2</div>
+    <div class="stat-n green">1</div>
     <div class="stat-l">Alertas Ambientales</div>
-    <div class="stat-bar"><div class="stat-bar-fill" style="width:50%;background:var(--green);"></div></div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:25%;background:var(--green);"></div></div>
   </div>
 </div>
 
@@ -278,32 +275,32 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
       <div class="cards-grid">
         <div class="info-card border-red">
           <div class="info-card-label">Inteligencia Táctica</div>
-          <div class="info-card-title">Siniestralidad vial masiva y riesgos por remoción de masa en corredores estratégicos.</div>
-          <div class="info-card-body">Zona crítica: <strong>Cundinamarca (Vía La Mesa)</strong>. Tendencia: <strong style="color:#FF6B6B;">ALTA</strong>. Se registraron 3 eventos en el período, con 0 de nivel crítico.</div>
+          <div class="info-card-title">Uso de fachadas comerciales para narcotráfico y drones interfiriendo infraestructura crítica.</div>
+          <div class="info-card-body">Zona crítica: <strong>Bogotá (Localidades de Suba y Engativá)</strong>. Tendencia: <strong style="color:#FF6B6B;">ALTA</strong>. Se registraron 5 eventos en el período, con 0 de nivel crítico.</div>
         </div>
         <div class="info-card border-blue">
           <div class="info-card-label">Conectividad Vial</div>
           <div class="info-card-title">4 corredores afectados</div>
-          <div class="info-card-body"><strong>Avenida Caracas / Metro Bogotá</strong>: NORMAL (MANTENIMIENTO). <strong>Vías Principales Bogotá</strong>: ALERTA (OTRO). Ver tabla completa abajo.</div>
+          <div class="info-card-body"><strong>Sistema TransMilenio</strong>: NORMAL (OTRO). <strong>Aeropuerto El Dorado</strong>: ALERTA (OTRO). Ver tabla completa abajo.</div>
         </div>
       </div>
 
       <!-- Flash bar -->
       <div class="flash-bar">
         <span class="flash-title">Reporte de Novedades · Seguridad y Orden Público</span>
-        <span class="flash-badge">▲ 3 Eventos · Fuentes Verificadas</span>
+        <span class="flash-badge">▲ 5 Eventos · Fuentes Verificadas</span>
       </div>
 
       <!-- Eventos dinámicos -->
-      <div class="evento evento-bogota"><div class="evento-header"><div class="evento-title">VIOLENTO FLETEO EN FONTIBÓN</div><div class="evento-fecha">30/04/2026 02:54</div></div><div class="evento-desc">Delincuentes interceptaron a una víctima en un bus tras identificar una maleta específica. Las autoridades analizan videos para identificar a los responsables.</div><div class="evento-tags"><span class="tag tag-alto">ALTO</span><span class="tag tag-alerta">HURTO</span><span class="tag tag-geo">🏙️ BOGOTÁ · Bogotá (Fontibón)</span><a href="https://www.eltiempo.com/bogota/video-muestra-el-momento-exacto-de-violento-fleteo-en-bogota-ya-tenian-identificada-maleta-de-la-victima-y-lo-interceptaron-mientras-esperaba-un-bus-3551921" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El Tiempo</a></div></div><div class="evento"><div class="evento-header"><div class="evento-title">SOLICITUD PLAN MAESTRO DE SEGURIDAD SUROCCIDENTE</div><div class="evento-fecha">30/04/2026 03:13</div></div><div class="evento-desc">Gremios empresariales del suroccidente colombiano exigen plan de seguridad ante la situación regional; la Fuerza Pública emitió respuesta.</div><div class="evento-tags"><span class="tag tag-medio">MEDIO</span><span class="tag tag-institucional">OTRO</span><span class="tag tag-geo">📍 Regional, VALLE DEL CAUCA</span><a href="https://news.google.com/rss/articles/CBMi_AFBVV95cUxNeURiWE1XOG5YUW15N0RNQTNXTi0tcHBTb1p3cnhmRF9FN3FaX2lyMVI0c1ZOX18yTERTNVUzbklRVnUwMnJORDJwd2V0TjB4R3ZPUFVZT2tkSDVjaXZvbi1NanhhZkdRNXJwN2dJeGJGaDVlZktkNFhPSm84U0lZMjNaVEFoYkN0ZUQzZjVOcGlQSzkzS3p0NC1SMU9UekhsMEQ3UWdZc3dnRXAtY0FjcEUxcmFYaHZ6U0NSeGgzeDFkX3N1RVNHMzFLaTRxVVM4dnZGNXk4M0tzYTRuWk0zSDBmLTVYd3ZfaER6MFNYR0kybElYc0ZCRFl3WEHSAYICQVVfeXFMUG5xbExVcXNmeWFwd1ZwZ2NHY3NDYXNaY29CSnRvNHcteDVkS0ZtaWlveVBBYW95d2NYY3BCT205bVN1bWoySWlGZUNYMWpXbjUxU0d1QWVTZFlLaDZzUFJsdXV2bGVhNk0zMkxrb0tBLTA5TWJCQ1g3d0x5eHI4UEN3V3ItMC1BOVVDeGExSXFFZVlrY2ROWjhONmlvYkF6cFBnSmE4eFBBMzBXQnhjaFkyNUtVNGZKLWtQMnM3VWdSS19MemlTOE14RVRJVUNReEFaYXIteVZVLUdVV0l3ZWFIRkpkZ2VjR0J4c0RPYUtlVk9aa1RpUnhkQzdMOWpHMlV3?oc=5" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El País</a></div></div><div class="evento evento-bogota"><div class="evento-header"><div class="evento-title">PROGRAMA BUENA PAGA PARA COMERCIANTES</div><div class="evento-fecha">30/04/2026 02:30</div></div><div class="evento-desc">Secretaría de Desarrollo Económico otorgará incentivos de hasta 500.000 pesos a comerciantes que paguen a tiempo sus créditos.</div><div class="evento-tags"><span class="tag tag-bajo">BAJO</span><span class="tag tag-institucional">OTRO</span><span class="tag tag-geo">🏙️ BOGOTÁ · Bogotá</span><a href="https://www.eltiempo.com/bogota/comerciantes-de-bogota-podran-recibir-hasta-500-000-pesos-por-pagar-a-tiempo-sus-creditos-3552065" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El Tiempo</a></div></div>
+      <div class="evento evento-bogota"><div class="evento-header"><div class="evento-title">Captura de red de narcotráfico en lechonería de Suba</div><div class="evento-fecha">30/04/2026 14:02</div></div><div class="evento-desc">Policía de Bogotá desmanteló expendio de estupefacientes (marihuana, cocaína, tusi) que funcionaba bajo la fachada de una lechonería en el barrio Aures.</div><div class="evento-tags"><span class="tag tag-alto">ALTO</span><span class="tag tag-operativo">CAPTURA</span><span class="tag tag-geo">🏙️ BOGOTÁ · Bogotá</span><a href="https://www.eltiempo.com/bogota/en-lechoneria-dosificaban-marihuana-cocaina-tusi-anfetaminas-y-otras-drogas-policia-de-bogota-capturo-a-cuatro-personas-3552135" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El Tiempo</a></div></div><div class="evento evento-bogota"><div class="evento-header"><div class="evento-title">Suspensión de operaciones en Aeropuerto El Dorado por dron</div><div class="evento-fecha">30/04/2026 13:39</div></div><div class="evento-desc">Operaciones aéreas fueron suspendidas temporalmente en la madrugada debido a la presencia de un dron en la localidad de Engativá, afectando aterrizajes y despegues.</div><div class="evento-tags"><span class="tag tag-alto">ALTO</span><span class="tag tag-operativo">OPERATIVO</span><span class="tag tag-geo">🏙️ BOGOTÁ · Bogotá</span><a href="https://www.eltiempo.com/bogota/presencia-de-dron-en-cercanias-del-aeropuerto-el-dorado-obligo-suspension-de-operaciones-protocolo-de-seguridad-3552114" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El Tiempo</a></div></div><div class="evento evento-bogota"><div class="evento-header"><div class="evento-title">Intervención por maltrato a adulta mayor en el sur de la ciudad</div><div class="evento-fecha">30/04/2026 13:30</div></div><div class="evento-desc">La Alcaldía de Bogotá intervino tras la difusión de un video que mostraba agresiones contra una abuelita con movilidad reducida en vía pública.</div><div class="evento-tags"><span class="tag tag-medio">MEDIO</span><span class="tag tag-institucional">OTRO</span><span class="tag tag-geo">🏙️ BOGOTÁ · Bogotá</span><a href="https://www.eltiempo.com/bogota/video-registro-maltrato-a-abuelita-en-el-sur-de-bogota-no-podia-caminar-y-era-agredida-en-la-calle-la-alcaldia-intervino-3552112" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El Tiempo</a></div></div><div class="evento evento-bogota"><div class="evento-header"><div class="evento-title">Cobro persuasivo a morosos del ICA en Bogotá</div><div class="evento-fecha">30/04/2026 13:10</div></div><div class="evento-desc">Secretaría de Hacienda busca recuperar 22.000 millones de pesos de más de 5.000 contribuyentes que no han pagado el impuesto de industria y comercio.</div><div class="evento-tags"><span class="tag tag-bajo">BAJO</span><span class="tag tag-institucional">OTRO</span><span class="tag tag-geo">🏙️ BOGOTÁ · Bogotá</span><a href="https://www.eltiempo.com/bogota/impuestos-en-bogota-mas-de-5-000-contribuyentes-no-pagaron-el-ica-y-deben-22-000-millones-de-pesos-3552124" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El Tiempo</a></div></div><div class="evento"><div class="evento-header"><div class="evento-title">Gremios del suroccidente piden plan maestro de seguridad</div><div class="evento-fecha">30/04/2026 03:13</div></div><div class="evento-desc">Empresarios de la región suroccidental de Colombia solicitan a la Fuerza Pública medidas urgentes para contrarrestar la inseguridad regional.</div><div class="evento-tags"><span class="tag tag-medio">MEDIO</span><span class="tag tag-institucional">OTRO</span><span class="tag tag-geo">📍 Cali, VALLE DEL CAUCA</span><a href="https://news.google.com/rss/articles/CBMi_AFBVV95cUxNeURiWE1XOG5YUW15N0RNQTNXTi0tcHBTb1p3cnhmRF9FN3FaX2lyMVI0c1ZOX18yTERTNVUzbklRVnUwMnJORDJwd2V0TjB4R3ZPUFVZT2tkSDVjaXZvbi1NanhhZkdRNXJwN2dJeGJGaDVlZktkNFhPSm84U0lZMjNaVEFoYkN0ZUQzZjVOcGlQSzkzS3p0NC1SMU9UekhsMEQ3UWdZc3dnRXAtY0FjcEUxcmFZaHZ6U0NSeGgzeDFkX3N1RVNHMzFLaTRxVVM4dnZGNXk4M0tzYTRuWk0zSDBmLTVYd3ZfaER6MFNYR0kybElYc0ZCRFl3WEHSAYICQVVfeXFMUG5xbExVcXNmeWFwd1ZwZ2NHY3NDYXNaY29CSnRvNHcteDVkS0ZtaWlveVBBYW95d2NYY3BCT205bVN1bWoySWlGZUNYMWpXbjUxU0d1QWVTZFlLaDZzUFJsdXV2bGVhNk0zMkxrb0tBLTA5TWJCQ1g3d0x5eHI4UEN3V3ItMC1BOVVDeGExSXFFZVlrY2ROWjhONmlvYkF6cFBnSmE4eFBBMzBXQnhjaFkyNUtVNGZKLWtQMnM3VWdSS19MemlTOE14RVRJVUNReEFaYXIteVZVLUdVV0l3ZWFIRkpkZ2VjR0J4c0RPYUtlVk9aa1RpUnhkQzdMOWpHMlV3?oc=5" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El País</a></div></div>
 
       <!-- Alertas ambientales (si hay) -->
-      <div class="ambiental-bar"><span class="ambiental-title">🌧 Alertas Ambientales</span><span style="font-family:Share Tech Mono,monospace;font-size:10px;color:rgba(255,255,255,0.5);">2 alertas activas</span></div><div class="evento"><div class="evento-header"><div class="evento-title">🌧 INUNDACIÓN — NACIONAL</div></div><div class="evento-desc">IDEAM alerta sobre probabilidad de inundaciones y lluvias intensas hasta el 30 de abril.</div><div class="evento-tags"><span class="tag tag-alto">ALTO</span><span class="tag tag-institucional">IDEAM</span></div></div><div class="evento"><div class="evento-header"><div class="evento-title">🌧 DERRUMBE — CUNDINAMARCA</div></div><div class="evento-desc">Temporada de lluvias deja 208 emergencias en Cundinamarca; 19 familias afectadas recientemente.</div><div class="evento-tags"><span class="tag tag-alto">ALTO</span><span class="tag tag-institucional">El Tiempo</span></div></div>
+      <div class="ambiental-bar"><span class="ambiental-title">🌧 Alertas Ambientales</span><span style="font-family:Share Tech Mono,monospace;font-size:10px;color:rgba(255,255,255,0.5);">1 alerta activa</span></div><div class="evento"><div class="evento-header"><div class="evento-title">🌧 INUNDACIÓN — NACIONAL</div></div><div class="evento-desc">Alerta por lluvias y alta probabilidad de inundaciones en el territorio nacional hasta finales de abril.</div><div class="evento-tags"><span class="tag tag-alto">ALTO</span><span class="tag tag-institucional">IDEAM</span></div></div>
 
       <!-- VÍAS dinámicas -->
       <div class="vias-section">
         <div class="vias-header">
-          <span class="vias-h-title">Estado de Conectividad Vial · 30/04/2026 05:28</span>
+          <span class="vias-h-title">Estado de Conectividad Vial · 30/04/2026 09:45</span>
           <span class="vias-h-update">🚧 4 corredores afectados</span>
         </div>
         <table class="vias-table">
@@ -316,7 +313,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
             </tr>
           </thead>
           <tbody>
-            <tr class="fila-bogota"><td><div class="via-name">🏙️ Avenida Caracas / Metro Bogotá</div><div class="via-tramo">Línea 1</div></td><td><div class="via-tramo">BOGOTÁ</div></td><td><span class="estatus-pill estatus-normal">NORMAL</span></td><td class="via-obs">Proyecto de extensión de la primera línea del metro hasta la calle 100 con conexión a TransMilenio.</td></tr><tr class="fila-bogota"><td><div class="via-name">🏙️ Vías Principales Bogotá</div><div class="via-tramo">Urbana</div></td><td><div class="via-tramo">BOGOTÁ</div></td><td><span class="estatus-pill estatus-alerta">ALERTA</span></td><td class="via-obs">Restricción de Pico y Placa para el jueves 30 de abril de 6 a.m. a 9 p.m.</td></tr><tr><td><div class="via-name">Autopista Sur</div><div class="via-tramo">Soacha</div></td><td><div class="via-tramo">CUNDINAMARCA</div></td><td><span class="estatus-pill estatus-restringido">RESTRINGIDO</span></td><td class="via-obs">Restricciones operativas en la salida sur por plan retorno y alerta de lluvias.</td></tr><tr><td><div class="via-name">Vía Mosquera - La Mesa</div><div class="via-tramo">4001</div></td><td><div class="via-tramo">CUNDINAMARCA</div></td><td><span class="estatus-pill estatus-cerrado">CERRADO</span></td><td class="via-obs">Grave accidente de bus intermunicipal deja al menos un muerto y 9 heridos. Adicionalmente, trabajos de remoción de masa por lluvias.</td></tr>
+            <tr class="fila-bogota"><td><div class="via-name">🏙️ Sistema TransMilenio</div><div class="via-tramo">Todas las rutas Bogotá</div></td><td><div class="via-tramo">BOGOTÁ</div></td><td><span class="estatus-pill estatus-normal">NORMAL</span></td><td class="via-obs">Nueva actualización de la app permite optimizar rutas según tiempo y costo.</td></tr><tr class="fila-bogota"><td><div class="via-name">🏙️ Aeropuerto El Dorado</div><div class="via-tramo">Aérea</div></td><td><div class="via-tramo">BOGOTÁ</div></td><td><span class="estatus-pill estatus-alerta">ALERTA</span></td><td class="via-obs">Demoras en aterrizajes y despegues por presencia de drones.</td></tr><tr><td><div class="via-name">Vías Nacionales y Urbanas</div><div class="via-tramo">Varias</div></td><td><div class="via-tramo">NACIONAL</div></td><td><span class="estatus-pill estatus-alerta">ALERTA</span></td><td class="via-obs">Probabilidad de inundaciones y afectaciones por lluvias intensas.</td></tr><tr><td><div class="via-name">Cable Aéreo Soacha</div><div class="via-tramo">Soacha - Bogotá</div></td><td><div class="via-tramo">CUNDINAMARCA</div></td><td><span class="estatus-pill estatus-normal">NORMAL</span></td><td class="via-obs">Radicación de estudios de factibilidad ante MinTransporte.</td></tr>
           </tbody>
         </table>
       </div>
@@ -327,7 +324,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
     <div class="sidebar">
       <div class="sb-section">
         <div class="sb-title">Nivel de Riesgo por Nodo</div>
-        <div class="nodo-item"><span class="nodo-name">Cundinamarca<br><small style="color:var(--muted);font-size:10px;">Accidentes/Lluvias</small></span><div style="text-align:right;"><div class="nodo-pct" style="color:#7F1D1D;">100%</div><div class="nodo-nivel-label" style="color:#7F1D1D;">CRÍTICO</div></div></div><div class="nodo-item"><span class="nodo-name">Bogotá<br><small style="color:var(--muted);font-size:10px;">Movilidad y Hurto</small></span><div style="text-align:right;"><div class="nodo-pct" style="color:#F59E0B;">60%</div><div class="nodo-nivel-label" style="color:#F59E0B;">ALTO</div></div></div>
+        <div class="nodo-item"><span class="nodo-name">Bogotá<br><small style="color:var(--muted);font-size:10px;">Microtráfico y Seguridad Aérea</small></span><div style="text-align:right;"><div class="nodo-pct" style="color:#EF4444;">80%</div><div class="nodo-nivel-label" style="color:#EF4444;">MUY ALTO</div></div></div><div class="nodo-item"><span class="nodo-name">Valle del Cauca<br><small style="color:var(--muted);font-size:10px;">Seguridad Regional</small></span><div style="text-align:right;"><div class="nodo-pct" style="color:#F59E0B;">60%</div><div class="nodo-nivel-label" style="color:#F59E0B;">ALTO</div></div></div>
       </div>
 
       <div class="sb-section">
@@ -347,7 +344,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 
       <div class="sb-section">
         <div class="sb-title">Recomendaciones</div>
-        <div class="rec-item"><span class="rec-icon">▲</span><span><strong>LOGÍSTICA:</strong> Evitar el corredor Mosquera-La Mesa debido a siniestralidad y remoción de escombros.</span></div><div class="rec-item"><span class="rec-icon">◉</span><span><strong>PERÍMETROS:</strong> Reforzar seguridad en Fontibón y sectores aledaños a paraderos de buses por reportes de fleteo.</span></div><div class="rec-item"><span class="rec-icon">◎</span><span><strong>OPERACIONAL:</strong> Verificar restricciones de carga en Autopista Sur y dar cumplimiento estricto al Pico y Placa.</span></div><div class="rec-item"><span class="rec-icon">⬡</span><span><strong>DIGITAL:</strong> Monitorear redes oficiales de TransMilenio y Secretaría de Movilidad ante cierres por lluvia.</span></div>
+        <div class="rec-item"><span class="rec-icon">▲</span><span><strong>LOGÍSTICA:</strong> Planificar entregas considerando posibles retrasos en el Aeropuerto El Dorado y afectaciones viales por lluvias.</span></div><div class="rec-item"><span class="rec-icon">◉</span><span><strong>PERÍMETROS:</strong> Especial atención en la localidad de Suba (Barrio Aures) y cercanías al aeropuerto en Engativá.</span></div><div class="rec-item"><span class="rec-icon">◎</span><span><strong>OPERACIONAL:</strong> Reforzar protocolos de seguridad física ante el uso de drones no autorizados en zonas de operación crítica.</span></div><div class="rec-item"><span class="rec-icon">⬡</span><span><strong>DIGITAL:</strong> Actualizar la app de TransMilenio para optimizar tiempos de traslado en la capital.</span></div>
       </div>
 
       <div class="sb-section">
@@ -355,12 +352,12 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
         <div class="tac-item alerta">
           <div class="tac-nivel" style="color:var(--orange);">ALERTA</div>
           <div class="tac-label">Amenaza</div>
-          <div class="tac-val">Siniestralidad vial masiva y riesgos por remoción de masa en corredores estratégicos.</div>
+          <div class="tac-val">Uso de fachadas comerciales para narcotráfico y drones interfiriendo infraestructura crítica.</div>
         </div>
         <div class="tac-item alerta">
           <div class="tac-nivel" style="color:var(--orange);">ALERTA</div>
           <div class="tac-label">Zona Crítica</div>
-          <div class="tac-val">Cundinamarca (Vía La Mesa)</div>
+          <div class="tac-val">Bogotá (Localidades de Suba y Engativá)</div>
         </div>
       </div>
 
@@ -369,11 +366,15 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
         
     <div class="dist-item dist-bogota">
       <span class="dist-ciudad">🏙️ Bogotá</span>
-      <span class="dist-ev" style="color:#E8750A;">6 ev</span>
+      <span class="dist-ev" style="color:#E8750A;">7 ev</span>
     </div>
     <div class="dist-item">
-      <span class="dist-ciudad">Soacha/La Mesa</span>
-      <span class="dist-ev" style="color:#C8102E;">4 ev</span>
+      <span class="dist-ciudad">Cali</span>
+      <span class="dist-ev" style="color:#2851A3;">1 ev</span>
+    </div>
+    <div class="dist-item">
+      <span class="dist-ciudad">Soacha</span>
+      <span class="dist-ev" style="color:#2851A3;">1 ev</span>
     </div>
       </div>
     </div><!-- /sidebar -->
@@ -381,18 +382,11 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
   </div><!-- /main-layout -->
 </div><!-- /content-wrap -->
 
-<!-- MAPA -->
-<div class="map-section">
-  <div class="map-header">
-    <span class="map-title">Mapa de Calor · Colombia</span>
-    <span id="mapDateTime" style="font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);">30/04/2026</span>
-  </div>
-  <div id="map"></div>
-</div>
+<!-- mapa eliminado -->
 
 <!-- FOOTER -->
 <div class="footer">
-  Intel Ops Document · VISE-ALTUM · Estrategia Integrada © 2026 · Generado: 30/04/2026 05:28
+  Intel Ops Document · VISE-ALTUM · Estrategia Integrada © 2026 · Generado: 30/04/2026 09:45
   <span class="footer-conf">CONFIDENCIAL · REPORTE TÁCTICO ALIANZA VISE-ALTUM · RESERVADO II &nbsp;·&nbsp; ESTRATEGIA 2026-B</span>
 </div>
 
@@ -417,70 +411,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
   document.getElementById('mapDateTime').textContent = dd+'/'+mm+'/'+yyyy+' · '+hh12s+':'+min;
 })();
 
-// Mapa con puntos reales del día + fondo estructural
-setTimeout(function(){
-  var map = L.map('map', { center: [4.5, -74.0], zoom: 5 });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© CartoDB'}).addTo(map);
-
-  // ── Zonas históricas de riesgo (fondo estático) ──
-  var zonasCalor = [
-    {coords:[2.0,-77.2],r:38,nivel:5,nombre:'Tumaco',dept:'Nariño',detalle:'Mayor tráfico de cocaína del país.'},
-    {coords:[2.4,-76.6],r:36,nivel:5,nombre:'Norte del Cauca',dept:'Cauca',detalle:'Corredor estratégico de grupos armados.'},
-    {coords:[7.1,-70.8],r:32,nivel:5,nombre:'Arauca',dept:'Arauca',detalle:'Zona de disputa ELN-FARC.'},
-    {coords:[8.0,-76.7],r:34,nivel:5,nombre:'Urabá',dept:'Antioquia/Chocó',detalle:'Clan del Golfo. Corredor narco.'},
-    {coords:[3.8,-76.9],r:30,nivel:5,nombre:'Buenaventura',dept:'Valle del Cauca',detalle:'Puerto con mayor índice de homicidios.'},
-    {coords:[5.5,-75.8],r:28,nivel:4,nombre:'Bajo Cauca',dept:'Antioquia',detalle:'Minería ilegal y grupos armados.'},
-    {coords:[8.3,-73.3],r:28,nivel:4,nombre:'Catatumbo',dept:'Norte de Santander',detalle:'ELN y disidencias FARC.'},
-    {coords:[5.7,-77.1],r:26,nivel:4,nombre:'Medio Atrato',dept:'Chocó',detalle:'Desplazamientos masivos.'},
-    {coords:[1.2,-77.3],r:24,nivel:4,nombre:'Putumayo norte',dept:'Putumayo',detalle:'Coca y FARC-disidencias.'},
-    {coords:[4.71,-74.25],r:22,nivel:4,nombre:'Ciudad Bolívar/Bosa',dept:'Bogotá D.C.',detalle:'Mayor índice de hurto y microtráfico.'},
-    {coords:[6.7,-75.5],r:20,nivel:3,nombre:'Medellín periférico',dept:'Antioquia',detalle:'Combos y sicariato.'},
-    {coords:[10.4,-75.5],r:20,nivel:3,nombre:'Cartagena periférico',dept:'Bolívar',detalle:'Hurto y extorsión.'},
-    {coords:[4.71,-74.07],r:18,nivel:3,nombre:'Bogotá centro-sur',dept:'Bogotá D.C.',detalle:'Kennedy, Mártires, Santa Fe.'},
-    {coords:[7.9,-72.5],r:18,nivel:3,nombre:'Cúcuta',dept:'Norte de Santander',detalle:'Frontera activa.'},
-    {coords:[2.9,-75.3],r:18,nivel:3,nombre:'Sur del Huila',dept:'Huila',detalle:'Corredor disidencias.'},
-    {coords:[11.0,-74.8],r:16,nivel:2,nombre:'Barranquilla sur',dept:'Atlántico',detalle:'Violencia urbana moderada.'},
-    {coords:[9.3,-75.4],r:14,nivel:2,nombre:'Montes de María',dept:'Bolívar/Sucre',detalle:'Recuperación post-conflicto.'},
-  ];
-  var paleta=['','#3B82F6','#22C55E','#F59E0B','#EF4444','#7F1D1D'];
-  var etiquetas=['','BAJO','MODERADO','ALTO','MUY ALTO','CRÍTICO'];
-  zonasCalor.forEach(function(z){
-    L.circleMarker(z.coords,{radius:z.r,fillColor:paleta[z.nivel],color:'#fff',weight:1.5,fillOpacity:0.4})
-    .bindPopup('<div style="font-family:Barlow Condensed,sans-serif;min-width:180px;"><strong style="font-size:15px;color:#1B2A4A;">'+z.nombre+'</strong><br><span style="font-size:10px;color:#6B7280;letter-spacing:1px;">'+z.dept.toUpperCase()+'</span><br><span style="background:'+paleta[z.nivel]+';color:#fff;padding:2px 8px;font-size:10px;font-weight:700;letter-spacing:1px;">'+etiquetas[z.nivel]+'</span><br><br><span style="font-size:11px;color:#374151;">'+z.detalle+'</span></div>')
-    .addTo(map);
-  });
-
-  // ── Eventos del día (dinámicos desde datos de la IA) ──
-  var eventosDelDia = [{"departamento":"Cundinamarca","codigo":"CUN","lat":4.711,"lng":-74.227,"nivel":5,"eventos":4,"tipo_principal":"Accidentes/Lluvias"},{"departamento":"Bogotá","codigo":"BOG","lat":4.6097,"lng":-74.0817,"nivel":3,"eventos":6,"tipo_principal":"Movilidad y Hurto"}];
-  eventosDelDia.forEach(function(e){
-    if (!e.lat || !e.lng) return;
-    L.circleMarker([e.lat,e.lng],{radius:14,fillColor:'#FF0040',color:'#fff',weight:2.5,fillOpacity:0.9})
-    .bindPopup('<div style="font-family:Barlow Condensed,sans-serif;min-width:160px;"><strong style="font-size:14px;color:#C8102E;">⚡ HOY</strong><br><strong>'+e.departamento+'</strong><br><span style="font-size:11px;color:#374151;">'+e.tipo_principal+'<br>'+e.eventos+' evento(s)</span></div>')
-    .addTo(map);
-  });
-
-  var legend = L.control({position:'bottomright'});
-  legend.onAdd = function(){
-    var div = L.DomUtil.create('div');
-    div.style.cssText='background:white;padding:10px 14px;border:1px solid #D1D9E6;font-family:Barlow Condensed,sans-serif;font-size:11px;line-height:2;box-shadow:0 2px 8px rgba(0,0,0,0.15);';
-    div.innerHTML='<strong style="letter-spacing:2px;font-size:9px;color:#6B7280;display:block;margin-bottom:4px;">ÍNDICE HISTÓRICO DE RIESGO</strong>'+
-      [['#7F1D1D','CRÍTICO'],['#EF4444','MUY ALTO'],['#F59E0B','ALTO'],['#22C55E','MODERADO'],['#3B82F6','BAJO']].map(function(c){return '<span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:'+c[0]+';margin-right:6px;vertical-align:middle;opacity:0.75;"></span>'+c[1];}).join('<br>')+
-      '<br><span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#FF0040;margin-right:6px;vertical-align:middle;"></span>EVENTO HOY'+
-      '<br><span style="font-size:9px;color:#9CA3AF;display:block;margin-top:6px;letter-spacing:1px;">Datos: INDEPAZ · FFMM · ONU</span>';
-    return div;
-  };
-  legend.addTo(map);
-
-  var info = L.control({position:'topleft'});
-  info.onAdd = function(){
-    var div = L.DomUtil.create('div');
-    div.style.cssText='background:rgba(27,42,74,0.9);color:white;padding:6px 12px;font-family:Barlow Condensed,sans-serif;font-size:10px;letter-spacing:1px;';
-    div.innerHTML='⚠ FONDO: Riesgo estructural &nbsp;·&nbsp; ● ROJO: Eventos del período';
-    return div;
-  };
-  info.addTo(map);
-}, 300);
-
+// mapa eliminado
 async function generarPDF(){
   var btn=document.getElementById('btnPDF');
   btn.style.display='none';
