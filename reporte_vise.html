@@ -73,17 +73,17 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .stat.stat-sep{border-left:2px solid var(--border);}
 
 /* LAYOUT */
-.content-wrap{border:2px solid var(--border);margin-bottom:0;}
+.content-wrap{border:none;margin-bottom:0;}
 .main-layout{display:flex;align-items:stretch;gap:0;}
-.main-content{flex:1;min-width:0;padding:18px 20px 18px 0;border-right:1px solid var(--border);display:flex;flex-direction:column;}
+.main-content{flex:1;min-width:580px;padding:18px 20px 18px 0;border-right:1px solid var(--border);display:flex;flex-direction:column;}
 .sidebar{width:240px;flex-shrink:0;padding:18px 0 18px 20px;}
 
 /* CARDS */
-.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
-.info-card{border:1px solid var(--border);padding:14px;background:var(--white);}
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;min-width:0;}
+.info-card{border:1px solid var(--border);padding:14px;background:var(--white);overflow:hidden;min-width:0;}
 .info-card-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
 .info-card-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:8px;border-bottom:1px solid var(--border2);padding-bottom:8px;word-break:break-word;overflow-wrap:break-word;}
-.info-card-body{font-size:12px;color:var(--text2);line-height:1.6;font-style:italic;word-break:break-word;overflow-wrap:break-word;}
+.info-card-body{font-size:12px;color:var(--text2);line-height:1.6;font-style:italic;word-break:break-word;overflow-wrap:break-word;word-spacing:0;letter-spacing:0;}
 .info-card.border-red{border-top:3px solid var(--red2);}
 .info-card.border-blue{border-top:3px solid var(--blue);}
 
@@ -103,7 +103,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .evento-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px;}
 .evento-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--navy);line-height:1.2;flex:1;font-style:italic;word-break:break-word;overflow-wrap:break-word;}
 .evento-fecha{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);white-space:nowrap;margin-top:3px;}
-.evento-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:8px;word-break:break-word;overflow-wrap:break-word;}
+.evento-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:8px;word-break:break-word;overflow-wrap:break-word;word-spacing:0;letter-spacing:0;}
 .evento-tags{display:flex;gap:5px;flex-wrap:wrap;}
 .tag{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:1px;}
 .tag-critico{background:var(--red2);color:#fff;}
@@ -137,7 +137,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .estatus-restringido{background:var(--orange);color:#fff;}
 .estatus-alerta{background:var(--yellow);color:#1F2937;}
 .estatus-normal{background:var(--green);color:#fff;}
-.via-obs{font-size:11px;color:var(--muted);line-height:1.5;word-break:break-word;overflow-wrap:break-word;}
+.via-obs{font-size:11px;color:var(--muted);line-height:1.5;word-break:break-word;overflow-wrap:break-word;word-spacing:0;letter-spacing:0;}
 
 /* SIDEBAR */
 .sb-section{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:16px;}
@@ -155,7 +155,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .gri-city{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy2);}
 .gri-phone{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--blue2);font-weight:600;}
 .gri-wrap{border:1px solid var(--border);overflow:hidden;}
-.rec-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border2);font-size:11px;color:var(--text2);line-height:1.5;word-break:break-word;overflow-wrap:break-word;}
+.rec-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border2);font-size:11px;color:var(--text2);line-height:1.5;word-break:break-word;overflow-wrap:break-word;word-spacing:0;letter-spacing:0;}
 .rec-item:last-child{border-bottom:none;}
 .rec-icon{color:var(--red2);flex-shrink:0;margin-top:1px;font-size:13px;}
 .tac-item{padding:10px 12px;margin-bottom:8px;background:var(--bg);border-left:3px solid var(--border);}
@@ -184,11 +184,16 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 .page{min-width:1060px !important;overflow-x:visible;}
 .header{min-width:1060px !important;}
 .main-layout{flex-direction:row !important;min-width:1060px !important;}
-.main-content{min-width:0 !important;flex:1 !important;}
+.main-content{min-width:580px !important;flex:1 !important;}
 .sidebar{width:240px !important;flex-shrink:0 !important;display:block !important;}
 .stats-row{grid-template-columns:repeat(4,1fr) !important;}
 .cards-grid{grid-template-columns:1fr 1fr !important;}
-.vias-table{table-layout:auto !important;}
+.vias-table{table-layout:fixed !important;width:100% !important;}
+.vias-table td,.vias-table th{overflow:hidden !important;text-overflow:ellipsis !important;}
+.info-card{overflow:hidden !important;min-width:0 !important;}
+.evento-title,.evento-desc,.info-card-body,.info-card-title,.via-obs,.tac-val,.rec-item span{
+  word-spacing:0 !important;letter-spacing:normal !important;
+  word-break:break-word !important;overflow-wrap:break-word !important;}
 </style>
 </head>
 <body>
@@ -225,9 +230,9 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
     <div class="hero-estado-val">ACTIVO · TIEMPO REAL</div>
   </div>
   <div class="hero-content">
-    <div class="hero-alerta">Boletín BOGOTÁ · 03/05/2026 20:37</div>
+    <div class="hero-alerta">Boletín BOGOTÁ · 03/05/2026 20:43</div>
     <div class="hero-title">PLAN RETORNO Y OPERATIVOS DE SEGURIDAD EN BOGOTÁ Y CUNDINAMARCA</div>
-    <div class="hero-sub">Reporte consolidado de inteligencia. 2 fuentes consultadas.</div>
+    <div class="hero-sub">Reporte consolidado de inteligencia. 7 fuentes consultadas.</div>
   </div>
 </div>
 
@@ -237,15 +242,15 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 7.4 16.8"/><circle cx="12" cy="12" r="3"/></svg>
     Radar de Sucesos — BOGOTÁ
   </div>
-  <div class="radar-update">PERÍODO: 03/05/2026 20:37</div>
+  <div class="radar-update">PERÍODO: 03/05/2026 20:43</div>
 </div>
 
 <!-- STATS — 4 columnas claras -->
 <div class="stats-row">
   <div class="stat">
-    <div class="stat-n">2</div>
+    <div class="stat-n">3</div>
     <div class="stat-l">Eventos Seguridad</div>
-    <div class="stat-bar"><div class="stat-bar-fill" style="width:20%;background:var(--navy);"></div></div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:30%;background:var(--navy);"></div></div>
   </div>
   <div class="stat">
     <div class="stat-n blue">2</div>
@@ -275,32 +280,32 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
       <div class="cards-grid">
         <div class="info-card border-red">
           <div class="info-card-label">Inteligencia Táctica</div>
-          <div class="info-card-title">Congestión extrema por plan retorno y delincuencia armada en transporte público.</div>
-          <div class="info-card-body">Zona crítica: <strong>BOGOTÁ</strong>. Tendencia: <strong style="color:#FF6B6B;">ALTA</strong>. Se registraron 2 eventos en el período, con 1 de nivel crítico.</div>
+          <div class="info-card-title">Congestión por plan retorno y presencia de armas en transporte público</div>
+          <div class="info-card-body">Zona crítica: <strong>BOGOTÁ D.C.</strong>. Tendencia: <strong style="color:#FF6B6B;">ALTA</strong>. Se registraron 3 eventos en el período, con 1 de nivel crítico.</div>
         </div>
         <div class="info-card border-blue">
           <div class="info-card-label">Conectividad Vial</div>
           <div class="info-card-title">3 corredores afectados</div>
-          <div class="info-card-body"><strong>Corredores de ingreso a Bogotá</strong>: RESTRINGIDO (OTRO). <strong>Autopista Sur de Bogotá</strong>: RESTRINGIDO (MANTENIMIENTO). Ver tabla completa abajo.</div>
+          <div class="info-card-body"><strong>Autopista Sur de Bogotá</strong>: RESTRINGIDO (OTRO). <strong>Corredores de ingreso a Bogotá</strong>: RESTRINGIDO (OTRO). Ver tabla completa abajo.</div>
         </div>
       </div>
 
       <!-- Flash bar -->
       <div class="flash-bar">
         <span class="flash-title">Reporte de Novedades · Seguridad y Orden Público</span>
-        <span class="flash-badge">▲ 2 Eventos · Fuentes Verificadas</span>
+        <span class="flash-badge">▲ 3 Eventos · Fuentes Verificadas</span>
       </div>
 
       <!-- Eventos dinámicos -->
-      <div class="evento evento-bogota"><div class="evento-header"><div class="evento-title">Capturan a taxista con arma de fuego y silenciador en Bogotá</div><div class="evento-fecha">03/05/2026 13:59</div></div><div class="evento-desc">El vehículo fue interceptado en la carrera 14 con calle 14 mediante plan candado. El sujeto tiene 31 años.</div><div class="evento-tags"><span class="tag tag-critico">CRÍTICO</span><span class="tag tag-operativo">CAPTURA</span><span class="tag tag-geo">🏙️ BOGOTÁ · Bogotá</span><a href="https://www.eltiempo.com/bogota/capturan-a-taxista-que-portaba-un-arma-de-fuego-con-silenciador-en-bogota-se-activo-plan-candado-para-su-detencion-3552680" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El Tiempo</a></div></div><div class="evento"><div class="evento-header"><div class="evento-title">Incautación de madera por tala ilegal en Fusagasugá</div><div class="evento-fecha">03/05/2026 20:28</div></div><div class="evento-desc">Más de 500 piezas de madera y guadua incautadas. Se pretendía usar 150 postes de eucalipto para cercado de fincas.</div><div class="evento-tags"><span class="tag tag-medio">MEDIO</span><span class="tag tag-operativo">OPERATIVO</span><span class="tag tag-geo">📍 Fusagasugá, CUNDINAMARCA</span><a href="https://www.eltiempo.com/bogota/mas-de-500-piezas-de-madera-y-guadua-fueron-incautadas-por-tala-ilegal-en-fusagasuga-3552749" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El Tiempo</a></div></div>
+      <div class="evento evento-bogota"><div class="evento-header"><div class="evento-title">Capturan a taxista con arma y silenciador</div><div class="evento-fecha">03/05/2026 13:59</div></div><div class="evento-desc">Un hombre de 31 años fue interceptado en la carrera 14 con calle 14 tras activarse un plan candado.</div><div class="evento-tags"><span class="tag tag-critico">CRÍTICO</span><span class="tag tag-operativo">CAPTURA</span><span class="tag tag-geo">🏙️ BOGOTÁ · BOGOTÁ</span><a href="https://www.eltiempo.com/bogota/capturan-a-taxista-que-portaba-un-arma-de-fuego-con-silenciador-en-bogota-se-activo-plan-candado-para-su-detencion-3552680" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El Tiempo</a></div></div><div class="evento"><div class="evento-header"><div class="evento-title">Incautación de madera por tala ilegal</div><div class="evento-fecha">03/05/2026 20:28</div></div><div class="evento-desc">Más de 500 piezas de madera y guadua incautadas que pretendían ser usadas para cercado de fincas.</div><div class="evento-tags"><span class="tag tag-medio">MEDIO</span><span class="tag tag-operativo">OPERATIVO</span><span class="tag tag-geo">📍 FUSAGASUGÁ, CUNDINAMARCA</span><a href="https://www.eltiempo.com/bogota/mas-de-500-piezas-de-madera-guadua-fueron-incautadas-por-tala-ilegal-en-fusagasuga-3552749" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El Tiempo</a></div></div><div class="evento evento-bogota"><div class="evento-header"><div class="evento-title">Preparación Día de la Madre 2026</div><div class="evento-fecha">03/05/2026 19:25</div></div><div class="evento-desc">Definición de fecha oficial y preparativos para celebraciones en la capital.</div><div class="evento-tags"><span class="tag tag-bajo">BAJO</span><span class="tag tag-institucional">OTRO</span><span class="tag tag-geo">🏙️ BOGOTÁ · BOGOTÁ</span><a href="https://www.eltiempo.com/bogota/cuando-es-el-dia-de-la-madre-en-colombia-2026-fecha-oficial-y-como-celebrar-en-bogota-ese-dia-3552733" target="_blank" class="tag tag-fuente" style="text-decoration:none;">El Tiempo</a></div></div>
 
       <!-- Alertas ambientales (si hay) -->
-      <div class="ambiental-bar"><span class="ambiental-title">🌧 Alertas Ambientales</span><span style="font-family:Share Tech Mono,monospace;font-size:10px;color:rgba(255,255,255,0.5);">1 alerta activa</span></div><div class="evento"><div class="evento-header"><div class="evento-title">🌧 OTRO — CUNDINAMARCA</div></div><div class="evento-desc">Tala ilegal de madera y guadua (500 piezas incautadas)</div><div class="evento-tags"><span class="tag tag-medio">MEDIO</span><span class="tag tag-institucional">Policía Nacional</span></div></div>
+      <div class="ambiental-bar"><span class="ambiental-title">🌧 Alertas Ambientales</span><span style="font-family:Share Tech Mono,monospace;font-size:10px;color:rgba(255,255,255,0.5);">1 alerta activa</span></div><div class="evento"><div class="evento-header"><div class="evento-title">🌧 OTRO — CUNDINAMARCA</div></div><div class="evento-desc">Tala ilegal y deforestación para fines comerciales.</div><div class="evento-tags"><span class="tag tag-alto">ALTO</span><span class="tag tag-institucional">El Tiempo</span></div></div>
 
       <!-- VÍAS dinámicas -->
       <div class="vias-section">
         <div class="vias-header">
-          <span class="vias-h-title">Estado de Conectividad Vial · 03/05/2026 20:37</span>
+          <span class="vias-h-title">Estado de Conectividad Vial · 03/05/2026 20:43</span>
           <span class="vias-h-update">🚧 3 corredores afectados</span>
         </div>
         <table class="vias-table">
@@ -313,7 +318,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
             </tr>
           </thead>
           <tbody>
-            <tr class="fila-bogota"><td><div class="via-name">🏙️ Corredores de ingreso a Bogotá</div><div class="via-tramo">Varios</div></td><td><div class="via-tramo">Bogotá</div></td><td><span class="estatus-pill estatus-restringido">RESTRINGIDO</span></td><td class="via-obs">Trancón por plan retorno. Se habilita el paso a vehículos con placa impar.</td></tr><tr class="fila-bogota"><td><div class="via-name">🏙️ Autopista Sur de Bogotá</div><div class="via-tramo">Autopista Sur</div></td><td><div class="via-tramo">Bogotá</div></td><td><span class="estatus-pill estatus-restringido">RESTRINGIDO</span></td><td class="via-obs">Operación del plan retorno durante el puente del Día del Trabajo. Afectación por obras de TransMilenio.</td></tr><tr class="fila-bogota"><td><div class="via-name">🏙️ Vía Bogotá - Girardot</div><div class="via-tramo">Kilómetro 52</div></td><td><div class="via-tramo">Cundinamarca</div></td><td><span class="estatus-pill estatus-restringido">RESTRINGIDO</span></td><td class="via-obs">Van se incendia en el peaje de Chinauta por presunta falla eléctrica.</td></tr>
+            <tr class="fila-bogota"><td><div class="via-name">🏙️ Autopista Sur de Bogotá</div><div class="via-tramo">N/A</div></td><td><div class="via-tramo">BOGOTÁ D.C.</div></td><td><span class="estatus-pill estatus-restringido">RESTRINGIDO</span></td><td class="via-obs">Plan retorno activo con afectación por obras de TransMilenio y restricciones de puente festivo.</td></tr><tr class="fila-bogota"><td><div class="via-name">🏙️ Corredores de ingreso a Bogotá</div><div class="via-tramo">N/A</div></td><td><div class="via-tramo">BOGOTÁ D.C.</div></td><td><span class="estatus-pill estatus-restringido">RESTRINGIDO</span></td><td class="via-obs">Trancón por plan retorno; se habilita el paso a vehículos con placa impar.</td></tr><tr><td><div class="via-name">Peaje de Chinauta</div><div class="via-tramo">Kilómetro 52</div></td><td><div class="via-tramo">CUNDINAMARCA</div></td><td><span class="estatus-pill estatus-alerta">ALERTA</span></td><td class="via-obs">Incendio de una van presuntamente por falla eléctrica.</td></tr>
           </tbody>
         </table>
       </div>
@@ -324,7 +329,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
     <div class="sidebar">
       <div class="sb-section">
         <div class="sb-title">Nivel de Riesgo por Nodo</div>
-        <div class="nodo-item"><span class="nodo-name">Bogotá<br><small style="color:var(--muted);font-size:10px;">Movilidad y Seguridad Urbana</small></span><div style="text-align:right;"><div class="nodo-pct" style="color:#EF4444;">80%</div><div class="nodo-nivel-label" style="color:#EF4444;">MUY ALTO</div></div></div><div class="nodo-item"><span class="nodo-name">Cundinamarca<br><small style="color:var(--muted);font-size:10px;">Siniestro vial / Ambiental</small></span><div style="text-align:right;"><div class="nodo-pct" style="color:#22C55E;">40%</div><div class="nodo-nivel-label" style="color:#22C55E;">MODERADO</div></div></div>
+        <div class="nodo-item"><span class="nodo-name">Bogotá<br><small style="color:var(--muted);font-size:10px;">Seguridad Ciudadana y Movilidad</small></span><div style="text-align:right;"><div class="nodo-pct" style="color:#EF4444;">80%</div><div class="nodo-nivel-label" style="color:#EF4444;">MUY ALTO</div></div></div><div class="nodo-item"><span class="nodo-name">Cundinamarca<br><small style="color:var(--muted);font-size:10px;">Accidentes y Delitos Ambientales</small></span><div style="text-align:right;"><div class="nodo-pct" style="color:#F59E0B;">60%</div><div class="nodo-nivel-label" style="color:#F59E0B;">ALTO</div></div></div>
       </div>
 
       <div class="sb-section">
@@ -344,7 +349,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 
       <div class="sb-section">
         <div class="sb-title">Recomendaciones</div>
-        <div class="rec-item"><span class="rec-icon">▲</span><span><strong>LOGÍSTICA:</strong> Planificar el ingreso a Bogotá considerando el pico y placa regional y el plan retorno.</span></div><div class="rec-item"><span class="rec-icon">◉</span><span><strong>PERÍMETROS:</strong> Especial atención en la Autopista Sur y el peaje de Chinauta por congestión y siniestros.</span></div><div class="rec-item"><span class="rec-icon">◎</span><span><strong>OPERACIONAL:</strong> Reforzar la vigilancia en taxis y transporte público tras captura de conductor armado con silenciador.</span></div><div class="rec-item"><span class="rec-icon">⬡</span><span><strong>DIGITAL:</strong> Realizar el pago del impuesto predial únicamente a través de la ruta oficial de la Secretaría de Hacienda antes del 8 de mayo.</span></div>
+        <div class="rec-item"><span class="rec-icon">▲</span><span><strong>LOGÍSTICA:</strong> Planificar ingresos a Bogotá considerando la restricción de placa impar y el alto flujo del plan retorno.</span></div><div class="rec-item"><span class="rec-icon">◉</span><span><strong>PERÍMETROS:</strong> Especial atención en la Autopista Sur y el sector de la carrera 14 por operativos policiales.</span></div><div class="rec-item"><span class="rec-icon">◎</span><span><strong>OPERACIONAL:</strong> Aprovechar el sistema de pago de impuesto predial por cuotas antes del 8 de mayo.</span></div><div class="rec-item"><span class="rec-icon">⬡</span><span><strong>DIGITAL:</strong> Consultar redes oficiales de la Secretaría de Hacienda y Tránsito Bogotá para actualizaciones en tiempo real.</span></div>
       </div>
 
       <div class="sb-section">
@@ -352,12 +357,12 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
         <div class="tac-item critico">
           <div class="tac-nivel" style="color:var(--red2);">CRÍTICO</div>
           <div class="tac-label">Amenaza</div>
-          <div class="tac-val">Congestión extrema por plan retorno y delincuencia armada en transporte público.</div>
+          <div class="tac-val">Congestión por plan retorno y presencia de armas en transporte público</div>
         </div>
         <div class="tac-item alerta">
           <div class="tac-nivel" style="color:var(--orange);">ALERTA</div>
           <div class="tac-label">Zona Crítica</div>
-          <div class="tac-val">BOGOTÁ</div>
+          <div class="tac-val">BOGOTÁ D.C.</div>
         </div>
       </div>
 
@@ -386,7 +391,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font
 
 <!-- FOOTER -->
 <div class="footer">
-  Intel Ops Document · VISE-ALTUM · Estrategia Integrada © 2026 · Generado: 03/05/2026 20:37
+  Intel Ops Document · VISE-ALTUM · Estrategia Integrada © 2026 · Generado: 03/05/2026 20:43
   <span class="footer-conf">CONFIDENCIAL · REPORTE TÁCTICO ALIANZA VISE-ALTUM · RESERVADO II &nbsp;·&nbsp; ESTRATEGIA 2026-B</span>
 </div>
 
